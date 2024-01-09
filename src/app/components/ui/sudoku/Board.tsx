@@ -39,10 +39,8 @@ const Board: React.FC<Props> = () => {
   }
 
   return (
-    <div className="grid-cols-9 gap-0">
-      {/* // <div className=""> */}
+    <div className="grid-cols-9 gap-0"> 
       {board.map((row, rowIndex) => (
-        // <div className="grid-rows-9" key={rowIndex}>
         <div className="flex md:grid-rows-9" key={rowIndex}>
           {row.map((cellValue: number, columnIndex: number) => (
             <Cell

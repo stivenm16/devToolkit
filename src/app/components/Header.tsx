@@ -28,7 +28,7 @@ const Header: React.FC = () => {
                   clipRule="evenodd"
                 />
               </svg> */}
-              Pricing
+              Projects
             </a>
             <a
               href="#"
@@ -46,7 +46,7 @@ const Header: React.FC = () => {
                   clipRule="evenodd"
                 />
               </svg> */}
-              Gallery
+              Resources
             </a>
             <a
               href="#"
@@ -65,7 +65,7 @@ const Header: React.FC = () => {
                   clipRule="evenodd"
                 />
               </svg> */}
-              Blog
+              Docs
             </a>
           </nav>
         </div>
