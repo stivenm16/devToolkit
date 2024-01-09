@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import Cell from './Cell'
+import { Cell } from '.'
 
 interface Props {
   // size: number
@@ -40,8 +40,10 @@ const Board: React.FC<Props> = () => {
 
   return (
     <div className="grid-cols-9 gap-0">
+      {/* // <div className=""> */}
       {board.map((row, rowIndex) => (
-        <div className="grid-rows-9" key={rowIndex}>
+        // <div className="grid-rows-9" key={rowIndex}>
+        <div className="flex md:grid-rows-9" key={rowIndex}>
           {row.map((cellValue: number, columnIndex: number) => (
             <Cell
               key={columnIndex}
