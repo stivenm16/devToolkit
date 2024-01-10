@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Option from './Option'
 
 export type Difficulty = 'easy' | 'medium' | 'hard'
@@ -7,10 +7,12 @@ interface OptionsProps {
   children?: React.ReactNode
 }
 
+const difficulties: Difficulty[] = ['easy', 'medium', 'hard']
+
 const Options: React.FC<OptionsProps> = ({ children }) => {
-  const difficulties = ['easy', 'medium', 'hard']
-  const onChangeDefault = (value: string) => {
-    console.log(value)
+  const [difficulty, setDifficulty] = useState<Difficulty>(difficulties[0])
+  const onChangeDefault = (value: Difficulty) => {
+    setDifficulty(value)
   }
   return (
     <div className="hidden md:w-1/4 md:flex md:justify-center md:flex-col md:bg-sky-700 md:ml-10 md:text-white md:rounded-2xl md:shadow-xl">
@@ -18,11 +20,12 @@ const Options: React.FC<OptionsProps> = ({ children }) => {
       <div className="flex space-x-4 justify-center">
         <span className="font-bold">Difficulty:</span>
         <Option
+          value={difficulty}
           options={difficulties}
           defaultValue={difficulties[0]}
           onChange={onChangeDefault}
         />
-        {children}
+        {children && <>{children}</>}
       </div>
     </div>
   )

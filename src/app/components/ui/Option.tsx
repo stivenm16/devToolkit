@@ -4,13 +4,19 @@ import { Difficulty } from './Options'
 interface OptionProps {
   options: string[]
   defaultValue: string
-  onChange: (value: string) => void
+  value: Difficulty
+  onChange: (value: Difficulty) => void
 }
 
-const Option: React.FC<OptionProps> = ({ options, defaultValue, onChange }) => {
+const Option: React.FC<OptionProps> = ({
+  options,
+  defaultValue,
+  onChange,
+  value,
+}) => {
   return (
     <select
-      value={defaultValue}
+      value={value || defaultValue}
       onChange={(e) => onChange(e.target.value as Difficulty)}
       className="form-select text-blue-500 w-48 h-8 rounded-md "
     >
