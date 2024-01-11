@@ -1,5 +1,7 @@
 'use client'
 
+import React, { useEffect } from 'react'
+import { Cell } from '.'
 import {
   generateCompletedBoard,
   removeCellsBasedOnDifficulty,
@@ -7,8 +9,6 @@ import {
   sumColumn,
   sumRow,
 } from '@/app/logic/sudoku'
-import React, { useEffect } from 'react'
-import { Cell } from '.'
 
 interface Props {
   // size: number
