@@ -1,5 +1,3 @@
-// components/Header.tsx
-
 const Header: React.FC = () => {
   return (
     <div className=" md:block bg-sky-700 rounded-full text-center py-1 mx-auto my-5 w-3/4 md:w-fit px-5 shadow-xl">
@@ -28,7 +26,7 @@ const Header: React.FC = () => {
                   clipRule="evenodd"
                 />
               </svg> */}
-              Projects
+              Games
             </a>
             <a
               href="#"
@@ -46,7 +44,7 @@ const Header: React.FC = () => {
                   clipRule="evenodd"
                 />
               </svg> */}
-              Resources
+              Guides
             </a>
             <a
               href="#"
@@ -65,7 +63,7 @@ const Header: React.FC = () => {
                   clipRule="evenodd"
                 />
               </svg> */}
-              Docs
+              Community
             </a>
           </nav>
         </div>
