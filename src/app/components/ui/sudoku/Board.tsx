@@ -1,14 +1,8 @@
 'use client'
 
+import { playableBoard, sumColumn, sumRow } from '@/app/logic/sudoku'
 import React, { useEffect } from 'react'
 import { Cell } from '.'
-import {
-  generateCompletedBoard,
-  removeCellsBasedOnDifficulty,
-  solveSudokuStepByStep,
-  sumColumn,
-  sumRow,
-} from '@/app/logic/sudoku'
 
 interface Props {
   // size: number
@@ -39,19 +33,12 @@ const Board: React.FC<Props> = () => {
   }
 
   useEffect(() => {
-    const { solved, clonedBoard } = solveSudokuStepByStep(board, setBoard)
-    if (solved) {
-      setBoard(clonedBoard)
-      console.log('Sudoku solved successfully!')
-    } else {
-      console.log('The Sudoku cannot be solved. Invalid board or no solution.')
-    }
-
-    const difficulty = 'medium'
-    const completedBoard = generateCompletedBoard()
-    const puzzleBoard = removeCellsBasedOnDifficulty(completedBoard, difficulty)
+    const { completedBoard, puzzleBoard } = playableBoard()
     setBoard(puzzleBoard)
   }, [])
+
+  // useEffect(() => {
+  // }, [board])
 
   return (
     <div className="grid-cols-9 gap-0">

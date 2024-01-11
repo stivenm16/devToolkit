@@ -1,54 +1,20 @@
 import { Difficulty } from '@/app/components/ui/Options'
-
-const shuffleArray = (array: number[]): number[] => {
-  const shuffledArray = array.slice()
-  for (let i = shuffledArray.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1))
-    ;[shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]]
-  }
-  return shuffledArray
-}
+import { isValidBoard } from '.'
+import { solveSudoku } from './sudokuSolver'
 
 // Function to generate a completed Sudoku board
 
-export const generateCompletedBoard = (): number[][] => {
-  const base = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-  const board: any = []
+const generateCompletedBoard = (): number[][] => {
+  // Create an empty board
+  const board: number[][] = Array.from({ length: 9 }, () => Array(9).fill(0))
 
-  // Shuffle rows
-  for (let i = 0; i < 9; i++) {
-    board.push(shuffleArray(base))
-  }
+  solveSudoku(board)
 
-  // Transpose to shuffle columns
-  const transposedBoard = board[0].map((_: any, col: any) =>
-    board.map((row: any) => row[col]),
-  )
-
-  // Shuffle 3x3 subgrids
-  const subgrids: any = []
-  for (let startRow = 0; startRow < 9; startRow += 3) {
-    for (let startCol = 0; startCol < 9; startCol += 3) {
-      const subgrid = []
-      for (let row = 0; row < 3; row++) {
-        for (let col = 0; col < 3; col++) {
-          subgrid.push(transposedBoard[startRow + row][startCol + col])
-        }
-      }
-      subgrids.push(shuffleArray(subgrid))
-    }
-  }
-
-  // Transpose back to the original orientation
-  const shuffledBoard = subgrids[0].map((_: any, col: any) =>
-    subgrids.map((row: any) => row[col]),
-  )
-
-  return shuffledBoard
+  return board
 }
 
 // Function to remove cells based on difficulty
-export const removeCellsBasedOnDifficulty = (
+const removeCellsBasedOnDifficulty = (
   board: number[][],
   difficulty: Difficulty,
 ): number[][] => {
@@ -82,4 +48,16 @@ export const removeCellsBasedOnDifficulty = (
   }
 
   return clonedBoard
+}
+
+export const playableBoard = (difficulty: Difficulty = 'medium') => {
+  const completedBoard = generateCompletedBoard()
+
+  if (!isValidBoard(completedBoard)) {
+    console.log('Board is not valid')
+  }
+
+  const puzzleBoard = removeCellsBasedOnDifficulty(completedBoard, difficulty)
+
+  return { puzzleBoard, completedBoard }
 }

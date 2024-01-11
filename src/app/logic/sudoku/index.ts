@@ -1,20 +1,5 @@
-import { isMoveValid } from './sudokuSolver'
-import { isValidBoard } from './toValidateBoard'
+import { playableBoard } from './generateBoard'
 
-//  Function to generate a random Sudoku board
-
-// Function to shuffle an array using Fisher-Yates algorithm
-import { removeCellsBasedOnDifficulty } from './generateBoard'
 import { sumColumn, sumRow } from './sudokuSolver'
-import { solveSudokuStepByStep } from './sudokuSolver'
-import { generateCompletedBoard } from './generateBoard'
-
-export {
-  isMoveValid,
-  solveSudokuStepByStep,
-  isValidBoard,
-  generateCompletedBoard,
-  removeCellsBasedOnDifficulty,
-  sumColumn,
-  sumRow,
-}
+import { isMoveValid, isValidBoard } from './toValidateBoard'
+export { isMoveValid, isValidBoard, playableBoard, sumColumn, sumRow }

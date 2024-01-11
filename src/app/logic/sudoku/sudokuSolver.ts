@@ -1,61 +1,6 @@
-import { findEmptyCell, isValidBoard } from './toValidateBoard'
-
 // Function to check if a move is valid in terms of Sudoku rules
-export const isMoveValid = (
-  board: number[][],
-  row: number,
-  col: number,
-  num: number,
-): boolean => {
-  // Check if the number is not already present in the row and column
-  for (let i = 0; i < 9; i++) {
-    if (board[row][i] === num || board[i][col] === num) {
-      return false
-    }
-  }
 
-  // Check if the number is not already present in the 3x3 subgrid
-  const subgridStartRow = Math.floor(row / 3) * 3
-  const subgridStartCol = Math.floor(col / 3) * 3
-
-  for (let i = 0; i < 3; i++) {
-    for (let j = 0; j < 3; j++) {
-      if (board[subgridStartRow + i][subgridStartCol + j] === num) {
-        return false
-      }
-    }
-  }
-
-  return true // The move is valid
-}
-
-//Sudoku solver
-
-const solveSudoku = (board: number[][]): boolean => {
-  const emptyCell = findEmptyCell(board)
-
-  if (!emptyCell) {
-    // If no empty cell is found, the Sudoku is solved
-    return true
-  }
-
-  const [row, col] = emptyCell
-
-  for (let num = 1; num <= 9; num++) {
-    if (isMoveValid(board, row, col, num)) {
-      board[row][col] = num
-
-      if (solveSudoku(board)) {
-        return true // Move is valid, continue to solve rest of the board
-      }
-
-      // If the current placement doesn't lead to a solution, backtrack
-      board[row][col] = 0
-    }
-  }
-
-  return false // No valid number for this cell, trigger backtracking
-}
+import { isMoveValid } from "./toValidateBoard"
 
 export const sumRow = (row: number[]) => {
   return row.reduce((sum, value) => sum + value, 0)
@@ -64,63 +9,33 @@ export const sumRow = (row: number[]) => {
 export const sumColumn = (board: number[][], columnIndex: number) => {
   return board.reduce((sum, row) => sum + row[columnIndex], 0)
 }
+export const solveSudoku = (board: number[][]): boolean => {
+  const base = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+  for (let row = 0; row < 9; row++) {
+    for (let col = 0; col < 9; col++) {
+      if (board[row][col] === 0) {
+        for (const num of shuffleArray(base)) {
+          if (isMoveValid(board, row, col, num)) {
+            board[row][col] = num
 
-export const solveSudokuStepByStepHelper = (
-  currentBoard: number[][],
-  row: number,
-  col: number,
-  setBoard: React.Dispatch<React.SetStateAction<number[][]>>,
-): [boolean, number] => {
-  if (row === 9) {
-    // Reached the end of the board
-    return [true, 0]
-  }
+            if (solveSudoku(board)) {
+              return true
+            }
 
-  if (col === 9) {
-    // Move to the next row
-    return solveSudokuStepByStepHelper(currentBoard, row + 1, 0, setBoard)
-  }
-
-  const cellValue = currentBoard[row][col]
-
-  if (cellValue !== 0) {
-    return solveSudokuStepByStepHelper(currentBoard, row, col + 1, setBoard)
-  }
-
-  for (let num = 1; num <= 9; num++) {
-    if (isMoveValid(currentBoard, row, col, num)) {
-      currentBoard[row][col] = num
-
-      // Visualize the solving process by setting the board step by step
-      setBoard(JSON.parse(JSON.stringify(currentBoard)))
-
-      const [solved, nextCol] = solveSudokuStepByStepHelper(
-        currentBoard,
-        row,
-        col + 1,
-        setBoard,
-      )
-
-      if (solved && isValidBoard(currentBoard)) {
-        return [true, 0]
+            board[row][col] = 0
+          }
+        }
+        return false
       }
-
-      currentBoard[row][col] = 0 // Backtrack
     }
   }
-
-  return [false, col]
+  return true
 }
-export const solveSudokuStepByStep = (
-  board: number[][],
-  setBoard: React.Dispatch<React.SetStateAction<number[][]>>,
-) => {
-  const clonedBoard = JSON.parse(JSON.stringify(board)) // Create a copy of the board
-  const [solved, step] = solveSudokuStepByStepHelper(
-    clonedBoard,
-    0,
-    0,
-    setBoard,
-  )
-  return { solved, clonedBoard }
+export const shuffleArray = (array: number[]): number[] => {
+  const shuffled = array.slice()
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1))
+    ;[shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
+  }
+  return shuffled
 }
