@@ -1,9 +1,11 @@
 'use client'
 import React, { useEffect, useState } from 'react'
-
-const Timer: React.FC = () => {
+interface Props {
+  isRunning: boolean
+  setIsRunning: (isRunning: boolean) => void
+}
+const Timer: React.FC<Props> = ({ isRunning, setIsRunning }) => {
   const [time, setTime] = useState(0)
-  const [isRunning, setIsRunning] = useState(false)
 
   useEffect(() => {
     let interval: NodeJS.Timeout

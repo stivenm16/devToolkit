@@ -5,31 +5,34 @@ interface CellProps {
   onChange: (value: number, rowIndex: number, columnIndex: number) => void
   rowIndex: number
   columnIndex: number
+  isInitial: boolean
 }
 
-const aux = (value: string) => {
-  return parseInt(value, 10)
-}
 const Cell: React.FC<CellProps> = ({
   value,
   onChange,
   rowIndex,
   columnIndex,
+  isInitial,
 }) => {
   return (
     <input
       type="text"
       value={value || ''}
       maxLength={1}
+      readOnly={isInitial}
       onChange={(e) => {
-        const inputValue = e.target.value.trim() // Trim leading/trailing whitespace
+        e.preventDefault()
+        const inputValue = e.target.value
         const parsedValue = parseFloat(inputValue)
 
         if (inputValue === '' || !isNaN(parsedValue)) {
           onChange(inputValue === '' ? 0 : parsedValue, rowIndex, columnIndex)
         }
       }}
-      className="w-9 h-12 border border-gray-300 rounded text-center text-lg focus:outline-none focus:ring-2 focus:ring-blue-500 m-0.5 md:w-12 shadow-lg"
+      className={`w-9 h-12 border border-gray-300 rounded text-center text-lg focus:outline-none focus:ring-2 focus:ring-blue-500 m-0.5 md:w-12 shadow-lg ${
+        isInitial ? 'bg-sky-500' : 'bg-white'
+      }`}
     />
   )
 }

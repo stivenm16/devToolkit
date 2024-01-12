@@ -1,44 +1,34 @@
 'use client'
 
 import { playableBoard, sumColumn, sumRow } from '@/app/logic/sudoku'
-import React, { useEffect } from 'react'
+import { FC, useEffect, useState } from 'react'
 import { Cell } from '.'
+import { Difficulty } from '../Options'
 
 interface Props {
-  // size: number
+  difficulty: Difficulty
 }
 
-const Board: React.FC<Props> = () => {
-  const [board, setBoard] = React.useState<number[][]>([
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-  ])
+const Board: FC<Props> = ({ difficulty }) => {
+  const emptyBoard = Array.from(Array(9), () => Array(9).fill(0))
+  const [board, setBoard] = useState<number[][]>(emptyBoard)
+  const [initalBoard, setInitalBoard] = useState<number[][]>(emptyBoard)
 
   const handleCellValue = (
     value: number,
     rowIndex: number,
     columnIndex: number,
   ) => {
-    const updatedBoard = [...board]
-
+    const updatedBoard = board.map((row) => [...row])
     updatedBoard[rowIndex][columnIndex] = value
     setBoard(updatedBoard)
   }
 
   useEffect(() => {
-    const { completedBoard, puzzleBoard } = playableBoard()
-    setBoard(puzzleBoard)
-  }, [])
-
-  // useEffect(() => {
-  // }, [board])
+    const { puzzleBoard } = playableBoard(difficulty)
+    setBoard([...puzzleBoard])
+    setInitalBoard([...puzzleBoard])
+  }, [difficulty])
 
   return (
     <div className="grid-cols-9 gap-0">
@@ -51,6 +41,7 @@ const Board: React.FC<Props> = () => {
               onChange={handleCellValue}
               rowIndex={rowIndex}
               columnIndex={columnIndex}
+              isInitial={initalBoard[rowIndex][columnIndex] > 0}
             />
           ))}
           <span className="mt-3">{sumRow(row)}</span>
