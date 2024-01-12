@@ -38,12 +38,12 @@ const Timer: React.FC<Props> = ({ isRunning, setIsRunning }) => {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center my-3">
-      <div className="text-4xl font-bold mb-4">{formatTime(time)}</div>
+    <div className="flex flex-col items-center justify-center pb-3">
+      <div className="text-2xl font-bold ">{formatTime(time)}</div>
       <div className="flex space-x-4">
         {!isRunning && (
           <button
-            className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded"
+            className="bg-green-500 hover:bg-green-600 text-white px-4 py-1 rounded"
             onClick={startTimer}
           >
             Start
