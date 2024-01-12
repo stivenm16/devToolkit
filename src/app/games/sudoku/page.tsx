@@ -15,10 +15,12 @@ export default function SudokuPage() {
   }
   return (
     <Layout>
-      <Timer isRunning={isRunning} setIsRunning={setIsRunning} />
-      <div className="flex justify-center">
-        <Board difficulty={difficulty} />
-        <Options onChange={onDifficultyChange} />
+      <div className="flex flex-col-reverse md:flex-col pt-2">
+        <Timer isRunning={isRunning} setIsRunning={setIsRunning} />
+        <div className="flex justify-center flex-col-reverse mx-auto md:flex-row">
+          <Board difficulty={difficulty} />
+          <Options onChange={onDifficultyChange} />
+        </div>
       </div>
     </Layout>
   )

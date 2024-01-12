@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-  @apply bg-sky-300;
+  @apply bg-indigo-300;
 }
 
 @keyframes fadeIn {

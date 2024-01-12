@@ -5,6 +5,21 @@ const hasDuplicates = (arr: number[]): boolean => {
   return set.size !== filteredArray.length
 }
 
+const isValidRowsColumns = (board: number[][]): boolean => {
+  for (let i = 0; i < 9; i++) {
+    const row = board[i]
+    const column = board.map((row) => row[i])
+    if (hasDuplicates(row) || hasDuplicates(column)) {
+      hasDuplicates(row)
+        ? console.log(row, 'duplicated row')
+        : console.log(column, 'duplicated col')
+
+      return false
+    }
+  }
+  return true
+}
+
 const getSubgrid = (
   board: number[][],
   startRow: number,
@@ -31,21 +46,6 @@ const isValidSubgrid = (board: number[][]): boolean => {
   }
   return true
 }
-const isValidRowsColumns = (board: number[][]): boolean => {
-  for (let i = 0; i < 9; i++) {
-    const row = board[i]
-    const column = board.map((row) => row[i])
-    if (hasDuplicates(row) || hasDuplicates(column)) {
-      hasDuplicates(row)
-        ? console.log(row, 'duplicated row')
-        : console.log(column, 'duplicated col')
-
-      return false
-    }
-  }
-  return true
-}
-
 export const isMoveValid = (
   board: number[][],
   row: number,
@@ -58,7 +58,6 @@ export const isMoveValid = (
       return false
     }
   }
-
   // Check if the number is not already present in the 3x3 subgrid
   const subgridStartRow = Math.floor(row / 3) * 3
   const subgridStartCol = Math.floor(col / 3) * 3

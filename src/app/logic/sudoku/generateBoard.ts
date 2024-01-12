@@ -4,15 +4,6 @@ import { solveSudoku } from './sudokuSolver'
 
 // Function to generate a completed Sudoku board
 
-const generateCompletedBoard = (): number[][] => {
-  // Create an empty board
-  const board: number[][] = Array.from({ length: 9 }, () => Array(9).fill(0))
-
-  solveSudoku(board)
-
-  return board
-}
-
 // Function to remove cells based on difficulty
 const removeCellsBasedOnDifficulty = (
   board: number[][],
@@ -48,6 +39,13 @@ const removeCellsBasedOnDifficulty = (
   }
 
   return clonedBoard
+}
+const generateCompletedBoard = (): number[][] => {
+  const board: number[][] = Array.from({ length: 9 }, () => Array(9).fill(0))
+
+  solveSudoku(board)
+
+  return board
 }
 
 export const playableBoard = (difficulty: Difficulty = 'medium') => {

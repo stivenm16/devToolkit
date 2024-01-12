@@ -1,6 +1,11 @@
 'use client'
 
-import { playableBoard, sumColumn, sumRow } from '@/app/logic/sudoku'
+import {
+  isValidBoard,
+  playableBoard,
+  sumColumn,
+  sumRow,
+} from '@/app/logic/sudoku'
 import { FC, useEffect, useState } from 'react'
 import { Cell } from '.'
 import { Difficulty } from '../Options'
@@ -29,6 +34,15 @@ const Board: FC<Props> = ({ difficulty }) => {
     setBoard([...puzzleBoard])
     setInitalBoard([...puzzleBoard])
   }, [difficulty])
+
+  useEffect(() => {
+    const isBoardComplete = board.every((row) =>
+      row.every((value) => value > 0),
+    )
+    if (isBoardComplete && isValidBoard(board)) {
+      alert('You win!')
+    }
+  }, [board])
 
   return (
     <div className="grid-cols-9 gap-0">

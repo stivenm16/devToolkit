@@ -1,6 +1,6 @@
 const Header: React.FC = () => {
   return (
-    <div className=" md:block bg-sky-700 rounded-full text-center py-1 mx-auto my-5 w-3/4 md:w-fit px-5 shadow-xl">
+    <div className=" md:block bg-indigo-700 rounded-full text-center py-1 mx-auto my-5 w-3/4 md:w-fit px-5 shadow-xl">
       <div className="container mx-auto py-2">
         <div className="flex md:items-center md:justify-center">
           <img
