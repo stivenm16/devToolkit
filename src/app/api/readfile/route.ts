@@ -2,16 +2,14 @@ import { NextRequest, NextResponse } from 'next/server'
 
 import findFunctionEndIndex from '@/app/utils/readFile'
 import fs from 'fs/promises'
-import getConfig from 'next/config'
 import path from 'path'
-const { serverRuntimeConfig } = getConfig()
 
 export async function POST(request: NextRequest): Promise<string[] | any> {
   try {
-    const filePath = await request.json()
-    const file = await fs.readFile(
-      path.join(serverRuntimeConfig.PROJECT_ROOT, filePath),
-    )
+    const dirRelativeToPublicFolder = 'src/app/logic/sudoku/generateBoard.ts'
+
+    const dir = path.resolve('./', dirRelativeToPublicFolder)
+    const file = await fs.readFile(dir)
     const fileContent = file.toString('utf-8')
 
     const functionDeclarations =
