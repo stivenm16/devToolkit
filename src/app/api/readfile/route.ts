@@ -4,11 +4,12 @@ import findFunctionEndIndex from '@/app/utils/readFile'
 import fs from 'fs/promises'
 import path from 'path'
 
-export async function POST(request: NextRequest): Promise<string[] | any> {
+export async function POST(
+  request: NextRequest,
+): Promise<NextResponse<string[]>> {
   try {
-    const dirRelativeToPublicFolder = 'src/app/logic/sudoku/generateBoard.ts'
-
-    const dir = path.resolve('./', dirRelativeToPublicFolder)
+    const dirRelative = await request.json()
+    const dir = path.resolve('./', dirRelative)
     const file = await fs.readFile(dir)
     const fileContent = file.toString('utf-8')
 
