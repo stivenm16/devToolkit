@@ -36,11 +36,11 @@ const useSudoku = (difficulty: Difficulty) => {
     const borderStyles: React.CSSProperties = {}
 
     if (rowIndex % 3 === 2) {
-      borderStyles.borderBottom = '2px solid #000'
+      borderStyles.borderBottom = '3px solid #000'
     }
 
     if (columnIndex % 3 === 2) {
-      borderStyles.borderRight = '2px solid #000'
+      borderStyles.borderRight = '3px solid #000'
     }
 
     return borderStyles

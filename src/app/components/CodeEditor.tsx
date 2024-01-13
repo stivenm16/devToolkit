@@ -8,25 +8,9 @@ interface Props {
   children?: React.ReactNode
 }
 
-const test = [1, 2, 3, 4, 5]
 const CodeEditor: FC<Props> = ({ codeSnippet, children }) => {
   const [isVisible, setIsVisible] = useState(false)
   const codeEditorRef = useRef<HTMLDivElement>(null)
-  const codeString = `export const isMoveValid = (
-  board: number[][],
-  row: number,
-  col: number,
-  num: number,
-): boolean => {
-  // Check if the number is not already present in the row and column
-  for (let i = 0; i < 9; i++) {
-    if (board[row][i] === num || board[i][col] === num) {
-      return false
-    }
-  }
-
-  return true // The move is valid
-}`
 
   useEffect(() => {
     const handleScroll = () => {
@@ -63,7 +47,7 @@ const CodeEditor: FC<Props> = ({ codeSnippet, children }) => {
       {children}
 
       <div
-        className={`hidden md:flex md:flex-col w-max bg-[#4c4a6f] rounded-2xl shadow-2xl my-6`}
+        className={`hidden md:flex md:flex-col h-fit w-max bg-[#4c4a6f] rounded-2xl shadow-2xl my-6`}
       >
         <>
           <div className="h-10  w-full  flex gap-4 p-4 pl-6">

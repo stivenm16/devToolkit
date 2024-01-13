@@ -1,14 +1,7 @@
 // Function to check if a move is valid in terms of Sudoku rules
 
-import { isMoveValid } from "./toValidateBoard"
+import { isMoveValid } from './toValidateBoard'
 
-export const sumRow = (row: number[]) => {
-  return row.reduce((sum, value) => sum + value, 0)
-}
-
-export const sumColumn = (board: number[][], columnIndex: number) => {
-  return board.reduce((sum, row) => sum + row[columnIndex], 0)
-}
 export const solveSudoku = (board: number[][]): boolean => {
   const base = [1, 2, 3, 4, 5, 6, 7, 8, 9]
   for (let row = 0; row < 9; row++) {

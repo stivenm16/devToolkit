@@ -1,6 +1,6 @@
 import { readFile } from 'fs/promises'
 
-async function extractFunctionsFromFile(filePath: string): Promise<any> {
+async function extractFunctionsFromFile(filePath: string): Promise<string[]> {
   try {
     const fileContent = await readFile(filePath, 'utf-8')
 
@@ -22,11 +22,11 @@ async function extractFunctionsFromFile(filePath: string): Promise<any> {
           const endIndex = findFunctionEndIndex(fileContent, startIndex)
           return fileContent.substring(startIndex, endIndex)
         }
-        return null
+        return ''
       })
       .filter(Boolean)
 
-    console.log('Extracted functions:', functionCodes)
+    // console.log('Extracted functions:', functionCodes)
     return functionCodes
   } catch (error: any) {
     console.error('Error reading file:', error.message)
