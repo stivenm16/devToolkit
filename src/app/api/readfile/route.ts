@@ -6,7 +6,7 @@ import path from 'path'
 
 export async function POST(
   request: NextRequest,
-): Promise<NextResponse<string[]>> {
+): Promise<NextResponse<string[]> | any> {
   try {
     const dirRelative = await request.json()
     const dir = path.resolve('./', dirRelative)
