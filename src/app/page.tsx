@@ -2,10 +2,9 @@
 
 import Link from 'next/link'
 import { ButtonT, Layout } from './components'
-import extractFunctionsFromFile from './components/utils/readFiles'
 
 export default function Home() {
-  extractFunctionsFromFile('src/app/logic/sudoku/sudokuSolver.ts')
+  // extractFunctionsFromFile('src/app/logic/sudoku/sudokuSolver.ts')
 
   return (
     <Layout>
