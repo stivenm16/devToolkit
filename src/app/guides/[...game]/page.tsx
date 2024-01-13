@@ -1,6 +1,8 @@
+'use client'
 import { Layout } from '@/app/components'
 import CodeEditor from '@/app/components/CodeEditor'
-import getServerSideProps from '@/app/services/sudoku.service'
+import { readFileT } from '@/app/services/sudoku.service'
+import { useEffect, useState } from 'react'
 
 const Explanation = () => {
   return (
@@ -25,8 +27,21 @@ const Explanation = () => {
   )
 }
 
-const Guides = async ({ params }: { params: { game: string } }) => {
-  const { data } = await getServerSideProps()
+const Guides = ({ params }: { params: { game: string } }) => {
+  const [data, setData] = useState<any[][]>([[]])
+  const prueba = async () => {
+    const data = await Promise.all([
+      readFileT('src/app/logic/sudoku/toValidateBoard.ts'),
+      readFileT('src/app/logic/sudoku/sudokuSolver.ts'),
+      readFileT('src/app/logic/sudoku/generateBoard.ts'),
+    ])
+
+    setData(data)
+  }
+
+  useEffect(() => {
+    prueba()
+  }, [data])
 
   return (
     <Layout>
