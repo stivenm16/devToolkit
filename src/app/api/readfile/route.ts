@@ -8,8 +8,9 @@ export async function POST(
   request: NextRequest,
 ): Promise<NextResponse<string[]> | any> {
   try {
-    // const dirRelative = await request.json()
-    const dirRelative = 'src/app/logic/sudoku/generateBoard.ts'
+    const dirRelative = await request.json()
+    // const dirRelative = 'src/app/logic/sudoku/generateBoard.ts'
+
     const dir = path.resolve('./', dirRelative)
     const file = await fs.readFile(dir)
     const fileContent = file.toString('utf-8')
