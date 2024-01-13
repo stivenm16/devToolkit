@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 
 const Header: React.FC = () => {
@@ -6,10 +7,12 @@ const Header: React.FC = () => {
       <div className="container mx-auto py-2">
         <div className="flex md:items-center md:justify-center">
           <Link href={'/'}>
-            <img
-              className="w-8 h-auto mb-2 md:mb-0 md:mr-4"
+            <Image
+              className="mb-2 md:mb-0 md:mr-4"
               src="https://www.svgrepo.com/show/448244/pack.svg"
               loading="lazy"
+              width={30}
+              height={30}
               alt="Your Website Icon"
             />
           </Link>
@@ -26,25 +29,12 @@ const Header: React.FC = () => {
             >
               Guides
             </Link>
-            <a
-              href="#"
+            <Link
+              href={'/'}
               className="text-sm font-medium hover:text-white flex items-center"
             >
-              {/* <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5 mr-1"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-              >
-
-                <path
-                  fillRule="evenodd"
-                  d="M3 4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v6a1 1 0 0 1-1 1H8.414l-1.707 1.707A1 1 0 0 0 6 14v4a1 1 0 0 1-2 0v-4a3 3 0 0 1 3-3h7.586L16 11.586V4H4v10h4a1 1 0 0 1 0 2H3a1 1 0 0 1-1-1V4z"
-                  clipRule="evenodd"
-                />
-              </svg> */}
               Community
-            </a>
+            </Link>
           </nav>
         </div>
       </div>
