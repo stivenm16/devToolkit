@@ -1,9 +1,12 @@
-'use client'
+// 'use client'
 
 import Link from 'next/link'
 import { ButtonT, Layout } from './components'
+import extractFunctionsFromFile from './components/utils/readFiles'
 
 export default function Home() {
+  extractFunctionsFromFile('src/app/logic/sudoku/sudokuSolver.ts')
+
   return (
     <Layout>
       <div className="flex justify-center  items-center min-h-96 pt-36 flex-col">
@@ -18,7 +21,7 @@ export default function Home() {
           </h4>
         </div>
         <Link href={'/games/sudoku'}>
-          <ButtonT onClick={() => console.log('prueba')} label="Playit" />
+          <ButtonT label="Playit" />
         </Link>
       </div>
     </Layout>

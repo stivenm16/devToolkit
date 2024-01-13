@@ -1,9 +1,9 @@
 'use client'
 import Layout from '@/app/components/Layout'
 import { Options, Timer } from '@/app/components/ui'
-import { Difficulty } from '@/app/components/ui/Options'
 
 import { Board } from '@/app/components/ui/sudoku'
+import { Difficulty } from '@/app/types/global'
 import { useState } from 'react'
 
 export default function SudokuPage() {

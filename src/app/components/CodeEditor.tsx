@@ -83,7 +83,7 @@ const CodeEditor: FC<Props> = ({ codeSnippet, children }) => {
               marginBottom: 10,
             }}
           >
-            {codeString}
+            {codeSnippet}
           </SyntaxHighlighter>
         </>
       </div>

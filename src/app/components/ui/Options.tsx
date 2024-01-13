@@ -1,8 +1,7 @@
 'use client'
 import React, { useState } from 'react'
 import Option from './Option'
-
-export type Difficulty = 'easy' | 'medium' | 'hard'
+import { Difficulty } from '@/app/types/global'
 
 interface OptionsProps {
   children?: React.ReactNode

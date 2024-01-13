@@ -1,4 +1,4 @@
-import { Difficulty } from '@/app/components/ui/Options'
+import { Difficulty } from '@/app/types/global'
 import { isValidBoard } from '.'
 import { solveSudoku } from './sudokuSolver'
 
