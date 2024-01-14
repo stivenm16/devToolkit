@@ -4,57 +4,39 @@ import findFunctionEndIndex from '@/app/utils/readFile'
 import fs from 'fs/promises'
 import path from 'path'
 
-const readF = async (filePath: string): Promise<string[]> => {
-  const dir = path.resolve('./', filePath)
-  const file = await fs.readFile(dir)
-  const fileContent = file.toString('utf-8')
-
-  const functionDeclarations =
-    fileContent.match(
-      /(?:function|const|let|var)\s+([a-zA-Z_]\w*)\s*\(|\b([a-zA-Z_]\w*)\s*=\s*\(/g,
-    ) || []
-
-  const functionCodes = functionDeclarations
-    .map((declaration) => {
-      const match = declaration.match(
-        /(?:function|const|let|var)\s+([a-zA-Z_]\w*)\s*\(|\b([a-zA-Z_]\w*)\s*=\s*\(/,
-      )
-      const functionName = match ? match[1] || match[2] : null
-      if (functionName) {
-        const startIndex = fileContent.indexOf(declaration)
-        const endIndex = findFunctionEndIndex(fileContent, startIndex)
-        return fileContent.substring(startIndex, endIndex)
-      }
-      return ''
-    })
-    .filter(Boolean)
-
-  return functionCodes
-}
 export async function POST(
   request: NextRequest,
-): Promise<NextResponse<string[][]>> {
+): Promise<NextResponse<string[]> | any> {
   try {
-    const requestBody = await request.json()
+    const dirRelative = await request.json()
+    // const dirRelative = 'src/app/logic/sudoku/generateBoard.ts'
 
-    if (requestBody) {
-      const functionsCode = await Promise.all([
-        readF('src/app/logic/sudoku/toValidateBoard.ts'),
-        readF('src/app/logic/sudoku/sudokuSolver.ts'),
-        readF('src/app/logic/sudoku/generateBoard.ts'),
-      ])
-      return NextResponse.json(functionsCode)
-    } else {
-      const functionsCode = await Promise.all([
-        readF('src/app/logic/sudoku/toValidateBoard.ts'),
-        readF('src/app/logic/sudoku/sudokuSolver.ts'),
-        readF('src/app/logic/sudoku/generateBoard.ts'),
-      ])
-      return NextResponse.json([
-        ...functionsCode,
-        ['hubo un error cargando requestbody'],
-      ])
-    }
+    const projectRoot = process.cwd()
+    const dir = path.resolve(projectRoot, dirRelative)
+    const file = await fs.readFile(dir)
+    const fileContent = file.toString('utf-8')
+
+    const functionDeclarations =
+      fileContent.match(
+        /(?:function|const|let|var)\s+([a-zA-Z_]\w*)\s*\(|\b([a-zA-Z_]\w*)\s*=\s*\(/g,
+      ) || []
+
+    const functionCodes = functionDeclarations
+      .map((declaration) => {
+        const match = declaration.match(
+          /(?:function|const|let|var)\s+([a-zA-Z_]\w*)\s*\(|\b([a-zA-Z_]\w*)\s*=\s*\(/,
+        )
+        const functionName = match ? match[1] || match[2] : null
+        if (functionName) {
+          const startIndex = fileContent.indexOf(declaration)
+          const endIndex = findFunctionEndIndex(fileContent, startIndex)
+          return fileContent.substring(startIndex, endIndex)
+        }
+        return ''
+      })
+      .filter(Boolean)
+
+    return NextResponse.json(functionCodes)
   } catch (error: any) {
     console.error('Error reading file:', error.message)
     return NextResponse.json(error)

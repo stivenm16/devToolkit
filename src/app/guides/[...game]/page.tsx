@@ -31,12 +31,12 @@ const Guides = ({ params }: { params: { game: string } }) => {
   const [data, setData] = useState<any[][]>([[]])
 
   const getData = async () => {
-    // const data = await Promise.all([
-    //   readFileT('src/app/logic/sudoku/toValidateBoard.ts'),
-    //   readFileT('src/app/logic/sudoku/sudokuSolver.ts'),
-    //   readFileT('src/app/logic/sudoku/generateBoard.ts'),
-    // ])
-    const data = await readFileT('src/app/logic/sudoku/toValidateBoard.ts')
+    const data = await Promise.all([
+      readFileT('src/app/logic/sudoku/toValidateBoard.ts'),
+      readFileT('src/app/logic/sudoku/sudokuSolver.ts'),
+      readFileT('src/app/logic/sudoku/generateBoard.ts'),
+    ])
+    // const data = await readFileT('src/app/logic/sudoku/toValidateBoard.ts')
     setData(data)
   }
 

@@ -1,6 +1,6 @@
 export const readFileT = async (filePath: string) => {
   try {
-    const response = await fetch('/api/readfile', {
+    const response = await fetch('/api/readfile/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
