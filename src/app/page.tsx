@@ -4,8 +4,6 @@ import Link from 'next/link'
 import { ButtonT, Layout } from './components'
 
 export default function Home() {
-  // extractFunctionsFromFile('src/app/logic/sudoku/sudokuSolver.ts')
-
   return (
     <Layout>
       <div className="flex justify-center  items-center min-h-96 pt-36 flex-col">

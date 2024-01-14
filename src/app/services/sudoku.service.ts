@@ -1,12 +1,14 @@
-export const readFileT = async (filePath: string) => {
+export const getCodeSnippets = async () => {
   try {
-    const response = await fetch('/api/readfile/', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
+    const response = await fetch(
+      'https://playit-backend.onrender.com/api/getFile',
+      {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
       },
-      body: JSON.stringify(filePath),
-    })
+    )
 
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`)

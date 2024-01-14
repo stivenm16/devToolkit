@@ -1,7 +1,8 @@
 'use client'
 import { Layout } from '@/app/components'
 import CodeEditor from '@/app/components/CodeEditor'
-import { readFileT } from '@/app/services/sudoku.service'
+import { getCodeSnippets } from '@/app/services/sudoku.service'
+
 import { useEffect, useState } from 'react'
 
 const Explanation = () => {
@@ -31,12 +32,7 @@ const Guides = ({ params }: { params: { game: string } }) => {
   const [data, setData] = useState<any[][]>([[]])
 
   const getData = async () => {
-    const data = await Promise.all([
-      readFileT('src/app/logic/sudoku/toValidateBoard.ts'),
-      readFileT('src/app/logic/sudoku/sudokuSolver.ts'),
-      readFileT('src/app/logic/sudoku/generateBoard.ts'),
-    ])
-    // const data = await readFileT('src/app/logic/sudoku/toValidateBoard.ts')
+    const data = await getCodeSnippets()
     setData(data)
   }
 
@@ -54,15 +50,15 @@ const Guides = ({ params }: { params: { game: string } }) => {
       <div className="mx-6 ">
         {data &&
           data.map((item: any, indexRow: number) => {
-            // return item.map((item: any, indexCol: number) => {
-            return (
-              <div key={indexRow}>
-                <CodeEditor codeSnippet={item}>
-                  <Explanation />
-                </CodeEditor>
-              </div>
-            )
-            // })
+            return item.map((item: any, indexCol: number) => {
+              return (
+                <div key={indexRow}>
+                  <CodeEditor codeSnippet={item}>
+                    <Explanation />
+                  </CodeEditor>
+                </div>
+              )
+            })
           })}
       </div>
     </Layout>
