@@ -18,3 +18,36 @@ body {
 .animate-fade-in {
   animation: fadeIn 3s;
 }
+
+.snake-segment,
+.snake-head {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  /* background: rgba(55, 83, 138, 0.18); */
+  border-radius: 45%;
+  transition: transform 0.2s ease-in-out;
+}
+
+.snake-head {
+  z-index: 999;
+  position: relative;
+}
+
+.eye {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: black;
+  border-radius: 50%;
+  top: 30%;
+  transition: transform 0.2s ease-in-out;
+}
+
+.eye-left {
+  left: 25%;
+}
+
+.eye-right {
+  left: 50%;
+}

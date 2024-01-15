@@ -52,7 +52,7 @@ const Guides = ({ params }: { params: { game: string } }) => {
           data.map((item: any, indexRow: number) => {
             return item.map((item: any, indexCol: number) => {
               return (
-                <div key={indexRow}>
+                <div key={indexCol}>
                   <CodeEditor codeSnippet={item}>
                     <Explanation />
                   </CodeEditor>

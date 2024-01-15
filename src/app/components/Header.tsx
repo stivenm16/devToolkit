@@ -30,7 +30,7 @@ const Header: React.FC = () => {
               Guides
             </Link>
             <Link
-              href={'/'}
+              href={'/community'}
               className="text-sm font-medium hover:text-white flex items-center"
             >
               Community
