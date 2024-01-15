@@ -1,6 +1,6 @@
 'use client'
-import { Layout } from '@/app/components'
-import CodeEditor from '@/app/components/CodeEditor'
+import { CodeEditor, Layout } from '@/app/components'
+
 import { getCodeSnippets } from '@/app/services/sudoku.service'
 
 import { useEffect, useState } from 'react'
