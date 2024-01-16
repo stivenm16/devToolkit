@@ -1,5 +1,3 @@
-// 'use client'
-
 import Link from 'next/link'
 import { ButtonT, Layout } from './components'
 
@@ -18,7 +16,7 @@ export default function Home() {
             interactive exercises.
           </h4>
         </div>
-        <Link href={'/games/sudoku'}>
+        <Link href={'/games'}>
           <ButtonT label="Playit" />
         </Link>
       </div>
