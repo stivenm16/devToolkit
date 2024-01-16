@@ -1,5 +1,8 @@
 'use client'
 import { yupResolver } from '@hookform/resolvers/yup'
+import { signIn } from 'next-auth/react'
+import { useRouter } from 'next/navigation'
+
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import * as yup from 'yup'
@@ -23,13 +26,29 @@ const LoginForm = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<IFormInput>({ resolver: yupResolver(schema) })
-  const [isRegister, setIsRegister] = useState(false)
 
-  const onSubmit = (data: IFormInput) => {
+  const [isRegister, setIsRegister] = useState(false)
+  const [error, setError] = useState('')
+  const router = useRouter()
+  const onSubmit = async (data: IFormInput) => {
     if (data) {
       if (isRegister) {
-        // Logica de registro, llamada al endpoint de login
-        console.log(data, 'Sign in')
+        // Logica de login, llamada al endpoint de login
+        //
+        // await fetch('/api/auth/login', {}
+
+        const res = await signIn('credentials', {
+          email: data.email,
+          password: data.password,
+          redirect: false,
+        })
+        if (res?.error) {
+          setError(res?.error)
+        } else {
+          console.log(res, 'Login')
+          router.push('/auth/login')
+          router.refresh()
+        }
       } else {
         console.log(data, 'Sign up')
 
