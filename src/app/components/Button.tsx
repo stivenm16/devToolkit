@@ -5,7 +5,12 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   label: string
 }
 
-const ButtonT: React.FC<ButtonProps> = ({ onClick, label, ...props }) => {
+const ButtonT: React.FC<ButtonProps> = ({
+  onClick,
+  label,
+
+  ...props
+}) => {
   return (
     <button
       className="text-sm font-bold text-white flex items-center bg-indigo-600 hover:bg-indigo-700  py-2 px-4 rounded transition duration-300 ease-in-out"

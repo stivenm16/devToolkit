@@ -23,7 +23,7 @@ const Header: React.FC = () => {
           </Link>
           <nav className="flex justify-between md:space-x-6 text-gray-300 ml-5 w-full">
             <Link
-              href={'/games/sudoku'}
+              href={'/games'}
               className="text-sm font-medium hover:text-white flex items-center"
             >
               Games

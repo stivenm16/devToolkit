@@ -19,7 +19,12 @@ export default function SudokuPage() {
         <Timer isRunning={isRunning} setIsRunning={setIsRunning} />
         <div className="flex justify-center flex-col-reverse mx-auto md:flex-row">
           <Board difficulty={difficulty} />
-          <Options onChange={onDifficultyChange} />
+          <Options
+            onChange={onDifficultyChange}
+            defaultOptions={['easy', 'medium', 'hard']}
+            defaultValue={'easy'}
+            defaultLabel="Difficulty"
+          />
         </div>
       </div>
     </Layout>
