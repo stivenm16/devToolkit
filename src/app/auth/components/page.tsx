@@ -1,15 +1,8 @@
 'use client'
-import { useState } from 'react'
-import { Layout } from '../components'
-import CodeEditor from '../components/CodeEditor/CodeEditor'
+import { Layout } from '../../components'
+import CodeEditor from '../../components/CodeEditor/CodeEditor'
 
-function page() {
-  const [code, setCode] = useState('')
-
-  const handleCodeChange = (newCode: any) => {
-    setCode(newCode)
-  }
-
+const page = () => {
   return (
     <Layout>
       <CodeEditor
