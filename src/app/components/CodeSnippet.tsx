@@ -2,20 +2,21 @@
 import { FC, useEffect, useRef, useState } from 'react'
 import SyntaxHighlighter from 'react-syntax-highlighter'
 import { shadesOfPurple } from 'react-syntax-highlighter/dist/esm/styles/hljs'
+import { DotsCodeEditor } from './ui'
 
 interface Props {
   codeSnippet: string
   children?: React.ReactNode
 }
 
-const CodeEditor: FC<Props> = ({ codeSnippet, children }) => {
+const CodeSnippet: FC<Props> = ({ codeSnippet, children }) => {
   const [isVisible, setIsVisible] = useState(false)
-  const codeEditorRef = useRef<HTMLDivElement>(null)
+  const CodeSnippetRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const handleScroll = () => {
-      if (codeEditorRef.current) {
-        const rect = codeEditorRef.current.getBoundingClientRect()
+      if (CodeSnippetRef.current) {
+        const rect = CodeSnippetRef.current.getBoundingClientRect()
         const windowHeight =
           window.innerHeight || document.documentElement.clientHeight
 
@@ -39,7 +40,7 @@ const CodeEditor: FC<Props> = ({ codeSnippet, children }) => {
   }, [])
   return (
     <div
-      ref={codeEditorRef}
+      ref={CodeSnippetRef}
       className={`flex transition-opacity ease-in-out duration-500 ${
         isVisible ? 'opacity-100' : 'opacity-0'
       }`}
@@ -50,11 +51,7 @@ const CodeEditor: FC<Props> = ({ codeSnippet, children }) => {
         className={`hidden md:flex md:flex-col h-fit w-max bg-[#4c4a6f] rounded-2xl shadow-2xl my-6`}
       >
         <>
-          <div className="h-10  w-full  flex gap-4 p-4 pl-6">
-            <div className="h-4 w-4 bg-red-500 rounded-full"></div>
-            <div className="h-4 w-4 bg-yellow-500 rounded-full"></div>
-            <div className="h-4 w-4 bg-green-500 rounded-full"></div>
-          </div>
+          <DotsCodeEditor />
           <SyntaxHighlighter
             language="typescript"
             style={shadesOfPurple}
@@ -75,4 +72,4 @@ const CodeEditor: FC<Props> = ({ codeSnippet, children }) => {
   )
 }
 
-export default CodeEditor
+export default CodeSnippet

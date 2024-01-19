@@ -1,5 +1,5 @@
 'use client'
-import { CodeEditor, Layout } from '@/app/components'
+import { CodeSnippet, Layout } from '@/app/components'
 
 import { getCodeSnippets } from '@/app/services/sudoku.service'
 
@@ -53,9 +53,9 @@ const Guides = ({ params }: { params: { game: string } }) => {
             return item.map((item: any, indexCol: number) => {
               return (
                 <div key={indexCol}>
-                  <CodeEditor codeSnippet={item}>
+                  <CodeSnippet codeSnippet={item}>
                     <Explanation />
-                  </CodeEditor>
+                  </CodeSnippet>
                 </div>
               )
             })
