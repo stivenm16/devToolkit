@@ -6,7 +6,7 @@ type LayoutProps = {
 }
 const Layout: React.FC<LayoutProps> = ({ children, hideHeader }) => {
   return (
-    <div className="flex flex-col min-h-screen bg-indigo-400 ">
+    <div className="flex flex-col min-h-screen bg-indigo-950 ">
       {!hideHeader && <Header />}
 
       <main className="flex-grow">{children}</main>

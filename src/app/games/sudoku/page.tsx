@@ -2,7 +2,7 @@
 import Layout from '@/app/components/Layout'
 import { Options, Timer } from '@/app/components/ui'
 
-import { Board } from '@/app/components/ui/sudoku'
+import { Board } from '@/app/components/sudoku'
 import { Difficulty } from '@/app/types/global'
 import { useState } from 'react'
 

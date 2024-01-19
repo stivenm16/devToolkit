@@ -1,7 +1,8 @@
 'use client'
 import React from 'react'
 
-import { Header, Layout, LoginForm } from '../components'
+import { Header, Layout } from '../components'
+import { LoginForm } from '../components/ui'
 
 const Login: React.FC = () => {
   return (
