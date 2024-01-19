@@ -1,5 +1,6 @@
+import DotsCodeEditor from './DotsCodeEditor'
+import Option from './Option'
 import Options from './Options'
 import Timer from './Timer'
-import Option from './Option'
 
-export { Options, Timer, Option }
+export { DotsCodeEditor, Option, Options, Timer }
