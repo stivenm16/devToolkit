@@ -27,6 +27,9 @@ const page = () => {
       Press me
     </button>"
         /> */}
+        {/* <div>Test component</div>
+        <Card /> */}
+
         {dataComponents &&
           dataComponents.map((item: Props, index) => (
             <div key={index}>
