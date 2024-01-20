@@ -53,7 +53,7 @@ export const playableBoard = (difficulty: Difficulty = 'medium') => {
   const completedBoard = generateCompletedBoard()
 
   if (!isValidBoard(completedBoard)) {
-    console.log('Board is not valid')
+    console.error('Board is not valid')
   }
 
   const puzzleBoard = removeCellsBasedOnDifficulty(completedBoard, difficulty)

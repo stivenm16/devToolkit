@@ -39,6 +39,5 @@ export function boardWithMines(size: number, mines: number) {
     boardWithMines[mine[0]][mine[1]] = CellEnum.Mine
   }
 
-  //console.log(boardWithMines);
   return boardWithMines
 }

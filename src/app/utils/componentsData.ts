@@ -99,6 +99,14 @@ const dataComponents: Props[] = [
 </button>`,
   },
   {
+    title: 'Spinner',
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique ex consequatur minus, pariatur corrupti illum, rerum enim, quia voluptates alias dolores quam facere odio numquam nihil quisquam harumut quidem.',
+    code: ` <div className="flex items-center justify-center">
+      <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-indigo-700"/>
+</div>`,
+  },
+  {
     title: 'Header',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique ex consequatur minus, pariatur corrupti illum, rerum enim, quia voluptates alias dolores quam facere odio numquam nihil quisquam harumut quidem.',

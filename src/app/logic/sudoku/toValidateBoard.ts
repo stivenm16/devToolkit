@@ -11,8 +11,8 @@ const isValidRowsColumns = (board: number[][]): boolean => {
     const column = board.map((row) => row[i])
     if (hasDuplicates(row) || hasDuplicates(column)) {
       hasDuplicates(row)
-        ? console.log(row, 'duplicated row')
-        : console.log(column, 'duplicated col')
+        ? console.error(row, 'duplicated row')
+        : console.error(column, 'duplicated col')
 
       return false
     }
@@ -39,7 +39,7 @@ const isValidSubgrid = (board: number[][]): boolean => {
     for (let col = 0; col < 9; col += 3) {
       const subgrid = getSubgrid(board, row, col)
       if (hasDuplicates(subgrid)) {
-        console.log(subgrid, 'duplicate subgrid')
+        console.error(subgrid, 'duplicate subgrid')
         return false
       }
     }

@@ -1,7 +1,9 @@
+import Image from 'next/image'
+
 const Card = () => {
   return (
     <div className="w-72 rounded-xl px-6 overflow-hidden shadow-xl bg-indigo-800 mx-auto">
-      <img
+      <Image
         className="w-full h-40"
         src="https://www.svgrepo.com/show/448244/pack.svg"
         alt="Product name"

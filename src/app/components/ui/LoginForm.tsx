@@ -27,7 +27,7 @@ const LoginForm = () => {
     formState: { errors },
   } = useForm<IFormInput>({ resolver: yupResolver(schema) })
 
-  const [isRegister, setIsRegister] = useState(false)
+  const [isRegister, setIsRegister] = useState(true)
   const [error, setError] = useState('')
   const router = useRouter()
   const onSubmit = async (data: IFormInput) => {
@@ -45,13 +45,10 @@ const LoginForm = () => {
         if (res?.error) {
           setError(res?.error)
         } else {
-          console.log(res, 'Login')
-          router.push('/auth/login')
+          router.push('/auth/components')
           router.refresh()
         }
       } else {
-        console.log(data, 'Sign up')
-
         // Logica de registro, llamada al endpoint de crear usuario
         setIsRegister(true)
       }
@@ -138,7 +135,7 @@ const LoginForm = () => {
           Login
         </button>
         <p className="text-white text-center pt-auto">
-          {isRegister ? 'Already have an account?' : "Don't have an account?"}
+          {!isRegister ? 'Already have an account?' : "Don't have an account?"}
           <span
             className="text-indigo-300 cursor-pointer ml-2"
             onClick={() => setIsRegister(!isRegister)}
