@@ -1,5 +1,6 @@
 import Link from 'next/link'
-import { ButtonT, Layout } from '../components'
+import { Layout } from '../components'
+import { ButtonT } from '../components/ui'
 
 function GamesPage() {
   return (

@@ -27,7 +27,7 @@ const LoginForm = () => {
     formState: { errors },
   } = useForm<IFormInput>({ resolver: yupResolver(schema) })
 
-  const [isRegister, setIsRegister] = useState(false)
+  const [isRegister, setIsRegister] = useState(true)
   const [error, setError] = useState('')
   const router = useRouter()
   const onSubmit = async (data: IFormInput) => {
@@ -45,20 +45,17 @@ const LoginForm = () => {
         if (res?.error) {
           setError(res?.error)
         } else {
-          console.log(res, 'Login')
-          router.push('/auth/login')
+          router.push('/auth/components')
           router.refresh()
         }
       } else {
-        console.log(data, 'Sign up')
-
         // Logica de registro, llamada al endpoint de crear usuario
         setIsRegister(true)
       }
     }
   }
   return (
-    <div className="bg-indigo-600 p-8 rounded-xl shadow-xl h-fit w-3/4 md:w-1/4  relative">
+    <div className="bg-indigo-800 p-8 rounded-xl shadow-xl h-fit w-3/4 md:w-1/4  relative">
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 z-10">
         <div className="mb-4">
           <label htmlFor="email" className="block text-white font-bold mb-1">
@@ -133,12 +130,12 @@ const LoginForm = () => {
 
         <button
           type="submit"
-          className="w-full bg-indigo-800 text-white py-2 rounded hover:bg-indigo-900 focus:outline-none"
+          className="w-full bg-indigo-900 hover:bg-indigo-600 text-white py-2 rounded focus:outline-none"
         >
           Login
         </button>
         <p className="text-white text-center pt-auto">
-          {isRegister ? 'Already have an account?' : "Don't have an account?"}
+          {!isRegister ? 'Already have an account?' : "Don't have an account?"}
           <span
             className="text-indigo-300 cursor-pointer ml-2"
             onClick={() => setIsRegister(!isRegister)}

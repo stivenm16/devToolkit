@@ -1,6 +1,6 @@
 'use client'
 
-import useSudoku from '@/app/hooks/sudoku/useSudoku'
+import useSudoku from '@/app/hooks/useSudoku'
 import { Difficulty } from '@/app/types/global'
 import { FC } from 'react'
 import { Cell } from '.'

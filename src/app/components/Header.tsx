@@ -2,7 +2,7 @@
 import { signOut, useSession } from 'next-auth/react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { ButtonT } from '.'
+import { ButtonT } from './ui'
 
 const Header: React.FC = () => {
   const session = useSession()
@@ -36,11 +36,19 @@ const Header: React.FC = () => {
             </Link>
 
             {session.data?.user?.email ? (
-              <ButtonT
-                label="Logout"
-                className="text-sm font-medium hover:text-white flex items-center"
-                onClick={() => signOut()}
-              />
+              <>
+                <Link
+                  href={'/auth/components'}
+                  className="text-sm font-medium hover:text-white flex items-center"
+                >
+                  Components
+                </Link>
+                <ButtonT
+                  label="Logout"
+                  className="text-sm font-medium hover:text-white flex items-center"
+                  onClick={() => signOut()}
+                />
+              </>
             ) : (
               <Link
                 href={'/community'}
