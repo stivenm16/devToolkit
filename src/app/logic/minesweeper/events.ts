@@ -57,7 +57,7 @@ export function onRightClick(position: [number, number]) {
 export function onSizeChange(side: number) {
   boardSize = side
   boardInit(side, minesRate)
-  console.log(grid)
+
   setGrid(grid)
 }
 
@@ -81,7 +81,6 @@ export function onMinesRateChange(percentage: number) {
   minesRate = percentage
   boardInit(boardSize, minesRate)
   setMines(minesInGame)
-  console.log(boardSize)
 }
 export function onFaceClick(prevFace: FaceType) {
   setFace('default')

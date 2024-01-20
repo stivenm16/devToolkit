@@ -1,5 +1,6 @@
 'use client'
-import { ButtonT, Layout } from '@/app/components'
+import { Layout } from '@/app/components'
+import { ButtonT } from '@/app/components/ui'
 import Link from 'next/link'
 
 const page = () => {

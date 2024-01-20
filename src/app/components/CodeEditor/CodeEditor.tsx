@@ -1,8 +1,8 @@
 'use client'
 import { useClipboard } from '@/app/hooks'
 import { LiveEditor, LiveError, LivePreview, LiveProvider } from 'react-live'
-import { ButtonT } from '..'
-import { DotsCodeEditor } from '../ui'
+
+import { ButtonT, DotsCodeEditor } from '../ui'
 
 interface Props {
   code: string
@@ -26,7 +26,7 @@ const CodeBlock = ({ code, component }: Props) => {
     <div className="flex flex-col items-center justify-center pt-10">
       <LiveProvider code={codeUpdated} scope={scope}>
         <LivePreview />
-        <div className="relative rounded-xl p-3 bg-[#1D1F21] my-10 md:w-1/2 pr-10">
+        <div className="relative rounded-xl p-3 bg-[#1D1F21] my-10 md:w-full pr-10">
           <ButtonT
             customStyles="absolute right-10 top-5"
             label="Copy"
