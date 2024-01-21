@@ -7,6 +7,7 @@ import LoginForm from './LoginForm'
 import Option from './Option'
 import Options from './Options'
 import Spinner from './Spinner'
+import CustomSVG from './SvgComponent'
 import Timer from './Timer'
 
 export {
@@ -14,6 +15,7 @@ export {
   ButtonT,
   Card,
   CodeSnippet,
+  CustomSVG,
   DotsCodeEditor,
   LoginForm,
   Option,
