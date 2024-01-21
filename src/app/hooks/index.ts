@@ -1,4 +1,4 @@
 import useSudoku from './useSudoku'
 import useClipboard from './useClipboard'
-
-export { useSudoku, useClipboard }
+import usePagination from './usePaginationComponents'
+export { useSudoku, useClipboard, usePagination }

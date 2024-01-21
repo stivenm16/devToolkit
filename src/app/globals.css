@@ -282,3 +282,11 @@ select.config-form__dropbdown {
   font-weight: normal;
   font-style: normal;
 }
+
+.prev-button:hover svg {
+  transform: translateX(-5px); /* Adjust the value based on your preference */
+}
+
+.next-button:hover svg {
+  transform: translateX(5px); /* Adjust the value based on your preference */
+}
