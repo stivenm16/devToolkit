@@ -1,19 +1,43 @@
-interface Props {
+export interface ComponentsProps {
   title: string
   code: string
   description: string
 }
-const dataComponents: Props[] = [
+const dataComponents: ComponentsProps[] = [
+  {
+    title: 'Skeleton',
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique ex consequatur minus, pariatur corrupti illum, rerum enim, quia voluptates alias dolores quam facere odio numquam nihil quisquam harumut quidem.',
+    code: ` <div role="status" className="space-y-2.5 animate-pulse max-w-lg">
+          <div className="flex items-center w-full">
+            <div className="h-2.5 bg-indigo-300 rounded-full dark:bg-indigo-700 w-32"></div>
+            <div className="h-2.5 ms-2 bg-indigo-400 rounded-full dark:bg-indigo-600 w-24"></div>
+            <div className="h-2.5 ms-2 bg-indigo-400 rounded-full dark:bg-indigo-600 w-full"></div>
+          </div>
+          <div className="flex items-center w-full max-w-[480px]">
+            <div className="h-2.5 bg-indigo-300 rounded-full dark:bg-indigo-700 w-full"></div>
+            <div className="h-2.5 ms-2 bg-indigo-400 rounded-full dark:bg-indigo-600 w-full"></div>
+            <div className="h-2.5 ms-2 bg-indigo-400 rounded-full dark:bg-indigo-600 w-24"></div>
+          </div>
+        </div>`,
+  },
+  {
+    title: 'Spinner',
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique ex consequatur minus, pariatur corrupti illum, rerum enim, quia voluptates alias dolores quam facere odio numquam nihil quisquam harumut quidem.',
+    code: ` <div className="flex items-center justify-center">
+      <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-indigo-700"/>
+</div>`,
+  },
   {
     title: 'Card',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique ex consequatur minus, pariatur corrupti illum, rerum enim, quia voluptates alias dolores quam facere odio numquam nihil quisquam harumut quidem.',
     code: ` <div className="w-72 rounded-xl px-6 overflow-hidden shadow-xl bg-indigo-800 mx-auto">
-      <img
-        className="w-full h-40"
-        src="https://www.svgrepo.com/show/448244/pack.svg"
-        alt="Product name"
-      />
+    <div className="flex justify-center px-auto my-5">
+      <CustomSVG size="50px" color="white" />
+    </div>  
+    
       <div className=" py-4">
         <div className="font-bold text-xl mb-2 text-white">Product</div>
         <p className="text-white text-base">
@@ -32,7 +56,7 @@ const dataComponents: Props[] = [
       </div>
       <div className=" py-4">
         <span className="text-lg text-white">$99.99</span>
-        <button className="bg-indigo-600 hover:bg-indigo-900 text-white font-bold py-2 px-4 rounded-full inline-flex items-center ml-4">
+        <button className="bg-indigo-600 hover:bg-indigo-800 text-white font-bold py-2 px-4 rounded-full inline-flex items-center ml-4 transition duration-300 ease-in-out">
           <svg
             className="fill-current w-4 h-4 mr-2"
             xmlns="http://www.w3.org/2000/svg"
@@ -99,31 +123,16 @@ const dataComponents: Props[] = [
 </button>`,
   },
   {
-    title: 'Spinner',
-    description:
-      'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique ex consequatur minus, pariatur corrupti illum, rerum enim, quia voluptates alias dolores quam facere odio numquam nihil quisquam harumut quidem.',
-    code: ` <div className="flex items-center justify-center">
-      <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-indigo-700"/>
-</div>`,
-  },
-  {
     title: 'Header',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique ex consequatur minus, pariatur corrupti illum, rerum enim, quia voluptates alias dolores quam facere odio numquam nihil quisquam harumut quidem.',
     code: `     <div className=" md:block bg-indigo-700 rounded-full text-center py-1 mx-auto my-3 w-3/4 md:w-fit px-5 shadow-xl">
       <div className="container mx-auto py-2">
         <div className="flex md:items-center md:justify-center">
-          <a 
+          <a
           // set your href href={'/'}
           >
-            <img
-              className="mb-2 md:mb-0 md:mr-4"
-              src="https://www.svgrepo.com/show/448244/pack.svg"
-              loading="lazy"
-              width={30}
-              height={30}
-              alt="Your Website Icon"
-            />
+           <CustomSVG size="20px" color="white" />
           </a>
           <nav className="flex justify-between md:space-x-6 text-gray-300 ml-5 w-full">
             <a
@@ -139,7 +148,6 @@ const dataComponents: Props[] = [
               Guides
             </a>
 
-        
               <a
               // set your href   href={'/community'}
                 className="text-sm font-medium hover:text-white flex items-center"

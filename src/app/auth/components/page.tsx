@@ -1,8 +1,7 @@
-'use client'
-import ContentBox from '@/app/components/ContentBox'
-import dataComponents from '@/app/utils/componentsData'
-import { Layout } from '../../components'
-import CodeEditor from '../../components/CodeEditor/CodeEditor'
+import { Layout } from '@/app/components'
+import { ContentProvider } from './redux/ContentContex'
+import { ContentBox } from '@/app/components/ui'
+
 interface Props {
   title: string
   code: string
@@ -12,20 +11,9 @@ interface Props {
 const page = () => {
   return (
     <Layout>
-      <ContentBox>
-        {dataComponents &&
-          dataComponents.map((item: Props, index) => (
-            <div key={index}>
-              <h4 className="text-xl font-bold text-white mb-5">
-                {item.title}
-              </h4>
-              <span className="text-md font-medium text-white">
-                {item.description}
-              </span>
-              <CodeEditor code={item.code} />
-            </div>
-          ))}
-      </ContentBox>
+      <ContentProvider>
+        <ContentBox />
+      </ContentProvider>
     </Layout>
   )
 }

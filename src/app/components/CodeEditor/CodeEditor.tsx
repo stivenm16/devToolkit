@@ -1,18 +1,20 @@
 'use client'
 import { useClipboard } from '@/app/hooks'
+import React from 'react'
 import { LiveEditor, LiveError, LivePreview, LiveProvider } from 'react-live'
 
-import { ButtonT, DotsCodeEditor } from '../ui'
+import { ButtonT, CustomSVG, DotsCodeEditor } from '../ui'
 
 interface Props {
   code: string
-  component?: any
+  // component?: any
 }
 
-const CodeBlock = ({ code, component }: Props) => {
+const CodeBlock = ({ code }: Props) => {
   const scope = {
-    // ...React,
-    // component,
+    ...React,
+    CustomSVG,
+    ButtonT,
   }
   const { copyToClipboard, handleChange, codeUpdated } = useClipboard(code)
 
