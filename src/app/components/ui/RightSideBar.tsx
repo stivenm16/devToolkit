@@ -1,6 +1,6 @@
 import { useContext } from 'react'
-import { ContentContext } from '../auth/components/redux/ContentContex'
-import dataComponents from '../utils/componentsData'
+import { ContentContext } from '../../auth/components/redux/ContentContex'
+import dataComponents from '../../utils/componentsData'
 
 const RightSideBar = () => {
   const { changeContent, currentContent } = useContext(ContentContext)

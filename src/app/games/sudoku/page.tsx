@@ -1,8 +1,8 @@
 'use client'
 import Layout from '@/app/components/Layout'
-import { Options, Timer } from '@/app/components/ui'
+import { Options, Timer } from '@/app/components/games'
 
-import { Board } from '@/app/components/sudoku'
+import { Board } from '@/app/components/games/sudoku'
 import { Difficulty } from '@/app/types/global'
 import { useState } from 'react'
 

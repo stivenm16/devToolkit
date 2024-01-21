@@ -1,7 +1,7 @@
 'use client'
 import { Layout } from '@/app/components'
-import { Option, Options, Timer } from '@/app/components/ui'
-import { Board } from '@/app/components/minesweeper'
+import { Option, Options, Timer } from '@/app/components/games'
+import { Board } from '@/app/components/games/minesweeper'
 import { Events } from '@/app/logic/minesweeper'
 import { useState } from 'react'
 

@@ -1,12 +1,12 @@
 'use client'
 import { Suspense, lazy, useContext, useEffect, useState } from 'react'
-import { ContentContext } from '../auth/components/redux/ContentContex'
-import dataComponents, { ComponentsProps } from '../utils/componentsData'
+import { Spinner } from '.'
+import { ContentContext } from '../../auth/components/redux/ContentContex'
+import dataComponents, { ComponentsProps } from '../../utils/componentsData'
 import LeftSideBar from './LeftSideBar'
 import RightSideBar from './RightSideBar'
-import { Spinner } from './ui'
 
-const CodeEditor = lazy(() => import('../components/CodeEditor/CodeEditor'))
+const CodeEditor = lazy(() => import('../CodeEditor/CodeEditor'))
 const ContentBox = () => {
   const { currentContent } = useContext(ContentContext)
   const [currentData, setCurrentData] = useState<ComponentsProps>()
