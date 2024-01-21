@@ -7,7 +7,7 @@ const dataComponents: ComponentsProps[] = [
   {
     title: 'Skeleton',
     description:
-      'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique ex consequatur minus, pariatur corrupti illum, rerum enim, quia voluptates alias dolores quam facere odio numquam nihil quisquam harumut quidem.',
+      'Create a loading skeleton to give users a visual indication that content is being loaded. The Skeleton component is perfect for improving user experience during asynchronous data fetching.',
     code: ` <div role="status" className="space-y-2.5 animate-pulse max-w-lg">
           <div className="flex items-center w-full">
             <div className="h-2.5 bg-indigo-300 rounded-full dark:bg-indigo-700 w-32"></div>
@@ -23,16 +23,14 @@ const dataComponents: ComponentsProps[] = [
   },
   {
     title: 'Spinner',
-    description:
-      'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique ex consequatur minus, pariatur corrupti illum, rerum enim, quia voluptates alias dolores quam facere odio numquam nihil quisquam harumut quidem.',
+    description: `Add a spinning loading indicator to your application with the Spinner component. It's a simple and effective way to communicate background processes to users.`,
     code: ` <div className="flex items-center justify-center">
       <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-indigo-700"/>
 </div>`,
   },
   {
     title: 'Card',
-    description:
-      'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique ex consequatur minus, pariatur corrupti illum, rerum enim, quia voluptates alias dolores quam facere odio numquam nihil quisquam harumut quidem.',
+    description: `Design elegant and responsive cards for displaying various types of content. The Card component provides a structured layout with customizable sections for images, text, and actions.`,
     code: ` <div className="w-72 rounded-xl px-6 overflow-hidden shadow-xl bg-indigo-800 mx-auto">
     <div className="flex justify-center px-auto my-5">
       <CustomSVG size="50px" color="white" />
@@ -72,8 +70,7 @@ const dataComponents: ComponentsProps[] = [
   },
   {
     title: 'Form',
-    description:
-      'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique ex consequatur minus, pariatur corrupti illum, rerum enim, quia voluptates alias dolores quam facere odio numquam nihil quisquam harumut quidem.',
+    description: `Build stylish and accessible forms with the Form component. It includes pre-styled input fields and buttons, making it easy to create visually appealing login or registration forms.`,
     code: `
         <div className="bg-indigo-800 p-8 rounded-xl shadow-xl h-fit w-3/4 md:w-full  relative">
             <form className="space-y-4 z-10">
@@ -116,16 +113,14 @@ const dataComponents: ComponentsProps[] = [
   },
   {
     title: 'Button',
-    description:
-      'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique ex consequatur minus, pariatur corrupti illum, rerum enim, quia voluptates alias dolores quam facere odio numquam nihil quisquam harumut quidem.',
+    description: `Create eye-catching buttons with the Button component. It's fully customizable and comes with built-in hover effects, making it easy to enhance user interactions.`,
     code: ` <button className={'text-sm font-bold text-white flex items-center bg-indigo-600 hover:bg-indigo-700 py-2 px-4 rounded transition duration-300 ease-in-out'}>
             Press me
 </button>`,
   },
   {
     title: 'Header',
-    description:
-      'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique ex consequatur minus, pariatur corrupti illum, rerum enim, quia voluptates alias dolores quam facere odio numquam nihil quisquam harumut quidem.',
+    description: `Design a sleek and responsive header for your website or application. The Header component includes navigation links and a logo, providing a clean and organized layout.`,
     code: `     <div className=" md:block bg-indigo-700 rounded-full text-center py-1 mx-auto my-3 w-3/4 md:w-fit px-5 shadow-xl">
       <div className="container mx-auto py-2">
         <div className="flex md:items-center md:justify-center">

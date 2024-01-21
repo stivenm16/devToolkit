@@ -1,14 +1,11 @@
 export const getCodeSnippets = async () => {
   try {
-    const response = await fetch(
-      'https://playit-backend.onrender.com/api/getFile',
-      {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+    const response = await fetch(process.env.BACKEND_API_URL!, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
       },
-    )
+    })
 
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`)

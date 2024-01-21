@@ -1,36 +1,73 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Awesome Dev Toolkit
+
+Welcome to Awesome Dev Toolkit – Your one-stop solution for daily developer tools and resources!
+
+## Table of Contents
+
+- [Introduction](#introduction)
+- [Features](#features)
+- [Getting Started](#getting-started)
+- [Usage](#usage)
+- [Creating Custom Components](#creating-custom-components)
+- [Building Basic Games](#building-basic-games)
+- [Contributing](#contributing)
+- [License](#license)
+
+## Introduction
+
+Awesome Dev Toolkit is a web application designed to provide developers with a set of useful tools and resources for their daily work. It includes stateless components that can be easily copied and pasted, as well as guides for creating custom components and basic games.
+
+## Features
+
+- **Stateless Components**: Copy and paste ready-to-use stateless components for quick development.
+- **Custom Component Creator**: Easily create and copy your own components without the need for external libraries.
+- **Game Development Guides**: Step-by-step guides on using basic logic to create simple games.
+- **Other Handy Tools**: Additional features to enhance your daily coding experience.
 
 ## Getting Started
 
-First, run the development server:
+1. Clone this repository:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+   ```bash
+   git clone https://github.com/stivenm16/devToolkit.git
+   ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Navigate to the project directory:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+   ```bash
+   cd awesome-dev-toolkit
+   ```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+3. Install dependencies:
 
-## Learn More
+   ```bash
+   cd awesome-dev-toolkit
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+4. Start the application:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+   ```bash
+   npm run dev
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+5. Open your browser and go to http://localhost:3000 to access Awesome Dev Toolkit.
 
-## Deploy on Vercel
+## Usage
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Explore the various tools and components available in the application. Use the provided stateless components by copying and pasting directly into your projects.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Creating Custom Components
+
+1. Navigate to the "Custom Components" section in the application.
+2. Follow the intuitive interface to create your custom component.
+3. Copy the generated code snippet and paste it into your project.
+
+## Building Basic Games
+
+1. Visit the "Game Development" guides in the application.
+2. Follow the step-by-step guides to create basic games using simple logic.
+3. Experiment and customize the games to suit your needs.
+
+## Contributing
+
+We welcome contributions! If you have ideas for new features, find bugs, or want to improve the documentation, feel free to open an issue or submit a pull request.

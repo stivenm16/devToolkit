@@ -6,8 +6,8 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Playit',
-  description: 'Playit is a place to play games and learn new skills.',
+  title: 'devToolkit',
+  description: 'devToolkit is a place to play games and learn new skills.',
 }
 
 export default function RootLayout({
