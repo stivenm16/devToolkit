@@ -5,7 +5,6 @@ import { ButtonT } from './components/ui'
 export default function Home() {
   return (
     <Layout>
-      {/* <Snake /> */}
       <div className="flex justify-center  items-center min-h-96 pt-36 flex-col z-10">
         <div className="text-center animate-fade-in">
           <h1 className="text-6xl font-bold antialised text-white">

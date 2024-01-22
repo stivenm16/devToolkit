@@ -1,6 +1,6 @@
 export const getCodeSnippets = async () => {
   try {
-    const response = await fetch(process.env.BACKEND_API_URL!, {
+    const response = await fetch(process.env.NEXT_PUBLIC_BACKEND_API_URL!, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
