@@ -14,7 +14,7 @@ export default function Board() {
 
   return (
     <div onMouseUp={() => Events.onMouseUp()} className="">
-      <section className="game-board shadow-2xl justify-center  mx-auto rounded-xl bg-indigo-700 px-4 flex flex-col w-fit items-center">
+      <section className="game-board shadow-2xl justify-center  mx-auto rounded-xl bg-indigo-800 px-4 flex flex-col w-fit items-center">
         <div className="controller">
           <div className="mines-counter">{mines}</div>
           <div
@@ -25,7 +25,11 @@ export default function Board() {
         </div>
         <div
           className="grid"
-          style={{ '--grid-cells-side': grid.length } as CSSProperties}
+          style={
+            {
+              '--grid-cells-side': grid.length,
+            } as CSSProperties
+          }
         >
           {grid.length &&
             grid.flatMap((row, i) =>

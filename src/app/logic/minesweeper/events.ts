@@ -11,7 +11,7 @@ import { CellEnum, FaceType } from '@/app/types/games/minesweeper'
 import { setFace, setGrid, setMines, setScore } from './state'
 
 let boardSize = 5
-let minesRate = 0.3
+let minesRate = 0.2
 let cellsInBoard = boardSize * boardSize
 let minesInGame = Math.round(cellsInBoard * minesRate)
 export let gridMines: CellEnum[][] = boards.boardWithMines(
