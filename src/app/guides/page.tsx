@@ -1,12 +1,16 @@
-import { Layout } from '../components'
+import { Layout } from '@/app/components'
 import { CardDocs } from '../components/games'
 
-function GamesPage() {
+const Guides = () => {
   return (
     <Layout>
+      <h1 className="text-3xl font-bold mb-8 text-center text-white font-2xl mt-5">
+        Games documentation
+      </h1>
+
       <div className="flex flex-col md:flex-row justify-center items-center md:mt-10 md:w-2/3 mx-5 md:mx-auto p-2 ">
         <CardDocs
-          path="/games/sudoku"
+          path="/guides/sudoku"
           text={`Unlock the secrets behind Sudoku, the quintessential challenge for
             developers seeking to refine their algorithmic prowess. Immerse
             yourself in the world of backtracking, constraint satisfaction
@@ -19,7 +23,7 @@ function GamesPage() {
             this captivating numerical enigma.`}
         />
         <CardDocs
-          path="/games/minesweeper"
+          path="/guides/mineSweeper"
           text={`Dive into the world of Minesweeper, a coding playground where logic
             meets algorithms. Explore the intricacies of designing an efficient
             minefield solver, master the art of recursive algorithms, and
@@ -34,4 +38,4 @@ function GamesPage() {
   )
 }
 
-export default GamesPage
+export default Guides

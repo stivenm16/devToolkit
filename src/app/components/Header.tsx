@@ -42,7 +42,7 @@ const Header: React.FC = () => {
               Games
             </Link>
             <Link
-              href={'/guides/sudoku'}
+              href={'/guides'}
               className="text-sm font-medium hover:text-white flex items-center"
             >
               Guides
