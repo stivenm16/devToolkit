@@ -16,7 +16,7 @@ export default function Cell({ cell, position }: CellComponentType) {
       case CellEnum.Hidden:
         return (
           <div
-            className={`cell`}
+            className={`cell }`}
             onMouseDown={() => Events.onMouseDown()}
             onClick={() => Events.onClick(position)}
             onContextMenu={handleRightClick}

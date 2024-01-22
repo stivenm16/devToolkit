@@ -64,15 +64,9 @@ body {
   left: 50%;
 }
 
-.game-board {
-  /* margin: 7rem auto 5rem; */
-}
-
 .game-board > * {
   height: 15rem;
-  background: #c4c4c4;
   margin: 1rem;
-  border-width: 1px;
   border-style: inset;
 }
 
@@ -81,19 +75,19 @@ body {
   flex: 1;
   justify-content: space-evenly;
   align-items: center;
-  padding: 1rem;
   min-width: 95%;
 }
 
 .mines-counter,
 .score {
-  flex: 0 0 6rem;
+  flex: 0 0 5rem;
   background: black;
   color: red;
-  font-size: 4rem;
+  font-size: 3rem;
   text-align: right;
   font-family: 'digital-dismay';
   position: relative;
+  border-radius: 10px;
 }
 
 .mines-counter::before,
@@ -107,12 +101,18 @@ body {
 }
 
 .status-button {
-  height: 5rem;
-  width: 5rem;
-  background: #c4c4c4;
-  border-width: 5px;
+  height: 3rem;
+  width: 3rem;
+  background-color: rgb(79 70 229) !important;
+  border-radius: 5px;
+  /* box-shadow: 5px 5px 10px rgba(44, 44, 44, 0.286); */
   border-style: outset;
+  cursor: pointer;
   position: relative;
+}
+
+.status-button:hover {
+  background-color: rgb(49 46 129) !important;
 }
 .status-button:active {
   border-style: inset;
@@ -136,7 +136,6 @@ body {
 }
 
 .grid {
-  background: #c4c4c4;
   height: fit-content;
   width: fit-content;
   display: grid;
@@ -145,7 +144,7 @@ body {
 }
 
 .cell {
-  background: #c4c4c4;
+  background: rgb(201, 206, 255);
   border-width: 5px;
   border-style: outset;
   font-size: 2rem;
@@ -185,7 +184,7 @@ body {
 .cell-- {
   background: white;
   border-style: none;
-  border: 2px solid #9a9a9a;
+  border: 2px solid rgb(79 70 229);
 }
 .cell__flag {
   fill: red;
@@ -265,7 +264,7 @@ select.config-form__dropbdown {
   background: #c4c4c4;
   border-style: outset;
   font-family: 'press-start';
-  border-width: 5px;
+
   border-color: #eee #fff #fff #eee;
 }
 

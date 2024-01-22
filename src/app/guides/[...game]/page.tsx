@@ -1,9 +1,7 @@
 'use client'
 import { Layout } from '@/app/components'
 import { CodeSnippet } from '@/app/components/ui'
-
 import { getCodeSnippets } from '@/app/services/sudoku.service'
-
 import { useEffect, useState } from 'react'
 
 const Explanation = () => {
@@ -28,12 +26,11 @@ const Explanation = () => {
     </div>
   )
 }
-
-const Guides = ({ params }: { params: { game: string } }) => {
+const page = ({ params }: { params: { game: string } }) => {
   const [data, setData] = useState<any[][]>([[]])
 
   const getData = async () => {
-    const data = await getCodeSnippets()
+    const data = await getCodeSnippets('sudoku')
     setData(data)
   }
 
@@ -47,14 +44,13 @@ const Guides = ({ params }: { params: { game: string } }) => {
         {params.game[0].charAt(0).toUpperCase() + params.game[0].slice(1)} Game
         Documentation
       </h1>
-
       <div className="mx-6 ">
         {data &&
           data.map((item: any, indexRow: number) => {
             return item.map((item: any, indexCol: number) => {
               return (
                 <div key={indexCol}>
-                  <CodeSnippet codeSnippet={item}>
+                  <CodeSnippet codeSnippet={item.code}>
                     <Explanation />
                   </CodeSnippet>
                 </div>
@@ -66,4 +62,4 @@ const Guides = ({ params }: { params: { game: string } }) => {
   )
 }
 
-export default Guides
+export default page

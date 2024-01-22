@@ -19,16 +19,12 @@ const ContentBox = () => {
     setCurrentData(matchingData)
   }, [currentContent])
   return (
-    <div className="flex relative flex-col min-h-[90svh] w-full justify-between ">
+    <div className="flex relative flex-col min-h-[85svh] w-full justify-between ">
       <div className="flex gap-10">
         <LeftSideBar />
         <div className={`w-3/5 mx-auto  rounded-2xl`}>
           {currentData ? (
-            <div
-              key={currentData.title}
-              id={currentData.title}
-              className="py-10"
-            >
+            <div key={currentData.title} id={currentData.title}>
               <h4 className="text-xl font-bold text-white mb-5">
                 {currentData.title}
               </h4>
