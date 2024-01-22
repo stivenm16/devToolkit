@@ -1,6 +1,6 @@
-# Awesome Dev Toolkit
+# Dev Toolkit
 
-Welcome to Awesome Dev Toolkit – Your one-stop solution for daily developer tools and resources!
+Welcome to Dev Toolkit – Your one-stop solution for daily developer tools and resources!
 
 ## Table of Contents
 
@@ -15,7 +15,7 @@ Welcome to Awesome Dev Toolkit – Your one-stop solution for daily developer to
 
 ## Introduction
 
-Awesome Dev Toolkit is a web application designed to provide developers with a set of useful tools and resources for their daily work. It includes stateless components that can be easily copied and pasted, as well as guides for creating custom components and basic games.
+Dev Toolkit is a web application designed to provide developers with a set of useful tools and resources for their daily work. It includes stateless components that can be easily copied and pasted, as well as guides for creating custom components and basic games.
 
 ## Features
 
@@ -35,13 +35,13 @@ Awesome Dev Toolkit is a web application designed to provide developers with a s
 2. Navigate to the project directory:
 
    ```bash
-   cd awesome-dev-toolkit
+   cd devToolkit
    ```
 
 3. Install dependencies:
 
    ```bash
-   cd awesome-dev-toolkit
+   npm install
    ```
 
 4. Start the application:
@@ -50,7 +50,7 @@ Awesome Dev Toolkit is a web application designed to provide developers with a s
    npm run dev
    ```
 
-5. Open your browser and go to http://localhost:3000 to access Awesome Dev Toolkit.
+5. Open your browser and go to http://localhost:3000 to access Dev Toolkit.
 
 ## Usage
 
