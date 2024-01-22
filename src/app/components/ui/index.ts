@@ -5,6 +5,7 @@ import Card from './Card'
 import CodeSnippet from './CodeSnippet'
 import ContentBox from './ContentBox'
 import DotsCodeEditor from './DotsCodeEditor'
+import Explanation from './Explanation'
 import LeftSideBar from './LeftSideBar'
 import LoginForm from './LoginForm'
 import RightSideBar from './RightSideBar'
@@ -18,6 +19,7 @@ export {
   ContentBox,
   CustomSVG,
   DotsCodeEditor,
+  Explanation,
   LeftSideBar,
   LoginForm,
   RightSideBar,
