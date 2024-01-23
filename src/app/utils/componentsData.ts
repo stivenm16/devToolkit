@@ -237,7 +237,7 @@ render(<Header />);
   return (
     <>
       <div
-        className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 z-50"
+        className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 z-50 animate-fade-in"
         onClick={onClose}
       />
       <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-indigo-300 p-8 flex flex-col rounded-md shadow-lg z-50 align-center ">
@@ -301,6 +301,68 @@ render(<Header />);
  
 
 render(<Wrapper />);
+`,
+    },
+    {
+      title: 'Alert',
+      description:
+        'Create a loading skeleton to give users a visual indication that content is being loaded. The Skeleton component is perfect for improving user experience during asynchronous data fetching.',
+      code: ` 
+const Alert = ({ title, content, onClose }) => {
+  return (
+      <div
+        className="bg-indigo-100 z-10 border border-indigo-400 text-indigo-700 px-3 pr-8 pt-2 h-14 rounded fixed bottom-5 right-10 animate-fade-in"
+        role="alert"
+      >
+        <div className="relative">
+          <span
+            className={"absolute top-[-0.5rem] right-[-1.5rem] cursor-pointer text-indigo-500"}
+            onClick={onClose}
+          >
+            <svg
+              className="fill-current h-6 w-6"
+              role="button"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+            >
+              <title>Close</title>
+              <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z"
+              />
+            </svg>
+          </span>
+          <div className="pt-2">
+            {title && <strong className="font-bold mr-2">{title}</strong>}
+            <span className="block sm:inline">{content}</span>
+          </div>
+        </div>
+      </div>
+
+  )
+}
+
+const Wrapper = () => {
+const [isVisible, setIsVisible] = React.useState(false);
+
+const openAlert = () => {
+  setIsVisible(true);
+};
+
+const closeAlert = () => {
+  setIsVisible(false);
+};
+
+return (
+  <>
+    <ButtonT label={"Open Alert"} onClick={openAlert}>Open Alert</ButtonT> 
+    {isVisible && ( <Alert onClose={() => setIsVisible(false)} content={"Operation completed successfully."} title={"Warning!"}/>)}
+  </>
+);
+};
+
+render(<Wrapper/>);
 `,
     },
   ],

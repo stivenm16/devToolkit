@@ -1,4 +1,5 @@
 import Timer from '../games/Timer'
+import Alert from './Alert'
 import Avatar from './Avatar'
 import ButtonT from './Button'
 import Card from './Card'
@@ -12,8 +13,8 @@ import Modal from './Modal'
 import RightSideBar from './RightSideBar'
 import Spinner from './Spinner'
 import CustomSVG from './SvgComponent'
-
 export {
+  Alert,
   Avatar,
   ButtonT,
   Card,

@@ -8,19 +8,8 @@ body {
 
 @keyframes fadeIn {
   from {
-    opacity: 0.3;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-.animate-fade-in-cards {
-  animation: fadeIn 2.5s;
-}
-@keyframes fadeIn {
-  from {
-    opacity: 0.3;
+    opacity: 0;
+    transform: translateY(10px);
   }
   to {
     opacity: 1;
@@ -28,7 +17,8 @@ body {
 }
 
 .animate-fade-in {
-  animation: fadeIn 3s;
+  transform: translateY(-10px);
+  animation: fadeIn 1.5s ease-in-out;
 }
 
 .snake-segment,
