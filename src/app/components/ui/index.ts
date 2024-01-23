@@ -8,9 +8,11 @@ import DotsCodeEditor from './DotsCodeEditor'
 import Explanation from './Explanation'
 import LeftSideBar from './LeftSideBar'
 import LoginForm from './LoginForm'
+import Modal from './Modal'
 import RightSideBar from './RightSideBar'
 import Spinner from './Spinner'
 import CustomSVG from './SvgComponent'
+
 export {
   Avatar,
   ButtonT,
@@ -22,6 +24,7 @@ export {
   Explanation,
   LeftSideBar,
   LoginForm,
+  Modal,
   RightSideBar,
   Spinner,
   Timer,

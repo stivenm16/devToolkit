@@ -1,24 +1,26 @@
 import { useContext } from 'react'
 import { ContentContext } from '../auth/components/redux/ContentContex'
-import dataComponents from '../utils/componentsData'
+import { dataStructure } from '../utils/componentsData'
 
 const usePagination = () => {
   const { currentContent, changeContent } = useContext(ContentContext)
 
-  const handlePagination = (direction: string) => {
-    const currentIndex = dataComponents.findIndex(
+  const handlePagination = (direction: 'next' | 'prev') => {
+    const allComponents = [
+      ...dataStructure.StateLess,
+      ...dataStructure.StateFull,
+    ]
+    const currentIndex = allComponents.findIndex(
       (item) => item.title === currentContent,
     )
-    const lastIndex = dataComponents.length - 1
 
     if (direction === 'next') {
-      changeContent(
-        dataComponents[currentIndex === lastIndex ? 0 : currentIndex + 1].title,
-      )
+      const nextIndex = (currentIndex + 1) % allComponents.length
+      changeContent(allComponents[nextIndex].title)
     } else {
-      changeContent(
-        dataComponents[currentIndex === 0 ? lastIndex : currentIndex - 1].title,
-      )
+      const prevIndex =
+        (currentIndex - 1 + allComponents.length) % allComponents.length
+      changeContent(allComponents[prevIndex].title)
     }
   }
 

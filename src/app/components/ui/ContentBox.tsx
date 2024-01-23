@@ -1,23 +1,27 @@
 'use client'
 import { usePagination } from '@/app/hooks'
+import { ComponentsProps } from '@/app/types/global'
 import { Suspense, lazy, useEffect, useState } from 'react'
-import { Spinner } from '.'
-import dataComponents, { ComponentsProps } from '../../utils/componentsData'
-import LeftSideBar from './LeftSideBar'
-import RightSideBar from './RightSideBar'
+import { LeftSideBar, RightSideBar, Spinner } from '.'
+import { dataStructure, findElementByTitle } from '../../utils/componentsData'
 
 const CodeEditor = lazy(() => import('../CodeEditor/CodeEditor'))
 
+interface ContentBoxProps {
+  children?: React.ReactNode
+}
+
 //ContentBox should receive a Child Component as prop to render it instaed of CodeEditor, also this logic needs to be moved to custom hook
-const ContentBox = () => {
-  const [currentData, setCurrentData] = useState<ComponentsProps>()
+const ContentBox: React.FC<ContentBoxProps> = () => {
   const { handlePagination, currentContent } = usePagination()
+  const [currentData, setCurrentData] = useState<ComponentsProps>()
   useEffect(() => {
-    const matchingData = dataComponents.find(
-      (item) => item.title === currentContent,
-    )
+    const data = [...dataStructure.StateFull, ...dataStructure.StateLess]
+    const matchingData = findElementByTitle(data, currentContent!)
+
     setCurrentData(matchingData)
   }, [currentContent])
+
   return (
     <div className="flex relative flex-col min-h-[85svh] w-full justify-between ">
       <div className="flex gap-10">
@@ -31,8 +35,18 @@ const ContentBox = () => {
               <span className="text-md font-medium text-white">
                 {currentData.description}
               </span>
-              <Suspense fallback={<Spinner size={40} />}>
-                <CodeEditor code={currentData.code} key={currentData.title} />
+              <Suspense
+                fallback={
+                  <div className="mt-10">
+                    <Spinner size={12} />
+                  </div>
+                }
+              >
+                <CodeEditor
+                  code={currentData.code}
+                  key={currentData.title}
+                  inLine={true}
+                />
               </Suspense>
             </div>
           ) : (

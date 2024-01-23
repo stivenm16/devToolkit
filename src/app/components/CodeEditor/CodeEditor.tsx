@@ -7,10 +7,11 @@ import { ButtonT, CustomSVG, DotsCodeEditor } from '../ui'
 
 interface Props {
   code: string
+  inLine: boolean
   // component?: any
 }
 
-const CodeBlock = ({ code }: Props) => {
+const CodeBlock = ({ code, inLine }: Props) => {
   const scope = {
     ...React,
     CustomSVG,
@@ -26,7 +27,7 @@ const CodeBlock = ({ code }: Props) => {
   }
   return (
     <div className="flex flex-col items-center justify-center pt-10">
-      <LiveProvider code={codeUpdated} scope={scope}>
+      <LiveProvider code={codeUpdated} scope={scope} noInline={inLine}>
         <LivePreview />
         <div className="relative rounded-xl p-3 bg-[#1D1F21] my-10 md:w-full pr-10">
           <ButtonT

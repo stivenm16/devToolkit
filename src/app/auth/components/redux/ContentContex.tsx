@@ -1,5 +1,5 @@
 'use client'
-import dataComponents from '@/app/utils/componentsData'
+import { dataStructure } from '@/app/utils/componentsData'
 import React, { ReactNode, createContext, useState } from 'react'
 
 interface ContentContextProps {
@@ -17,7 +17,7 @@ const ContentContext = createContext<ContentContextProps>({
 
 const ContentProvider: React.FC<ContentProviderProps> = ({ children }) => {
   const [currentContent, setCurrentContent] = useState<string | null>(
-    dataComponents[0].title,
+    dataStructure.StateLess[0].title,
   )
 
   const changeContent = (newContent: string | null) => {
@@ -35,13 +35,5 @@ const ContentProvider: React.FC<ContentProviderProps> = ({ children }) => {
     </ContentContext.Provider>
   )
 }
-
-// const useContent = (): ContentContextProps => {
-//   const context = useContext(ContentContext)
-//   if (!context) {
-//     throw new Error('useContent must be used within a ContentProvider')
-//   }
-//   return context
-// }
 
 export { ContentContext, ContentProvider }
