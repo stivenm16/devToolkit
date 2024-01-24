@@ -26,6 +26,7 @@ const ContentBox: React.FC<ContentBoxProps> = () => {
     <div className="flex relative flex-col min-h-[85svh] z-1000 w-full justify-between ">
       <div className="flex gap-10">
         <LeftSideBar />
+
         <div className={`w-3/5 mx-auto  rounded-2xl`}>
           {currentData ? (
             <div key={currentData.title} id={currentData.title}>

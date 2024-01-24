@@ -1,7 +1,7 @@
 'use client'
 import { signOut, useSession } from 'next-auth/react'
 import Link from 'next/link'
-import { ButtonT } from './ui'
+import { Button } from './ui'
 
 const Header: React.FC = () => {
   const session = useSession()
@@ -56,7 +56,7 @@ const Header: React.FC = () => {
                 >
                   Components
                 </Link>
-                <ButtonT
+                <Button
                   label="Logout"
                   className="text-sm font-medium hover:text-white flex items-center"
                   onClick={() => signOut()}

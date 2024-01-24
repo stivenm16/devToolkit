@@ -2,13 +2,15 @@ import React from 'react'
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   onClick?: () => void
-  label: string
+  label?: string
+  children?: React.ReactNode
   customStyles?: string
 }
 
-const ButtonT: React.FC<ButtonProps> = ({
+const Button: React.FC<ButtonProps> = ({
   onClick,
   label,
+  children,
   customStyles,
   ...props
 }) => {
@@ -18,9 +20,9 @@ const ButtonT: React.FC<ButtonProps> = ({
       onClick={onClick}
       {...props}
     >
-      {label}
+      {children ?? label}
     </button>
   )
 }
 
-export default ButtonT
+export default Button

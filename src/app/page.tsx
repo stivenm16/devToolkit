@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { Layout } from './components'
-import { ButtonT } from './components/ui'
+import { Button } from './components/ui'
 
 export default function Home() {
   return (
@@ -17,7 +17,7 @@ export default function Home() {
           </h4>
         </div>
         <Link href={'/games'}>
-          <ButtonT label="Start" />
+          <Button label="Start" />
         </Link>
       </div>
     </Layout>
