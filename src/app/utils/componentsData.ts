@@ -165,14 +165,14 @@ render(<Form />);
       title: 'Button',
       description: `Create eye-catching buttons with the Button component. It's fully customizable and comes with built-in hover effects, making it easy to enhance user interactions.`,
       code: ` 
-const Button = () => {
+const CustomButton = () => {
     return (
       <button className={'text-sm font-bold text-white flex items-center bg-indigo-600 hover:bg-indigo-700 py-2 px-4 rounded transition duration-300 ease-in-out'}>
           Press me
       </button>
     )}
 
-render(<Button />);
+render(<CustomButton />);
 `,
     },
     {
@@ -354,11 +354,11 @@ const CustomSelect = ({
                   xmlns="http://www.w3.org/2000/svg"
                   stroke="#ffffff"
                 >
-                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
                   <g
                     id="SVGRepo_tracerCarrier"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                   ></g>
                   <g id="SVGRepo_iconCarrier">
                     {' '}
@@ -373,7 +373,7 @@ const CustomSelect = ({
           </div>
 
           {isOpen && (
-            <div className="origin-top-right absolute right-0 mt-2 w-56 rounded-md  shadow-lg bg-white ring-1 ring-black ring-opacity-5">
+            <div className="origin-top-right absolute right-0 mt-2 w-56 rounded-md z-10 shadow-lg bg-white ring-1 ring-black ring-opacity-5">
               <div className="py-1">
                 {options.map((option) => (
                   <button
@@ -401,7 +401,7 @@ const Wrapper = () => {
   const [selectedOption, setSelectedOption] = React.useState(options[0])
 
   return (
-    <div className={"mb-24"}>
+    <div className={""}>
      <CustomSelect options={options} selectedOption={selectedOption} onChange={setSelectedOption} />
     </div>
   );

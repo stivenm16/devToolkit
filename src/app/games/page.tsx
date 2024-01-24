@@ -4,6 +4,9 @@ import { CardDocs } from '../components/games'
 function GamesPage() {
   return (
     <Layout>
+      <h1 className="text-xl font-bold mb-8 text-center text-white font-xl mt-5">
+        Games
+      </h1>
       <div className="flex flex-col md:flex-row justify-center items-center md:mt-10 md:w-2/3 mx-5 md:mx-auto p-2 ">
         <CardDocs
           path="/games/sudoku"

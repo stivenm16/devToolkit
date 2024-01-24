@@ -67,11 +67,11 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
               xmlns="http://www.w3.org/2000/svg"
               stroke="#ffffff"
             >
-              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+              <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
               <g
                 id="SVGRepo_tracerCarrier"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               ></g>
               <g id="SVGRepo_iconCarrier">
                 {' '}
@@ -86,7 +86,7 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
       </div>
 
       {isOpen && (
-        <div className="origin-top-right absolute right-0 mt-2 w-56 rounded-md  shadow-lg bg-white ring-1 ring-black ring-opacity-5">
+        <div className="origin-top-right absolute right-0 mt-2 w-56 rounded-md z-10 shadow-lg bg-white ring-1 ring-black ring-opacity-5">
           <div className="py-1">
             {options.map((option) => (
               <button

@@ -4,10 +4,9 @@ import { CardDocs } from '../components/games'
 const Guides = () => {
   return (
     <Layout>
-      <h1 className="text-3xl font-bold mb-8 text-center text-white font-2xl mt-5">
+      <h1 className="text-xl font-bold mb-8 text-center text-white font-xl mt-5">
         Games documentation
       </h1>
-
       <div className="flex flex-col md:flex-row justify-center items-center md:mt-10 md:w-2/3 mx-5 md:mx-auto p-2 ">
         <CardDocs
           path="/guides/sudoku"
