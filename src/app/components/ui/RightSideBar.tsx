@@ -31,7 +31,7 @@ const RenderFolder = (folderData: ComponentsProps[], level = 0) => {
 const RightSideBar = () => {
   return (
     <div
-      className={` text-gray-300 h-full w-60 flex flex-col  min-h-[40rem]  opacity-80 rounded-3xl  p-5 fixed right-[-20px] `}
+      className={`hidden md:flex  text-gray-300 h-full w-60 flex-col  min-h-[40rem]  opacity-80 rounded-3xl  p-5 fixed right-[-20px] `}
     >
       <h3 className="text-white font-bold">On this page</h3>
       <h4 className="my-10">Components</h4>

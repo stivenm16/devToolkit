@@ -1,4 +1,4 @@
-import { ButtonT } from '.'
+import { Button } from '.'
 
 interface ModalProps {
   isOpen: boolean
@@ -44,7 +44,7 @@ const Modal = ({ isOpen, onClose, children }: ModalProps) => {
           </svg>
         </button>
         <div className="my-5">{children}</div>
-        <ButtonT label="Close" />
+        <Button label="Close" />
       </div>
     </>
   )

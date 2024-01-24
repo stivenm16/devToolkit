@@ -10,7 +10,7 @@ const CodeEditor = lazy(() => import('../CodeEditor/CodeEditor'))
 interface ContentBoxProps {
   children?: React.ReactNode
 }
-
+1
 //ContentBox should receive a Child Component as prop to render it instaed of CodeEditor, also this logic needs to be moved to custom hook
 const ContentBox: React.FC<ContentBoxProps> = () => {
   const { handlePagination, currentContent } = usePagination()
@@ -23,9 +23,10 @@ const ContentBox: React.FC<ContentBoxProps> = () => {
   }, [currentContent])
 
   return (
-    <div className="flex relative flex-col min-h-[85svh] w-full justify-between ">
+    <div className="flex relative flex-col min-h-[85svh] z-1000 w-full justify-between ">
       <div className="flex gap-10">
         <LeftSideBar />
+
         <div className={`w-3/5 mx-auto  rounded-2xl`}>
           {currentData ? (
             <div key={currentData.title} id={currentData.title}>

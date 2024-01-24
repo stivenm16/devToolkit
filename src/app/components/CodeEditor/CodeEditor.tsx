@@ -1,9 +1,10 @@
 'use client'
 import { useClipboard } from '@/app/hooks'
-import React from 'react'
-import { LiveEditor, LiveError, LivePreview, LiveProvider } from 'react-live'
+import React, { useState } from 'react'
 
-import { ButtonT, CustomSVG, DotsCodeEditor } from '../ui'
+import { Alert, Button, CustomSVG, DotsCodeEditor } from '../ui'
+import CustomSelect from '../ui/CustomSelect'
+import { LiveEditor, LiveError, LivePreview, LiveProvider } from 'react-live'
 
 interface Props {
   code: string
@@ -15,9 +16,10 @@ const CodeBlock = ({ code, inLine }: Props) => {
   const scope = {
     ...React,
     CustomSVG,
-    ButtonT,
+    Button,
   }
-  const { copyToClipboard, handleChange, codeUpdated } = useClipboard(code)
+  const { copyToClipboard, handleChange, codeUpdated, copy } =
+    useClipboard(code)
 
   // Patch to hide warning about defaultProps, discussion on github:https://github.com/recharts/recharts/issues/3615
   const error = console.error
@@ -27,10 +29,12 @@ const CodeBlock = ({ code, inLine }: Props) => {
   }
   return (
     <div className="flex flex-col items-center justify-center pt-10">
+      {copy && <Alert content={'Copied in clipboard!'} />}
+
       <LiveProvider code={codeUpdated} scope={scope} noInline={inLine}>
         <LivePreview />
         <div className="relative rounded-xl p-3 bg-[#1D1F21] my-10 md:w-full pr-10">
-          <ButtonT
+          <Button
             customStyles="absolute right-10 top-5"
             label="Copy"
             onClick={copyToClipboard}
