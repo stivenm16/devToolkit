@@ -4,7 +4,7 @@ export interface ComponentsProps {
   title: string
   code: string
   description: string
-  children?: [ComponentsProps]
+  children?: ComponentsProps[]
 }
 
 export interface DataProps {

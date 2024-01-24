@@ -177,6 +177,77 @@ render(<Button />);
 `,
     },
     {
+      title: 'Input',
+      description: `Create eye-catching Inputs with the Input component. It's fully customizable and comes with built-in hover effects, making it easy to enhance user interactions.`,
+      code: `
+const Input = ({ value, onChange, maxDigits }) => {
+
+  return (
+    <div className="max-w-md mx-auto bg-indigo-800 p-6 rounded-md shadow-md">
+       <input
+        type="text"
+        className="border rounded-md px-3 py-2 w-full focus:outline-none focus:ring focus:border-blue-300"
+        placeholder="Type something"
+        value={value}
+        maxLength={maxDigits}
+        
+      />
+      <p className="text-red-500 text-sm mt-2"></p>
+    </div>
+  );
+};
+
+render(<Input/>)
+      `,
+      children: [
+        {
+          title: 'InputNumber',
+          description: ``,
+          code: ` 
+
+const NumberInput = ({ value, onChange, maxDigits }) => {
+
+  return (
+    <div className="max-w-md mx-auto bg-indigo-800 p-6 rounded-md shadow-md">
+      
+      <input
+        type="text"
+        id="customNumberInput"
+        className="border rounded-md px-3 py-2 w-full focus:outline-none focus:ring focus:border-blue-300"
+        placeholder="Type a number"
+        value={value}
+        maxLength={maxDigits}
+        onChange={(e) => {
+        e.preventDefault()
+        const inputValue = e.target.value
+        const parsedValue = parseFloat(inputValue)
+
+        if (inputValue === '' || !isNaN(parsedValue)) {
+          onChange(inputValue === '' ? 0 : parsedValue)
+        }
+      }}
+      />
+      <p className="text-red-500 text-sm mt-2"></p>
+    </div>
+  );
+};
+
+const Wrapper = () => {
+  const [numberValue, setNumberValue] = React.useState('');
+
+  return (
+    <div className=" flex items-center justify-center">
+      <NumberInput value={numberValue} onChange={setNumberValue} maxDigits={5} />
+    </div>
+  );
+};
+
+render(<Wrapper/>);
+`,
+        },
+      ],
+    },
+    {
       title: 'Header',
       description: `Design a sleek and responsive header for your website or application. The Header component includes navigation links and a logo, providing a clean and organized layout.`,
       code: `  
@@ -305,8 +376,9 @@ render(<Wrapper />);
     },
     {
       title: 'Alert',
-      description:
-        'Create a loading skeleton to give users a visual indication that content is being loaded. The Skeleton component is perfect for improving user experience during asynchronous data fetching.',
+      description: `
+  Alert component for displaying error alerts with a customizable title and content. 
+`,
       code: ` 
 const Alert = ({ title, content, onClose }) => {
   return (
@@ -348,6 +420,9 @@ const [isVisible, setIsVisible] = React.useState(false);
 
 const openAlert = () => {
   setIsVisible(true);
+  setTimeout(() => {
+    setIsVisible(false)
+  },5000)
 };
 
 const closeAlert = () => {
@@ -357,13 +432,148 @@ const closeAlert = () => {
 return (
   <>
     <ButtonT label={"Open Alert"} onClick={openAlert}>Open Alert</ButtonT> 
-    {isVisible && ( <Alert onClose={() => setIsVisible(false)} content={"Operation completed successfully."} title={"Warning!"}/>)}
+    {isVisible && ( <Alert onClose={closeAlert} content={"Operation completed successfully."} title={"Warning!"}/>)}
   </>
 );
 };
 
 render(<Wrapper/>);
 `,
+      children: [
+        {
+          title: 'Alert error',
+          description: `
+  Alert component for displaying error alerts with a customizable title and content. 
+`,
+          code: ` 
+const Alert = ({ title, content, onClose }) => {
+  return (
+      <div
+        className="bg-red-500 z-10  text-white px-3 pr-8 pt-2 h-14 rounded fixed bottom-5 right-10 animate-fade-in"
+        role="alert"
+      >
+        <div className="relative">
+          <span
+            className={"absolute top-[-0.5rem] right-[-1.5rem] cursor-pointer text-white"}
+            onClick={onClose}
+          >
+            <svg
+              className="fill-current h-6 w-6"
+              role="button"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+            >
+              <title>Close</title>
+              <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z"
+              />
+            </svg>
+          </span>
+          <div className="pt-2">
+            {title && <strong className="font-bold mr-2">{title}</strong>}
+            <span className="block sm:inline">{content}</span>
+          </div>
+        </div>
+      </div>
+
+  )
+}
+
+const Wrapper = () => {
+const [isVisible, setIsVisible] = React.useState(false);
+
+const openAlert = () => {
+  setIsVisible(true);
+  setTimeout(() => {
+    setIsVisible(false)
+  },5000)
+};
+
+const closeAlert = () => {
+  setIsVisible(false);
+};
+
+return (
+  <>
+    <ButtonT label={"Open Alert"} onClick={openAlert}>Open Alert</ButtonT> 
+    {isVisible && ( <Alert onClose={closeAlert} content={"Operation completed successfully."} title={"Warning!"}/>)}
+  </>
+);
+};
+
+render(<Wrapper/>);
+`,
+        },
+        {
+          title: 'Alert sucess',
+          description: `
+  Alert component for displaying error alerts with a customizable title and content. 
+`,
+          code: ` 
+const Alert = ({ title, content, onClose }) => {
+  return (
+      <div
+        className="bg-green-500 z-10  text-white px-3 pr-8 pt-2 h-14 rounded fixed bottom-5 right-10 animate-fade-in"
+        role="alert"
+      >
+        <div className="relative">
+          <span
+            className={"absolute top-[-0.5rem] right-[-1.5rem] cursor-pointer text-white"}
+            onClick={onClose}
+          >
+            <svg
+              className="fill-current h-6 w-6"
+              role="button"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+            >
+              <title>Close</title>
+              <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z"
+              />
+            </svg>
+          </span>
+          <div className="pt-2">
+            {title && <strong className="font-bold mr-2">{title}</strong>}
+            <span className="block sm:inline">{content}</span>
+          </div>
+        </div>
+      </div>
+
+  )
+}
+
+const Wrapper = () => {
+const [isVisible, setIsVisible] = React.useState(false);
+
+const openAlert = () => {
+  setIsVisible(true);
+  setTimeout(() => {
+    setIsVisible(false)
+    
+  },5000)
+};
+
+const closeAlert = () => {
+  setIsVisible(false);
+};
+
+return (
+  <>
+    <ButtonT label={"Open Alert"} onClick={openAlert}>Open Alert</ButtonT> 
+    {isVisible && ( <Alert onClose={closeAlert} content={"Operation completed successfully."} title={"Warning!"}/>)}
+  </>
+);
+};
+
+render(<Wrapper/>);
+`,
+        },
+      ],
     },
   ],
 }
