@@ -16,7 +16,7 @@ export default function Home() {
             interactive exercises.
           </h4>
         </div>
-        <Link href={'/games'}>
+        <Link href={'/community/components'}>
           <Button label="Start" />
         </Link>
       </div>
