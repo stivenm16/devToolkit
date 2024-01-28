@@ -1,4 +1,4 @@
-import { Footer, Header } from '.'
+import { Header } from '.'
 
 type LayoutProps = {
   children: React.ReactNode
@@ -11,7 +11,7 @@ const Layout: React.FC<LayoutProps> = ({ children, hideHeader }) => {
 
       <main className="flex-grow">{children}</main>
 
-      <Footer />
+      {/* <Footer /> */}
     </div>
   )
 }
