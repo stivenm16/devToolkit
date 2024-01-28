@@ -424,7 +424,7 @@ render(<Wrapper />);
   return (
     <>
       <div
-        className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 z-50 animate-fade-in"
+        className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 z-50"
         onClick={onClose}
       />
       <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-indigo-300 p-8 flex flex-col rounded-md shadow-lg z-50 align-center ">
