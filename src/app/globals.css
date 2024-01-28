@@ -5,6 +5,25 @@
 body {
   @apply bg-indigo-800;
 }
+.custom-shape-divider-bottom-1706463249 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.custom-shape-divider-bottom-1706463249 svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 323px;
+}
+
+.custom-shape-divider-bottom-1706463249 .shape-fill {
+  fill: #3600b247;
+}
 .waves {
   position: absolute;
   bottom: 0;

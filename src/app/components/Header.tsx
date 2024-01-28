@@ -51,7 +51,7 @@ const Header: React.FC = () => {
             {session.data?.user?.email ? (
               <>
                 <Link
-                  href={'/community'}
+                  href={'/community/components'}
                   className="text-sm font-medium hover:text-white flex items-center"
                 >
                   Components

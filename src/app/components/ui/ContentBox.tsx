@@ -23,7 +23,7 @@ const ContentBox: React.FC<ContentBoxProps> = () => {
   }, [currentContent])
 
   return (
-    <div className="flex relative flex-col min-h-[85svh] z-1000 w-full justify-between ">
+    <div className="flex relative flex-col min-h-[85svh] z-1000 w-full justify-between mb-8">
       <div className="flex gap-10">
         <LeftSideBar />
 
