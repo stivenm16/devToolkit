@@ -5,6 +5,41 @@
 body {
   @apply bg-indigo-800;
 }
+.waves {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.waves svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 323px;
+}
+
+.waves .shape-fill {
+  fill: #3600b247;
+}
+
+.waves-opacity {
+  transform: rotate(180deg);
+}
+
+.waves-opacity svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 273px;
+}
+
+.waves-opacity .shape-fill {
+  /* fill: #8d09e0; */
+  fill: #6d09e0;
+}
 
 @keyframes fadeIn {
   from {
