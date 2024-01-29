@@ -1,6 +1,6 @@
 'use client'
 import { useClipboard } from '@/app/hooks'
-import React, { useState } from 'react'
+import React from 'react'
 
 import { LiveEditor, LiveError, LivePreview, LiveProvider } from 'react-live'
 import ts, { transpile } from 'typescript'
@@ -18,16 +18,6 @@ const CodeBlock = ({ code, inLine }: Props) => {
     CustomSVG,
     Button,
   }
-
-  const [codePrueba, setCode] = useState(`interface IProps {
-  name: string
-}
-const Test = ({ name = 'World'}: IProps) => {
-  return <div>Hello {name}</div>
-}
-
- render(<Test/>)
-    `)
 
   const transformCode = (snippet: string, target: ts.ScriptTarget) =>
     transpile(snippet, {
@@ -50,7 +40,6 @@ const Test = ({ name = 'World'}: IProps) => {
       <LiveProvider
         code={codeUpdated}
         language="tsx"
-        // code={codePrueba}
         scope={scope}
         noInline={inLine}
         transformCode={(code) => transformCode(code, ts.ScriptTarget.ES2015)}

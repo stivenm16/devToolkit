@@ -29,8 +29,7 @@ export const dataStructure: DataProps = {
       title: 'Skeleton',
       description:
         'Create a loading skeleton to give users a visual indication that content is being loaded. The Skeleton component is perfect for improving user experience during asynchronous data fetching.',
-      code: `
-    const Skeleton = () => {
+      code: `const Skeleton = () => {
           return (
             <>
               <div role="status" className="space-y-2.5 animate-pulse max-w-lg">
@@ -47,27 +46,25 @@ export const dataStructure: DataProps = {
               </div>
             </>
           )}
-    render(<Skeleton />);
+render(<Skeleton />);
           `,
     },
     {
       title: 'Spinner',
       description: `Add a spinning loading indicator to your application with the Spinner component. It's a simple and effective way to communicate background processes to users.`,
-      code: `
-    const Spinner = () => {
+      code: `const Spinner = () => {
           return (
             <div className="flex items-center justify-center">
               <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-indigo-700"/>
             </div>
           )}
-    render(<Spinner />);
+render(<Spinner />);
     `,
     },
     {
       title: 'Card',
       description: `Design elegant and responsive cards for displaying various types of content. The Card component provides a structured layout with customizable sections for images, text, and actions.`,
-      code: `
-    const Card = () => {
+      code: `const Card = () => {
         return (
           <div className="w-72 rounded-xl px-6 overflow-hidden shadow-xl bg-indigo-800 mx-auto">
             <div className="flex justify-center px-auto my-5">
@@ -105,14 +102,13 @@ export const dataStructure: DataProps = {
               </div>
             </div>
         )}
-    render(<Card />);
+render(<Card />);
         `,
     },
     {
       title: 'Form',
       description: `Build stylish and accessible forms with the Form component. It includes pre-styled input fields and buttons, making it easy to create visually appealing login or registration forms.`,
-      code: `
-    const Form = () => {
+      code: `const Form = () => {
           return (
             <div className="bg-indigo-800 p-8 rounded-xl shadow-xl h-fit w-3/4 md:w-full  relative">
               <form className="space-y-4 z-10">
@@ -148,27 +144,48 @@ export const dataStructure: DataProps = {
               </form>
           </div>
           )}
-    render(<Form />);
+render(<Form />);
         `,
     },
     {
       title: 'Button',
       description: `Create eye-catching buttons with the Button component. It's fully customizable and comes with built-in hover effects, making it easy to enhance user interactions.`,
-      code: `
-    const CustomButton = () => {
-        return (
-          <button className={'text-sm font-bold text-white flex items-center bg-indigo-600 hover:bg-indigo-700 py-2 px-4 rounded transition duration-300 ease-in-out'}>
-              Press me
-          </button>
-        )}
-    render(<CustomButton />);
+      code: `interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  onClick?: () => void
+  label?: string
+  children?: React.ReactNode
+  customStyles?: string
+}
+
+const CustomButton: React.FC<ButtonProps> = ({
+  onClick,
+  label,
+  children,
+  ...props
+}) => {
+  return (
+    <button
+      className={" text-sm font-bold text-white flex items-center justify-center bg-indigo-600 hover:bg-indigo-700  py-2 px-4 rounded transition duration-300 ease-in-out"}
+      onClick={onClick}
+      {...props}
+    >
+      {children ?? label}
+    </button>
+  )
+}
+render(<CustomButton onCLick={() => console.log("click")} label={"Press me"}}/>);
     `,
     },
     {
       title: 'Input',
       description: `Create eye-catching Inputs with the Input component. It's fully customizable and comes with built-in hover effects, making it easy to enhance user interactions.`,
-      code: `
-    const Input = ({ value, onChange, maxDigits }) => {
+      code: `interface InputProps {
+  value: string:
+  onChange: (value: string) => void
+  maxDigits: number
+}
+
+    const Input = ({ value, onChange, maxDigits }:InputProps) => {
       return (
         <div className="max-w-md mx-auto bg-indigo-800 p-6 rounded-md shadow-md">
            <input
@@ -182,54 +199,58 @@ export const dataStructure: DataProps = {
         </div>
       );
     };
-    render(<Input/>)
+render(<Input/>)
           `,
       children: [
         {
           title: 'InputNumber',
           description: ``,
-          code: `
-    const NumberInput = ({ value, onChange, maxDigits }) => {
-      return (
-        <div className="max-w-md mx-auto bg-indigo-800 p-6 rounded-md shadow-md">
-          <input
-            type="text"
-            id="customNumberInput"
-            className="border rounded-md px-3 py-2 w-full focus:outline-none focus:ring focus:border-blue-300"
-            placeholder="Type a number"
-            value={value}
-            maxLength={maxDigits}
-            onChange={(e) => {
-            e.preventDefault()
-            const inputValue = e.target.value
-            const parsedValue = parseFloat(inputValue)
-            if (inputValue === '' || !isNaN(parsedValue)) {
-              onChange(inputValue === '' ? 0 : parsedValue)
-            }
-          }}
-          />
-          <p className="text-red-500 text-sm mt-2"></p>
-        </div>
-      );
-    };
-    const Wrapper = () => {
-      const [numberValue, setNumberValue] = React.useState('');
-      return (
-        <div className=" flex items-center justify-center">
-          <NumberInput value={numberValue} onChange={setNumberValue} maxDigits={5} />
-        </div>
-      );
-    };
-    render(<Wrapper/>);
-    `,
+          code: `interface InputProps {
+  value: string:
+  onChange: (value: string) => void
+  maxDigits: number
+}
+
+const NumberInput = ({ value, onChange, maxDigits }:InputProps) => {
+  return (
+    <div className="max-w-md mx-auto bg-indigo-800 p-6 rounded-md shadow-md">
+      <input
+        type="text"
+        id="customNumberInput"
+        className="border rounded-md px-3 py-2 w-full focus:outline-none focus:ring focus:border-blue-300"
+        placeholder="Type a number"
+        value={value}
+        maxLength={maxDigits}
+        onChange={(e) => {
+        e.preventDefault()
+        const inputValue = e.target.value
+        const parsedValue = parseFloat(inputValue)
+        if (inputValue === '' || !isNaN(parsedValue)) {
+          onChange(inputValue === '' ? 0 : parsedValue)
+        }
+      }}
+      />
+      <p className="text-red-500 text-sm mt-2"></p>
+    </div>
+  );
+};
+const Wrapper = () => {
+  const [numberValue, setNumberValue] = React.useState('');
+  return (
+    <div className=" flex items-center justify-center">
+      <NumberInput value={numberValue} onChange={setNumberValue} maxDigits={5} />
+    </div>
+  );
+};
+render(<Wrapper/>);
+`,
         },
       ],
     },
     {
       title: 'Header',
       description: `Design a sleek and responsive header for your website or application. The Header component includes navigation links and a logo, providing a clean and organized layout.`,
-      code: `
-    const Header = () => {
+      code: `const Header = () => {
         return (
           <div className=" md:block bg-indigo-700 rounded-full text-center py-1 mx-auto my-3 w-3/4 md:w-fit px-5 shadow-xl">
           <div className="container mx-auto py-2">
@@ -263,7 +284,7 @@ export const dataStructure: DataProps = {
           </div>
         </div>
       )}
-    render(<Header />);
+render(<Header />);
         `,
     },
   ],
@@ -272,14 +293,23 @@ export const dataStructure: DataProps = {
       title: 'Select',
       description: `This versatile dropdown offers a clean design using Tailwind CSS. Enhance your project with an accessible and customizable option selection experience.
     `,
-      code: `
+      code: `interface Option {
+  value: string
+  label: string
+}
 
-    const CustomSelect = ({
+interface CustomSelectProps {
+  options: Option[]
+  selectedOption: Option
+  onChange: (option: Option) => void
+}
+
+const CustomSelect = ({
       options,
       selectedOption,
       onChange,
         }) => {
-          const [isOpen, setIsOpen] = React.useState(false)
+          const [isOpen, setIsOpen] = React.useState<boolean>(false)
           const selectRef = React.useRef(null)
 
           const handleOptionClick = (option) => {
@@ -365,7 +395,7 @@ export const dataStructure: DataProps = {
         }
 
     const Wrapper = () => {
-      const options = [
+      const options: Option[] = [
         { value: 'option1', label: 'Option 1' },
         { value: 'option2', label: 'Option 2' },
         { value: 'option3', label: 'Option 3' },
@@ -380,16 +410,20 @@ export const dataStructure: DataProps = {
       );
     };
 
-    render(<Wrapper />);
+render(<Wrapper />);
     `,
     },
     {
       title: 'Modal',
       description:
         'Create a loading skeleton to give users a visual indication that content is being loaded. The Skeleton component is perfect for improving user experience during asynchronous data fetching.',
-      code: `
+      code: `interface ModalProps {
+  isOpen: boolean
+  onClose: () => void
+  children: React.ReactNode
+}
 
-      const Modal = ({ isOpen, onClose, children }) => {
+const Modal = ({ isOpen, onClose, children }:ModalProps) => {
       if (!isOpen) return null;
 
       return (
@@ -456,7 +490,7 @@ export const dataStructure: DataProps = {
       );
     };
 
-    render(<Wrapper />);
+render(<Wrapper />);
     `,
     },
     {
@@ -507,7 +541,7 @@ const Alert = ({ title, content, onClose }: AlertProps) => {
       }
 
       const Wrapper = () => {
-      const [isVisible, setIsVisible] = React.useState(false);
+      const [isVisible, setIsVisible] = React.useState<boolean>(false);
 
       const openAlert = () => {
         setIsVisible(true);
@@ -528,7 +562,7 @@ const Alert = ({ title, content, onClose }: AlertProps) => {
       );
       };
 
-      render(<Wrapper/>);
+render(<Wrapper/>);
       `,
       children: [
         {
