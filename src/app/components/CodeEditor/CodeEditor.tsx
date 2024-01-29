@@ -2,10 +2,13 @@
 import { useClipboard } from '@/app/hooks'
 import React from 'react'
 
+import { yupResolver } from '@hookform/resolvers/yup'
+import { useForm } from 'react-hook-form'
 import { LiveEditor, LiveError, LivePreview, LiveProvider } from 'react-live'
 import ts, { transpile } from 'typescript'
+import * as yup from 'yup'
 import { Alert, Button, CustomSVG, DotsCodeEditor } from '../ui'
-// import { warn } from 'console'
+
 interface Props {
   code: string
   inLine: boolean
@@ -17,6 +20,9 @@ const CodeBlock = ({ code, inLine }: Props) => {
     ...React,
     CustomSVG,
     Button,
+    yup,
+    yupResolver,
+    useForm,
   }
 
   const transformCode = (snippet: string, target: ts.ScriptTarget) =>
