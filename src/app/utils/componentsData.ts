@@ -323,10 +323,10 @@ render(<CustomButton onCLick={() => console.log("click")} label={"Press me"}}/>)
       code: `interface InputProps {
   value: string:
   onChange: (value: string) => void
-  maxDigits: number
+  maxDigits: number,
 }
 
-    const Input = ({ value, onChange, maxDigits }:InputProps) => {
+    const Input: React.FC<InputProps>  = ({ value, onChange, maxDigits, ...props }) => {
       return (
         <div className="max-w-md mx-auto bg-indigo-800 p-6 rounded-md shadow-md">
            <input
@@ -335,6 +335,7 @@ render(<CustomButton onCLick={() => console.log("click")} label={"Press me"}}/>)
             placeholder="Type something"
             value={value}
             maxLength={maxDigits}
+            {...props}
           />
           <p className="text-red-500 text-sm mt-2"></p>
         </div>
@@ -352,7 +353,8 @@ render(<Input/>)
   maxDigits: number
 }
 
-const NumberInput = ({ value, onChange, maxDigits }:InputProps) => {
+
+const NumberInput:  React.FC<InputProps> = ({ value, onChange, maxDigits, ...props }:InputProps) => {
   return (
     <div className="max-w-md mx-auto bg-indigo-800 p-6 rounded-md shadow-md">
       <input
@@ -370,6 +372,7 @@ const NumberInput = ({ value, onChange, maxDigits }:InputProps) => {
           onChange(inputValue === '' ? 0 : parsedValue)
         }
       }}
+      {...props}
       />
       <p className="text-red-500 text-sm mt-2"></p>
     </div>
