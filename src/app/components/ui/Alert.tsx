@@ -1,7 +1,13 @@
 'use client'
 import { useState } from 'react'
 
-const Alert = ({ title, content, onClose }: any) => {
+interface AlertProps {
+  title?: string
+  content: string
+  onClose?: () => void
+}
+
+const Alert = ({ title, content, onClose }: AlertProps) => {
   const [visible, setVisible] = useState(true)
 
   const handleClose = () => {
