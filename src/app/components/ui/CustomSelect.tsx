@@ -18,6 +18,7 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
   options,
   selectedOption,
   onChange,
+  ...props
 }) => {
   const [isOpen, setIsOpen] = useState(false)
   const selectRef = useRef<HTMLDivElement>(null)
@@ -55,7 +56,7 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
     <div ref={selectRef} className="relative inline-block text-left">
       <div>
         <Button onClick={toggleDropdown}>
-          <>
+          <div className="flex w-20">
             <span className="text-md font-medium text-white mr-3">
               {selectedOption.label}
             </span>
@@ -81,7 +82,7 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
                 ></path>{' '}
               </g>
             </svg>
-          </>
+          </div>
         </Button>
       </div>
 

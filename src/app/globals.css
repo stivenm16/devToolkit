@@ -6,6 +6,11 @@ body {
   @apply bg-indigo-800;
 }
 
+input:hover,
+input:focus {
+  outline: none;
+}
+
 .waves svg {
   width: calc(100% + 1.3px);
 }
