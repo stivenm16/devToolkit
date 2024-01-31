@@ -1,5 +1,6 @@
 import { useContext } from 'react'
-import { ContentContext } from '../community/components/redux/ContentContex'
+
+import { ContentContext } from '../community/components/redux/ContentContext'
 import { dataStructure } from '../utils/componentsData'
 
 const usePagination = () => {

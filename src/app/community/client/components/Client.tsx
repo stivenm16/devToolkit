@@ -1,12 +1,14 @@
 'use client'
 import { Button, CustomSelect } from '@/app/components/ui'
 import React, { ChangeEvent, useState } from 'react'
-import Headers from './components/Headers'
+import apiClient from '../services/apiClient'
+import { Header } from '../types/ClientTypes'
+import Headers from './Headers'
 
 interface RequestDetails {
   method: string
   url: string
-  headers: Record<string, string>
+  headers: Header[]
   body: string
 }
 
@@ -19,7 +21,7 @@ const Client: React.FC = () => {
   const [requestDetails, setRequestDetails] = useState<RequestDetails>({
     method: 'GET',
     url: '',
-    headers: {},
+    headers: [{ key: '', value: '' }],
     body: '',
   })
 
@@ -32,21 +34,20 @@ const Client: React.FC = () => {
     setRequestDetails((prevDetails) => ({ ...prevDetails, [name]: value }))
   }
 
-  const handleHeaderChange = (key: string, value: string) => {
-    setRequestDetails((prevDetails) => ({
+  const handleHeaderChange = (headers: Headers[]) => {
+    setRequestDetails((prevDetails: any) => ({
       ...prevDetails,
-      headers: { ...prevDetails.headers, [key]: value },
+      headers: headers,
     }))
   }
   const handleSendRequest = async () => {
     try {
-      //   const res = await axios({
-      //     method: requestDetails.method,
-      //     url: requestDetails.url,
-      //     headers: requestDetails.headers,
-      //     data: requestDetails.body,
-      //   })
-      const res = { data: 'Response data' }
+      const headersToLog =
+        requestDetails.headers.length > 1
+          ? requestDetails.headers.slice(0, requestDetails.headers.length - 1)
+          : null
+      const res = await apiClient({ ...requestDetails, headers: headersToLog! })
+      // const res = { data: 'Response data' }
 
       setResponse(res)
     } catch (error: any) {
@@ -60,6 +61,7 @@ const Client: React.FC = () => {
     { value: 'DELETE', label: 'DELETE' },
   ]
 
+  // useEffect(() => {}, [requestDetails])
   const [selectedOption, setSelectedOption] = React.useState(options[0])
 
   return (
@@ -97,11 +99,10 @@ const Client: React.FC = () => {
         />
       </div> */}
       <label>Headers</label>
-      <Headers />
-      {/* <div className="mb-4">
-        <label className="block text-sm font-medium">Headers</label>
-        <div className="flex flex-col space-y-2"></div>
-      </div> */}
+      <Headers
+        headers={requestDetails.headers!}
+        setHeaders={handleHeaderChange}
+      />
       <Button onClick={handleSendRequest}>Send Request</Button>
 
       {response !== null && (

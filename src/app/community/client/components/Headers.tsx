@@ -1,13 +1,12 @@
-import React, { useEffect, useState } from 'react'
-
-interface Header {
-  key: string
-  value: string
+import React from 'react'
+import { Header } from '../types/ClientTypes'
+// import { defaultContent } from '../redux/ContentContex'
+interface HeadersProps {
+  headers: Header[]
+  setHeaders: any
 }
 
-const Headers: React.FC = () => {
-  const [headers, setHeaders] = useState<Header[]>([{ key: '', value: '' }])
-
+const Headers: React.FC<HeadersProps> = ({ headers, setHeaders }) => {
   const handleHeaderChange = (
     value: string,
     type: 'key' | 'value',
@@ -34,12 +33,6 @@ const Headers: React.FC = () => {
       setHeaders([...headerToSet, { key: '', value: '' }])
     }
   }
-
-  useEffect(() => {
-    const headersToLog =
-      headers.length > 1 ? headers.slice(0, headers.length - 1) : null
-    // console.log('headers', headersToLog)
-  }, [headers])
 
   return (
     <div className="my-2">
