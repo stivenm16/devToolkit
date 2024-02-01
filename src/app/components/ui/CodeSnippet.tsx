@@ -1,17 +1,20 @@
 'use client'
+import { useClipboard } from '@/app/hooks'
 import { FC, useEffect, useRef, useState } from 'react'
 import SyntaxHighlighter from 'react-syntax-highlighter'
 import { shadesOfPurple } from 'react-syntax-highlighter/dist/esm/styles/hljs'
-import { DotsCodeEditor } from '.'
+import { Button, DotsCodeEditor } from '.'
 
 interface Props {
   codeSnippet: string
+  wCodeSnippet?: string | number
   children?: React.ReactNode
 }
 
-const CodeSnippet: FC<Props> = ({ codeSnippet, children }) => {
+const CodeSnippet: FC<Props> = ({ codeSnippet, children, ...props }) => {
   const [isVisible, setIsVisible] = useState(false)
   const CodeSnippetRef = useRef<HTMLDivElement>(null)
+  const { copyToClipboard } = useClipboard(codeSnippet)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -41,14 +44,19 @@ const CodeSnippet: FC<Props> = ({ codeSnippet, children }) => {
   return (
     <div
       ref={CodeSnippetRef}
-      className={`flex transition-opacity ease-in-out duration-500 ${
+      className={`flex transition-opacity ease-in-out relative duration-500 ${
         isVisible ? 'opacity-100' : 'opacity-0'
       }`}
     >
+      <Button
+        customStyles="h-fit absolute right-6  top-20"
+        label="Copy"
+        onClick={copyToClipboard}
+      />
       {children}
 
       <div
-        className={`hidden md:flex md:flex-col h-fit w-max bg-[#4c4a6f] rounded-2xl shadow-2xl my-6`}
+        className={`hidden md:flex md:flex-col h-fit  bg-[#4c4a6f] rounded-2xl shadow-2xl `}
       >
         <>
           <DotsCodeEditor />
@@ -56,12 +64,13 @@ const CodeSnippet: FC<Props> = ({ codeSnippet, children }) => {
             language="typescript"
             style={shadesOfPurple}
             customStyle={{
-              width: 700,
               borderRadius: 10,
               padding: 30,
+              paddingTop: 70,
               boxShadow:
                 '0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)',
               marginBottom: 10,
+              width: props.wCodeSnippet || '100%',
             }}
           >
             {codeSnippet}

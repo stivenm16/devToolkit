@@ -1,12 +1,6 @@
 import { Layout } from '@/app/components'
-import { ContentProvider } from './redux/ContentContex'
 import { ContentBox } from '@/app/components/ui'
-
-interface Props {
-  title: string
-  code: string
-  description: string
-}
+import { ContentProvider } from './redux/ContentContext'
 
 const page = () => {
   return (
