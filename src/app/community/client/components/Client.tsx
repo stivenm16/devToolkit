@@ -6,6 +6,11 @@ import apiClient from '../services/apiClient'
 import { Option, RequestDetails } from '../types/ClientTypes'
 import Headers from './Headers'
 
+const tabOptions: Option[] = [
+  { value: 'Response', label: 'Response' },
+  { value: 'TS', label: 'TS' },
+]
+
 const Client: React.FC = () => {
   const [requestDetails, setRequestDetails] = useState<RequestDetails>({
     method: 'GET',
@@ -14,6 +19,7 @@ const Client: React.FC = () => {
     body: '',
   })
 
+  const [selectTab, setSelectTab] = React.useState(tabOptions[0])
   const [response, setResponse] = useState<any>(null)
   const [interfaceParsed, setInterfaceParsed] = useState('')
   const handleInputChange = (
@@ -83,24 +89,28 @@ const Client: React.FC = () => {
         setHeaders={handleHeaderChange}
       />
       <Button onClick={handleSendRequest}>Send Request</Button>
-
-      {response !== null && (
-        <div className="mt-4 bg-indigo-500 p-5 rounded-md flex gap-5">
-          <div className="flex flex-col  flex-wrap">
-            <h3 className="text-lg font-semibold mb-2">Response:</h3>
-
-            <CodeSnippet
-              codeSnippet={JSON.stringify(response, null, 2)}
-              wCodeSnippet={550}
-            />
-          </div>
-          <div className="flex flex-col relative">
-            <h3 className="text-lg font-semibold mb-2">Response:</h3>
-
-            <CodeSnippet codeSnippet={interfaceParsed} wCodeSnippet={500} />
-          </div>
-        </div>
-      )}
+      <div className="mt-4 bg-indigo-800 p-5 min-h-96 rounded-md flex">
+        <CustomSelect
+          options={tabOptions}
+          onChange={setSelectTab}
+          selectedOption={selectTab}
+          customStyles="w-24"
+        />
+        {response !== null && (
+          <>
+            <div className="flex flex-col  flex-wrap mx-auto">
+              {selectTab.value === 'Response' ? (
+                <CodeSnippet
+                  codeSnippet={JSON.stringify(response, null, 2)}
+                  wCodeSnippet={800}
+                />
+              ) : (
+                <CodeSnippet codeSnippet={interfaceParsed} wCodeSnippet={800} />
+              )}
+            </div>
+          </>
+        )}
+      </div>
     </div>
   )
 }

@@ -56,7 +56,7 @@ const CodeSnippet: FC<Props> = ({ codeSnippet, children, ...props }) => {
       {children}
 
       <div
-        className={`hidden md:flex md:flex-col h-fit  bg-[#4c4a6f] rounded-2xl shadow-2xl my-6 `}
+        className={`hidden md:flex md:flex-col h-fit  bg-[#4c4a6f] rounded-2xl shadow-2xl `}
       >
         <>
           <DotsCodeEditor />

@@ -12,12 +12,14 @@ interface CustomSelectProps {
   options: Option[]
   selectedOption: Option
   onChange: (option: Option) => void
+  customStyles?: string
 }
 
 const CustomSelect: React.FC<CustomSelectProps> = ({
   options,
   selectedOption,
   onChange,
+  customStyles,
   ...props
 }) => {
   const [isOpen, setIsOpen] = useState(false)
@@ -56,7 +58,7 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
     <div ref={selectRef} className="relative inline-block text-left">
       <div>
         <Button onClick={toggleDropdown}>
-          <div className="flex w-20">
+          <div className={`flex ${customStyles ?? ''} justify-between`}>
             <span className="text-md font-medium text-white mr-3">
               {selectedOption.label}
             </span>
