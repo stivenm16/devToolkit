@@ -1,7 +1,7 @@
-import { RequestType } from '../types/ClientTypes'
+import { RequestDetails } from '../types/ClientTypes'
 
-const apiClient = (requestDetails: RequestType) => {
-  let requestOptions: RequestType = {
+const apiClient = async (requestDetails: RequestDetails) => {
+  let requestOptions: RequestDetails = {
     method: requestDetails.method,
     headers: {},
   }
@@ -17,14 +17,13 @@ const apiClient = (requestDetails: RequestType) => {
     }
   }
 
-  return fetch(requestDetails.url!, requestOptions)
-    .then((response) => response.json())
-    .then((data) => {
-      return data
-    })
-    .catch((error) => {
-      console.error('Error:', error)
-    })
+  try {
+    const response = await fetch(requestDetails.url!, requestOptions)
+    const data = await response.json()
+    return data
+  } catch (error) {
+    console.error('Error:', error)
+  }
 }
 
 export default apiClient

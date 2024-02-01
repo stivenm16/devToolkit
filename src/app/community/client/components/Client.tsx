@@ -1,21 +1,10 @@
 'use client'
-import { Button, CustomSelect } from '@/app/components/ui'
+import { Button, CodeSnippet, CustomSelect } from '@/app/components/ui'
+import { json2ts } from 'json-ts'
 import React, { ChangeEvent, useState } from 'react'
 import apiClient from '../services/apiClient'
-import { Header } from '../types/ClientTypes'
+import { Option, RequestDetails } from '../types/ClientTypes'
 import Headers from './Headers'
-
-interface RequestDetails {
-  method: string
-  url: string
-  headers: Header[]
-  body: string
-}
-
-interface Option {
-  value: string
-  label: string
-}
 
 const Client: React.FC = () => {
   const [requestDetails, setRequestDetails] = useState<RequestDetails>({
@@ -25,8 +14,8 @@ const Client: React.FC = () => {
     body: '',
   })
 
-  const [response, setResponse] = useState<any>(null) // Replace 'any' with the expected response type
-
+  const [response, setResponse] = useState<any>(null)
+  const [interfaceParsed, setInterfaceParsed] = useState('')
   const handleInputChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
@@ -47,11 +36,13 @@ const Client: React.FC = () => {
           ? requestDetails.headers.slice(0, requestDetails.headers.length - 1)
           : null
       const res = await apiClient({ ...requestDetails, headers: headersToLog! })
-      // const res = { data: 'Response data' }
 
+      const getTypes = json2ts(JSON.stringify(res))
+
+      setInterfaceParsed(getTypes)
       setResponse(res)
     } catch (error: any) {
-      setResponse(error.response?.data || 'An error occurred')
+      setResponse(error?.response?.data || 'An error occurred')
     }
   }
 
@@ -60,8 +51,6 @@ const Client: React.FC = () => {
     { value: 'POST', label: 'POST' },
     { value: 'DELETE', label: 'DELETE' },
   ]
-
-  // useEffect(() => {}, [requestDetails])
   const [selectedOption, setSelectedOption] = React.useState(options[0])
 
   return (
@@ -88,16 +77,6 @@ const Client: React.FC = () => {
           />
         </div>
       </div>
-
-      {/* <div className="mb-4">
-        <label className="block text-sm font-medium">Headers</label>
-        <textarea
-          name="headers"
-          value={JSON.stringify(requestDetails.headers, null, 2)}
-          onChange={handleInputChange}
-          className="mt-1 p-2 border border-gray-300 rounded-md w-full bg-indigo-700 text-white"
-        />
-      </div> */}
       <label>Headers</label>
       <Headers
         headers={requestDetails.headers!}
@@ -106,11 +85,20 @@ const Client: React.FC = () => {
       <Button onClick={handleSendRequest}>Send Request</Button>
 
       {response !== null && (
-        <div className="mt-4">
-          <h3 className="text-lg font-semibold mb-2">Response:</h3>
-          <pre className="p-2 bg-gray-200 rounded-md text-black">
-            {JSON.stringify(response, null, 2)}
-          </pre>
+        <div className="mt-4 bg-indigo-500 p-5 rounded-md flex gap-5">
+          <div className="flex flex-col  flex-wrap">
+            <h3 className="text-lg font-semibold mb-2">Response:</h3>
+
+            <CodeSnippet
+              codeSnippet={JSON.stringify(response, null, 2)}
+              wCodeSnippet={550}
+            />
+          </div>
+          <div className="flex flex-col relative">
+            <h3 className="text-lg font-semibold mb-2">Response:</h3>
+
+            <CodeSnippet codeSnippet={interfaceParsed} wCodeSnippet={500} />
+          </div>
         </div>
       )}
     </div>
