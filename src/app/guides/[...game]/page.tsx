@@ -1,14 +1,14 @@
 'use client'
 import { Layout } from '@/app/components'
 import { CodeSnippet, Explanation } from '@/app/components/ui'
-import { getCodeSnippets } from '@/app/services/sudoku.service'
+import { Game, getCodeSnippets } from '@/app/services/sudoku.service'
 import { useEffect, useState } from 'react'
 
 const Guide = ({ params }: { params: { game: string } }) => {
   const [data, setData] = useState<any[][]>([[]])
 
   const getData = async () => {
-    const data = await getCodeSnippets('sudoku')
+    const data = await getCodeSnippets(params.game[0] as Game)
     setData(data)
   }
 
@@ -27,10 +27,9 @@ const Guide = ({ params }: { params: { game: string } }) => {
           data.map((item: any, indexRow: number) => {
             return item.map((item: any, indexCol: number) => {
               return (
-                <div key={indexCol}>
-                  <CodeSnippet codeSnippet={item.code}>
-                    <Explanation />
-                  </CodeSnippet>
+                <div key={indexCol} className="flex my-5">
+                  <Explanation />
+                  <CodeSnippet codeSnippet={item.code} wCodeSnippet={700} />
                 </div>
               )
             })

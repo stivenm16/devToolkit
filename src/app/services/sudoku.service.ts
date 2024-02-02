@@ -1,4 +1,4 @@
-type Game = 'sudoku' | 'mineSweeper'
+export type Game = 'sudoku' | 'mineSweeper'
 export const getCodeSnippets = async (game: Game) => {
   try {
     const response = await fetch(

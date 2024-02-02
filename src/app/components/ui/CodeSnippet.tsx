@@ -48,34 +48,28 @@ const CodeSnippet: FC<Props> = ({ codeSnippet, children, ...props }) => {
         isVisible ? 'opacity-100' : 'opacity-0'
       }`}
     >
-      <Button
-        customStyles="h-fit absolute right-6  top-20"
-        label="Copy"
-        onClick={copyToClipboard}
-      />
-      {children}
-
       <div
-        className={`hidden md:flex md:flex-col h-fit  bg-[#4c4a6f] rounded-2xl shadow-2xl `}
+        className={`hidden md:flex relative md:flex-col h-fit  bg-[#2D2B57] rounded-2xl shadow-2xl `}
       >
-        <>
-          <DotsCodeEditor />
-          <SyntaxHighlighter
-            language="typescript"
-            style={shadesOfPurple}
-            customStyle={{
-              borderRadius: 10,
-              padding: 30,
-              paddingTop: 70,
-              boxShadow:
-                '0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)',
-              marginBottom: 10,
-              width: props.wCodeSnippet || '100%',
-            }}
-          >
-            {codeSnippet}
-          </SyntaxHighlighter>
-        </>
+        <Button
+          customStyles="h-fit absolute right-6  top-5"
+          label="Copy"
+          onClick={copyToClipboard}
+        />
+        <DotsCodeEditor />
+        <SyntaxHighlighter
+          language="typescript"
+          style={shadesOfPurple}
+          customStyle={{
+            borderRadius: 10,
+            padding: 30,
+            paddingTop: 40,
+            marginBottom: 10,
+            width: props.wCodeSnippet || '100%',
+          }}
+        >
+          {codeSnippet}
+        </SyntaxHighlighter>
       </div>
     </div>
   )
