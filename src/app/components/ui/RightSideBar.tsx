@@ -1,4 +1,4 @@
-import { ContentContext } from '@/app/community/components/redux/ContentContext'
+import { ContentContext } from '@/app/community/components/context/ContentContext'
 import { ComponentsProps } from '@/app/types/global'
 import { useContext } from 'react'
 import { dataStructure } from '../../utils/componentsData'

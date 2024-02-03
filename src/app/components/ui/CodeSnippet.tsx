@@ -7,7 +7,7 @@ import { Button, DotsCodeEditor } from '.'
 
 interface Props {
   codeSnippet: string
-  wCodeSnippet?: string | number
+
   children?: React.ReactNode
 }
 
@@ -44,33 +44,28 @@ const CodeSnippet: FC<Props> = ({ codeSnippet, children, ...props }) => {
   return (
     <div
       ref={CodeSnippetRef}
-      className={`flex transition-opacity ease-in-out relative duration-500 ${
+      className={`flex relative md:flex-col h-fit  bg-[#2D2B57] rounded-2xl shadow-2xl min-w-full transition-opacity ease-in-out duration-500 ${
         isVisible ? 'opacity-100' : 'opacity-0'
       }`}
     >
-      <div
-        className={`hidden md:flex relative md:flex-col h-fit  bg-[#2D2B57] rounded-2xl shadow-2xl `}
+      <Button
+        customStyles="h-fit absolute right-6  top-5"
+        label="Copy"
+        onClick={copyToClipboard}
+      />
+      <DotsCodeEditor />
+      <SyntaxHighlighter
+        language="typescript"
+        style={shadesOfPurple}
+        customStyle={{
+          borderRadius: 10,
+          padding: 30,
+          paddingTop: 40,
+          marginBottom: 10,
+        }}
       >
-        <Button
-          customStyles="h-fit absolute right-6  top-5"
-          label="Copy"
-          onClick={copyToClipboard}
-        />
-        <DotsCodeEditor />
-        <SyntaxHighlighter
-          language="typescript"
-          style={shadesOfPurple}
-          customStyle={{
-            borderRadius: 10,
-            padding: 30,
-            paddingTop: 40,
-            marginBottom: 10,
-            width: props.wCodeSnippet || '100%',
-          }}
-        >
-          {codeSnippet}
-        </SyntaxHighlighter>
-      </div>
+        {codeSnippet}
+      </SyntaxHighlighter>
     </div>
   )
 }

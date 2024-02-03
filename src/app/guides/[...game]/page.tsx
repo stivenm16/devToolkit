@@ -22,14 +22,18 @@ const Guide = ({ params }: { params: { game: string } }) => {
         {params.game[0].charAt(0).toUpperCase() + params.game[0].slice(1)} Game
         Documentation
       </h1>
-      <div className="mx-6 ">
+      <div className="mx-6">
         {data &&
           data.map((item: any, indexRow: number) => {
             return item.map((item: any, indexCol: number) => {
               return (
-                <div key={indexCol} className="flex my-5">
-                  <Explanation />
-                  <CodeSnippet codeSnippet={item.code} wCodeSnippet={700} />
+                <div key={indexCol} className="flex my-8">
+                  <div className="w-1/2">
+                    <Explanation />
+                  </div>
+                  <div className="w-1/2">
+                    <CodeSnippet codeSnippet={item.code} />
+                  </div>
                 </div>
               )
             })

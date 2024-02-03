@@ -1,63 +1,64 @@
 'use client'
 import { Button, CodeSnippet, CustomSelect } from '@/app/components/ui'
 import { json2ts } from 'json-ts'
-import React, { ChangeEvent, useState } from 'react'
+import React, { ChangeEvent, useContext, useState } from 'react'
+import { ClientContext } from '../context/RequestContext'
 import apiClient from '../services/apiClient'
-import { Option, RequestDetails } from '../types/ClientTypes'
-import Headers from './Headers'
+import { Option } from '../types/ClientTypes'
+import Tabs from './configTabs/Tabs'
 
 const tabOptions: Option[] = [
   { value: 'Response', label: 'Response' },
   { value: 'TS', label: 'TS' },
 ]
 
-const Client: React.FC = () => {
-  const [requestDetails, setRequestDetails] = useState<RequestDetails>({
-    method: 'GET',
-    url: '',
-    headers: [{ key: '', value: '' }],
-    body: '',
-  })
+enum METHOD {
+  GET = 'GET',
+  POST = 'POST',
+  DELETE = 'DELETE',
+}
 
+const Client: React.FC = () => {
+  const options: Option[] = [
+    { value: METHOD.GET, label: METHOD.GET },
+    { value: METHOD.POST, label: METHOD.POST },
+    { value: METHOD.DELETE, label: METHOD.DELETE },
+  ]
+  const { configApiCall, changeContent } = useContext(ClientContext)
+
+  const [selectedOption, setSelectedOption] = React.useState(options[0])
   const [selectTab, setSelectTab] = React.useState(tabOptions[0])
   const [response, setResponse] = useState<any>(null)
   const [interfaceParsed, setInterfaceParsed] = useState('')
   const handleInputChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
-    const { name, value } = e.target
-    setRequestDetails((prevDetails) => ({ ...prevDetails, [name]: value }))
+    const { value } = e.target
+    changeContent({ ...configApiCall, url: value })
   }
 
-  const handleHeaderChange = (headers: Headers[]) => {
-    setRequestDetails((prevDetails: any) => ({
-      ...prevDetails,
-      headers: headers,
-    }))
-  }
   const handleSendRequest = async () => {
     try {
       const headersToLog =
-        requestDetails.headers.length > 1
-          ? requestDetails.headers.slice(0, requestDetails.headers.length - 1)
+        configApiCall.headers.length > 1
+          ? configApiCall.headers.slice(0, configApiCall.headers.length - 1)
           : null
-      const res = await apiClient({ ...requestDetails, headers: headersToLog! })
 
-      const getTypes = json2ts(JSON.stringify(res))
+      const res = await apiClient({
+        ...configApiCall,
+        headers: headersToLog!,
+        method: selectedOption.value,
+      })
 
+      const json = JSON.stringify(res, null, 2)
+
+      const getTypes = json2ts(json)
       setInterfaceParsed(getTypes)
-      setResponse(res)
+      setResponse(json)
     } catch (error: any) {
       setResponse(error?.response?.data || 'An error occurred')
     }
   }
-
-  const options: Option[] = [
-    { value: 'GET', label: 'GET' },
-    { value: 'POST', label: 'POST' },
-    { value: 'DELETE', label: 'DELETE' },
-  ]
-  const [selectedOption, setSelectedOption] = React.useState(options[0])
 
   return (
     <div className="  bg-indigo-900 text-white p-12 w-5/6 ml-auto mt-10 rounded-tl-[5rem] shadow-2xl">
@@ -77,19 +78,17 @@ const Client: React.FC = () => {
             type="text"
             name="url"
             placeholder="https://api.example.com"
-            value={requestDetails.url}
+            value={configApiCall.url}
             onChange={handleInputChange}
             className="h-9 p-2 border-indigo-900 rounded-md w-full bg-indigo-700 text-white"
           />
         </div>
       </div>
-      <label>Headers</label>
-      <Headers
-        headers={requestDetails.headers!}
-        setHeaders={handleHeaderChange}
-      />
+
+      <Tabs />
+
       <Button onClick={handleSendRequest}>Send Request</Button>
-      <div className="mt-4 bg-indigo-800 p-5 min-h-96 rounded-md flex">
+      <div className="mt-4 bg-indigo-800 p-5 min-h-96 rounded-md flex gap-5">
         <CustomSelect
           options={tabOptions}
           onChange={setSelectTab}
@@ -98,14 +97,13 @@ const Client: React.FC = () => {
         />
         {response !== null && (
           <>
-            <div className="flex flex-col  flex-wrap mx-auto">
+            <div className="flex flex-col w-full flex-wrap mx-auto">
               {selectTab.value === 'Response' ? (
                 <CodeSnippet
-                  codeSnippet={JSON.stringify(response, null, 2)}
-                  wCodeSnippet={800}
+                  codeSnippet={JSON.stringify(JSON.parse(response), null, 2)}
                 />
               ) : (
-                <CodeSnippet codeSnippet={interfaceParsed} wCodeSnippet={800} />
+                <CodeSnippet codeSnippet={interfaceParsed} />
               )}
             </div>
           </>

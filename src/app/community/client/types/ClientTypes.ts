@@ -4,10 +4,11 @@ export interface Header {
 }
 
 export interface RequestDetails {
-  method: string
+  method?: string
   url?: string
   headers?: any
-  body?: string
+  body?: any
+  mode?: any
 }
 
 export interface Option {

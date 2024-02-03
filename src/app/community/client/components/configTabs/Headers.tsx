@@ -1,18 +1,15 @@
-import React from 'react'
-import { Header } from '../types/ClientTypes'
-// import { defaultContent } from '../redux/ContentContex'
-interface HeadersProps {
-  headers: Header[]
-  setHeaders: any
-}
+import React, { useContext } from 'react'
+import { ClientContext } from '../../context/RequestContext'
 
-const Headers: React.FC<HeadersProps> = ({ headers, setHeaders }) => {
+const Headers: React.FC = () => {
+  const { configApiCall, changeContent } = useContext(ClientContext)
+  const headers = configApiCall.headers
   const handleHeaderChange = (
     value: string,
     type: 'key' | 'value',
     index: number,
   ) => {
-    const newHeaders = headers.map((header, i) => {
+    const newHeaders = headers.map((header: any, i: any) => {
       if (index === i) {
         return { ...header, [type]: value }
       }
@@ -25,18 +22,24 @@ const Headers: React.FC<HeadersProps> = ({ headers, setHeaders }) => {
       activeHeader.key.trim() === '' && activeHeader.value.trim() === ''
 
     if (isLastRow && !isEmpty) {
-      setHeaders([...newHeaders, { key: '', value: '' }])
+      changeContent({
+        ...configApiCall,
+        headers: [...newHeaders, { key: '', value: '' }],
+      })
     } else {
       const headerToSet = newHeaders.filter(
-        (header) => header.key.trim() !== '' || header.value.trim() !== '',
+        (header: any) => header.key.trim() !== '' || header.value.trim() !== '',
       )
-      setHeaders([...headerToSet, { key: '', value: '' }])
+      changeContent({
+        ...configApiCall,
+        headers: [...headerToSet, { key: '', value: '' }],
+      })
     }
   }
 
   return (
     <div className="my-2">
-      {headers.map((header, index) => (
+      {headers.map((header: any, index: number) => (
         <div key={index} className="flex space-x-2 mb-2">
           <input
             type="text"
