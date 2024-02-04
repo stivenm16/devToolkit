@@ -1,6 +1,7 @@
 import { Header } from '@/app/components'
 import { LeftSideBar } from '@/app/components/ui'
 import Client from './components/Client'
+import { ClientProvider } from './context/RequestContext'
 
 const ClientPage = () => {
   return (
@@ -8,7 +9,9 @@ const ClientPage = () => {
       <Header />
       <div className="flex-grow flex">
         <LeftSideBar />
-        <Client />
+        <ClientProvider>
+          <Client />
+        </ClientProvider>
       </div>
     </div>
   )

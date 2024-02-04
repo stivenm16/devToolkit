@@ -3,7 +3,11 @@
 @tailwind utilities;
 
 body {
-  @apply bg-indigo-800;
+  @apply bg-indigo-950;
+}
+.json-editor {
+  --jse-background-color: rgb(196, 210, 255);
+  --jse-error-color: #df4352;
 }
 
 input:hover,

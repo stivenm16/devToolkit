@@ -12,10 +12,9 @@ import { Alert, Button, CustomSVG, DotsCodeEditor } from '../ui'
 interface Props {
   code: string
   inLine: boolean
-  // component?: any
 }
 
-const CodeBlock = ({ code, inLine }: Props) => {
+const CodeBlock = ({ code, inLine, ...props }: Props) => {
   const scope = {
     ...React,
     CustomSVG,

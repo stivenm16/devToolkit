@@ -9,7 +9,7 @@ const Guides = () => {
       </h1>
       <div className="flex flex-col md:flex-row justify-center md:mt-10 mx-5 md:mx-auto p-2 ">
         <CardDocs
-          path="/games/sudoku"
+          path="/guides/sudoku"
           text={`Unlock the secrets behind Sudoku, the quintessential challenge for
             developers seeking to refine their algorithmic prowess. Eager to
             enhance your programming skills? Explore our comprehensive coding
@@ -17,7 +17,7 @@ const Guides = () => {
             this captivating numerical enigma.`}
         />
         <CardDocs
-          path="/games/minesweeper"
+          path="/guides/minesweeper"
           text={`Dive into the world of Minesweeper, a coding playground where logic
             meets algorithms. Explore the intricacies of designing an efficient
             minefield solver, master the art of recursive algorithms, and

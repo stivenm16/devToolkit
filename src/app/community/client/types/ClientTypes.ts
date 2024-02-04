@@ -4,13 +4,20 @@ export interface Header {
 }
 
 export interface RequestDetails {
-  method: string
+  method?: string
   url?: string
   headers?: any
-  body?: string
+  body?: any
+  mode?: any
 }
 
 export interface Option {
   value: string
   label: string
+}
+
+export enum METHOD {
+  GET = 'GET',
+  POST = 'POST',
+  DELETE = 'DELETE',
 }
