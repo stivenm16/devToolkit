@@ -1,5 +1,5 @@
-import { Difficulty } from '@/app/types/global'
 import React from 'react'
+import { Difficulty } from '../types'
 
 interface OptionProps {
   options: string[] | number[]

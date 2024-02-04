@@ -1,6 +1,7 @@
 'use client'
-import { Difficulty } from '@/app/types/global'
+
 import React, { useState } from 'react'
+import { Difficulty } from '../types'
 import Option from './Option'
 
 interface OptionsProps {
