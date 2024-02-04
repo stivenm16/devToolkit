@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { ClientContext } from '../../context/RequestContext'
+import { ClientContext } from '../context/RequestContext'
 
 const Headers: React.FC = () => {
   const { configApiCall, changeContent } = useContext(ClientContext)

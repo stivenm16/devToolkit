@@ -1,10 +1,10 @@
-import { RequestDetails } from '../types/ClientTypes'
+import { METHOD, RequestDetails } from '../types/ClientTypes'
 
 const apiClient = async (requestDetails: RequestDetails) => {
   try {
-    const response = await fetch('/api/testApi', {
-      method: requestDetails.method,
-      body: requestDetails.body,
+    const response = await fetch('/api/Client', {
+      method: METHOD.POST,
+      body: JSON.stringify(requestDetails),
     })
     const data = response.json()
     return data
