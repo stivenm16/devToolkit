@@ -1,10 +1,11 @@
 'use client'
 import Layout from '@/app/components/Layout'
-import { Options, Timer } from '@/app/components/games'
+import { Options, Timer } from '@/app/games/components'
 
-import { Board } from '@/app/components/games/sudoku'
-import { Difficulty } from '@/app/types/global'
+import { Board } from '@/app/games/sudoku/components'
+
 import { useState } from 'react'
+import { Difficulty } from '../types'
 
 export default function SudokuPage() {
   const [isRunning, setIsRunning] = useState(false)

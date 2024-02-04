@@ -1,7 +1,8 @@
 'use client'
 import { signOut, useSession } from 'next-auth/react'
 import Link from 'next/link'
-import { Button } from './ui'
+import { Button } from '.'
+
 
 const Header: React.FC = () => {
   const session = useSession()

@@ -1,4 +1,4 @@
-import { Button } from '@/app/components/ui'
+import { Button } from '@/app/components'
 import { useContext, useEffect, useRef } from 'react'
 import { JSONEditor, JSONEditorPropsOptional, Mode } from 'vanilla-jsoneditor'
 import { ClientContext } from '../context/RequestContext'

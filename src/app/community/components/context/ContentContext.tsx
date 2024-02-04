@@ -1,5 +1,5 @@
 'use client'
-import { dataStructure } from '@/app/utils/componentsData'
+import { dataStructure } from '@/app/community/components/utils/componentsData'
 import React, { ReactNode, createContext, useState } from 'react'
 
 interface ContentContextProps {

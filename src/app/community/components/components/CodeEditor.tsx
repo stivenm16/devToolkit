@@ -1,13 +1,12 @@
 'use client'
 import { useClipboard } from '@/app/hooks'
-import React from 'react'
-
 import { yupResolver } from '@hookform/resolvers/yup'
+import React from 'react'
 import { useForm } from 'react-hook-form'
 import { LiveEditor, LiveError, LivePreview, LiveProvider } from 'react-live'
 import ts, { transpile } from 'typescript'
 import * as yup from 'yup'
-import { Alert, Button, CustomSVG, DotsCodeEditor } from '../ui'
+import { Alert, Button, CustomSVG, DotsCodeEditor } from '../../../components'
 
 interface Props {
   code: string

@@ -1,11 +1,13 @@
 'use client'
+import { Spinner } from '@/app/components'
 import { usePagination } from '@/app/hooks'
-import { ComponentsProps } from '@/app/types/global'
 import { Suspense, lazy, useEffect, useState } from 'react'
-import { LeftSideBar, RightSideBar, Spinner } from '.'
-import { dataStructure, findElementByTitle } from '../../utils/componentsData'
+import { ComponentsProps } from '../types'
+import { dataStructure, findElementByTitle } from '../utils/componentsData'
 
-const CodeEditor = lazy(() => import('../CodeEditor/CodeEditor'))
+const RightSideBar = lazy(() => import('./RightSideBar'))
+const LeftSideBar = lazy(() => import('../../LeftSideBar'))
+const CodeEditor = lazy(() => import('./CodeEditor'))
 
 interface ContentBoxProps {
   children?: React.ReactNode

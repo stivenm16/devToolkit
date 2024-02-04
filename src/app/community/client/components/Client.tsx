@@ -1,8 +1,8 @@
 'use client'
-import { Button, CodeSnippet, CustomSelect } from '@/app/components/ui'
+import { Button, CodeSnippet, CustomSelect } from '@/app/components/'
 import React from 'react'
 import useApiClient from '../hooks/useApiClient'
-import { tabOptions } from '../utils/utils'
+import { tabOptions } from '../utils'
 import Method from './Method'
 import Tabs from './Tabs'
 

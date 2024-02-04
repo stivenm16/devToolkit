@@ -1,4 +1,4 @@
-import { Difficulty } from '@/app/types/global'
+import { Difficulty } from '@/app/games/types'
 import { isValidBoard } from '.'
 import { solveSudoku } from './sudokuSolver'
 

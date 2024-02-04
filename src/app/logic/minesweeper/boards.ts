@@ -1,7 +1,7 @@
 /* Esta primera parte es la función generadora del primer tablero en donde 
 todas las casillas parten del estado Hidden */
 
-import { CellEnum } from '@/app/types/games/minesweeper'
+import { CellEnum } from '@/app/games/types'
 import { getMinePositions } from './mines'
 
 export function boardWithoutMines(boardSize: number) {

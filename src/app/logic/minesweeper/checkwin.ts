@@ -1,6 +1,6 @@
+import { CellEnum } from '@/app/games/types'
 import { gridMines } from '@/app/logic/minesweeper/events'
 import { setFace, setGrid } from '@/app/logic/minesweeper/state'
-import { CellEnum } from '@/app/types/games/minesweeper'
 
 /*Esta función se encarga de verificar si el número de celdas ocultas o flagged en el tablero 
 era igual al número de minas y devuelve un mensaje de win

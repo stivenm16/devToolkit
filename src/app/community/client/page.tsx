@@ -1,5 +1,5 @@
 import { Header } from '@/app/components'
-import { LeftSideBar } from '@/app/components/ui'
+import LeftSideBar from '../LeftSideBar'
 import Client from './components/Client'
 import { ClientProvider } from './context/RequestContext'
 

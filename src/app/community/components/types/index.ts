@@ -1,5 +1,3 @@
-export type Difficulty = 'easy' | 'medium' | 'hard'
-
 export interface ComponentsProps {
   title: string
   code: string

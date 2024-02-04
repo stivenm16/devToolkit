@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { Header, Layout } from '../components'
-import { LoginForm } from '../components/ui'
+import LoginForm from './LoginForm'
 
 const Login: React.FC = () => {
   return (

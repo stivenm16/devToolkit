@@ -1,12 +1,11 @@
 'use client'
-import { Layout } from '@/app/components'
-import { Button } from '@/app/components/ui'
+import { Button, Layout } from '@/app/components'
 import Link from 'next/link'
 
 const page = () => {
   return (
     <Layout>
-      <Link href={'/auth/components'}>
+      <Link href={'/community/components'}>
         <Button label="Go to components" />
       </Link>
     </Layout>

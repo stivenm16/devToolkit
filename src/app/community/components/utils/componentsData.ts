@@ -1,4 +1,4 @@
-import { ComponentsProps, DataProps } from '../types/global'
+import { ComponentsProps, DataProps } from '../types'
 
 export const findElementByTitle = (
   data: ComponentsProps[],

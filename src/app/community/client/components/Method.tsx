@@ -1,7 +1,7 @@
-import { CustomSelect } from '@/app/components/ui'
-import React, { ChangeEvent, useContext, useEffect, useState } from 'react'
-import { apiMethods } from '../utils/utils'
+import { CustomSelect } from '@/app/components/'
+import { ChangeEvent, useContext, useEffect, useState } from 'react'
 import { ClientContext } from '../context/RequestContext'
+import { apiMethods } from '../utils'
 
 const Method = () => {
   const { configApiCall, changeContent } = useContext(ClientContext)

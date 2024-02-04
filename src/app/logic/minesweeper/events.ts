@@ -7,7 +7,8 @@ import {
   score,
   win,
 } from '@/app/logic/minesweeper'
-import { CellEnum, FaceType } from '@/app/types/games/minesweeper'
+
+import { CellEnum, FaceType } from '@/app/games/types'
 import { setFace, setGrid, setMines, setScore } from './state'
 
 let boardSize = 5
