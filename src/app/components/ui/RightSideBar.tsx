@@ -1,6 +1,6 @@
+import { ContentContext } from '@/app/community/components/context/ContentContext'
 import { ComponentsProps } from '@/app/types/global'
 import { useContext } from 'react'
-import { ContentContext } from '../../community/components/redux/ContentContex'
 import { dataStructure } from '../../utils/componentsData'
 
 const RenderFolder = (folderData: ComponentsProps[], level = 0) => {
