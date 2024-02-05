@@ -1,9 +1,8 @@
-import { useContext } from 'react'
-import { ContentContext } from '../context/ContentContext'
+import { useContent } from '../context/ContentContext'
 import { dataStructure } from '../utils/componentsData'
 
 const usePagination = () => {
-  const { currentContent, changeContent } = useContext(ContentContext)
+  const { currentContent, changeContent } = useContent()
 
   const handlePagination = (direction: 'next' | 'prev') => {
     const allComponents = [

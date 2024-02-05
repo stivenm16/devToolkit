@@ -1,11 +1,11 @@
 import { CustomSelect } from '@/app/components/'
-import { ChangeEvent, useContext, useState } from 'react'
-import { ClientContext } from '../context/RequestContext'
-import { Option } from '../types/ClientTypes'
+import { Option } from '@/app/types/global'
+import { ChangeEvent, useState } from 'react'
+import { useClient } from '../context/RequestContext'
 import { apiMethods } from '../utils'
 
 const Method = () => {
-  const { configApiCall, changeContent } = useContext(ClientContext)
+  const { configApiCall, changeContent } = useClient()
   const [selectedMethod, setSelectedMethod] = useState(apiMethods[0])
   const handleInputChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,

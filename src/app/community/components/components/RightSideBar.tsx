@@ -1,10 +1,9 @@
-import { useContext } from 'react'
-import { ContentContext } from '../context/ContentContext'
+import { useContent } from '../context/ContentContext'
 import { ComponentsProps } from '../types'
 import { dataStructure } from '../utils/componentsData'
 
 const RenderFolder = (folderData: ComponentsProps[], level = 0) => {
-  const { changeContent, currentContent } = useContext(ContentContext)
+  const { changeContent, currentContent } = useContent()
   const paddingLeft = `${0.5 + level * 0.5}rem`
 
   return (

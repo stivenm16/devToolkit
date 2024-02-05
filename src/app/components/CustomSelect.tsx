@@ -1,12 +1,7 @@
-// components/CustomSelect.tsx
 'use client'
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { Button } from '.'
-
-interface Option {
-  value: string
-  label: string
-}
+import { Option } from '../types/global'
 
 interface CustomSelectProps {
   options: Option[]

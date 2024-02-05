@@ -1,5 +1,5 @@
 'use client'
-import React, { ReactNode, createContext, useState } from 'react'
+import React, { ReactNode, createContext, useContext, useState } from 'react'
 import { RequestDetails } from '../types/ClientTypes'
 
 const defaultValues = {
@@ -17,10 +17,7 @@ interface ClientProviderProps {
   children: ReactNode
 }
 
-const ClientContext = createContext<ClientContextProps>({
-  configApiCall: defaultValues,
-  changeContent: () => null,
-})
+const ClientContext = createContext<ClientContextProps | null>(null)
 
 const ClientProvider: React.FC<ClientProviderProps> = ({ children }) => {
   const [configApiCall, setConfigApiCall] =
@@ -42,4 +39,11 @@ const ClientProvider: React.FC<ClientProviderProps> = ({ children }) => {
   )
 }
 
-export { ClientContext, ClientProvider }
+const useClient = () => {
+  const context = useContext(ClientContext)
+  if (!context) {
+    throw new Error('useClient must be used within a ClientProvider')
+  }
+  return context
+}
+export { useClient, ClientProvider }
