@@ -1,10 +1,11 @@
 'use client'
 import { dataStructure } from '@/app/community/components/utils/componentsData'
 import React, { ReactNode, createContext, useState } from 'react'
+import { ComponentsProps } from '../types'
 
 interface ContentContextProps {
-  currentContent: string | null
-  changeContent: (newContent: string | null) => void
+  currentContent: ComponentsProps | null
+  changeContent: (newContent: ComponentsProps | null) => void
 }
 interface ContentProviderProps {
   children: ReactNode
@@ -16,11 +17,11 @@ const ContentContext = createContext<ContentContextProps>({
 })
 
 const ContentProvider: React.FC<ContentProviderProps> = ({ children }) => {
-  const [currentContent, setCurrentContent] = useState<string | null>(
-    dataStructure.StateLess[0].title,
+  const [currentContent, setCurrentContent] = useState<null | ComponentsProps>(
+    dataStructure.StateLess[0],
   )
 
-  const changeContent = (newContent: string | null) => {
+  const changeContent = (newContent: ComponentsProps | null) => {
     setCurrentContent(newContent)
   }
 

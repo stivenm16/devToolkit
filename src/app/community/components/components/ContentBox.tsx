@@ -1,9 +1,7 @@
 'use client'
 import { Spinner } from '@/app/components'
-import { usePagination } from '@/app/hooks'
-import { Suspense, lazy, useEffect, useState } from 'react'
-import { ComponentsProps } from '../types'
-import { dataStructure, findElementByTitle } from '../utils/componentsData'
+import { Suspense, lazy } from 'react'
+import usePagination from '../hooks/usePaginationComponents'
 
 const RightSideBar = lazy(() => import('./RightSideBar'))
 const LeftSideBar = lazy(() => import('../../LeftSideBar'))
@@ -13,16 +11,8 @@ interface ContentBoxProps {
   children?: React.ReactNode
 }
 1
-//ContentBox should receive a Child Component as prop to render it instaed of CodeEditor, also this logic needs to be moved to custom hook
 const ContentBox: React.FC<ContentBoxProps> = () => {
   const { handlePagination, currentContent } = usePagination()
-  const [currentData, setCurrentData] = useState<ComponentsProps>()
-  useEffect(() => {
-    const data = [...dataStructure.StateFull, ...dataStructure.StateLess]
-    const matchingData = findElementByTitle(data, currentContent!)
-
-    setCurrentData(matchingData)
-  }, [currentContent])
 
   return (
     <div className="flex relative flex-col min-h-[85svh] z-1000 w-full justify-between mb-8">
@@ -30,13 +20,13 @@ const ContentBox: React.FC<ContentBoxProps> = () => {
         <LeftSideBar />
 
         <div className={`w-3/5 mx-auto  rounded-2xl`}>
-          {currentData ? (
-            <div key={currentData.title} id={currentData.title}>
+          {currentContent ? (
+            <div key={currentContent.title} id={currentContent.title}>
               <h4 className="text-xl font-bold text-white mb-5">
-                {currentData.title}
+                {currentContent.title}
               </h4>
               <span className="text-md font-medium text-white">
-                {currentData.description}
+                {currentContent.description}
               </span>
               <Suspense
                 fallback={
@@ -46,8 +36,8 @@ const ContentBox: React.FC<ContentBoxProps> = () => {
                 }
               >
                 <CodeEditor
-                  code={currentData.code}
-                  key={currentData.title}
+                  code={currentContent.code}
+                  key={currentContent.title}
                   inLine={true}
                 />
               </Suspense>

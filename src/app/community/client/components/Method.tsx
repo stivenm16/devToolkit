@@ -1,6 +1,7 @@
 import { CustomSelect } from '@/app/components/'
-import { ChangeEvent, useContext, useEffect, useState } from 'react'
+import { ChangeEvent, useContext, useState } from 'react'
 import { ClientContext } from '../context/RequestContext'
+import { Option } from '../types/ClientTypes'
 import { apiMethods } from '../utils'
 
 const Method = () => {
@@ -12,9 +13,12 @@ const Method = () => {
     const { value } = e.target
     changeContent({ ...configApiCall, url: value })
   }
-  useEffect(() => {
-    changeContent({ ...configApiCall, method: selectedMethod.value })
-  }, [selectedMethod])
+
+  const handleSelect = (option: Option) => {
+    setSelectedMethod(option)
+    changeContent({ ...configApiCall, method: option.value })
+  }
+
   return (
     <>
       <h2 className="text-xl font-bold mb-4">Client</h2>
@@ -24,7 +28,7 @@ const Method = () => {
           <CustomSelect
             options={apiMethods}
             selectedOption={selectedMethod}
-            onChange={setSelectedMethod}
+            onChange={handleSelect}
           />
         </div>
         <div className="w-full">

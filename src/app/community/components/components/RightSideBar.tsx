@@ -14,9 +14,9 @@ const RenderFolder = (folderData: ComponentsProps[], level = 0) => {
           <div className="my-2 cursor-pointer">
             <span
               className={`${
-                currentContent === item.title && 'text-white font-bold'
+                currentContent?.title === item.title && 'text-white font-bold'
               } hover:text-white`}
-              onClick={() => changeContent(item.title)}
+              onClick={() => changeContent(item)}
             >
               {item.title}
             </span>

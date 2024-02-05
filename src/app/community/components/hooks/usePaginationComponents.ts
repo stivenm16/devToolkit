@@ -1,7 +1,6 @@
 import { useContext } from 'react'
-
-import { ContentContext } from '../community/components/context/ContentContext'
-import { dataStructure } from '../community/components/utils/componentsData'
+import { ContentContext } from '../context/ContentContext'
+import { dataStructure } from '../utils/componentsData'
 
 const usePagination = () => {
   const { currentContent, changeContent } = useContext(ContentContext)
@@ -12,16 +11,16 @@ const usePagination = () => {
       ...dataStructure.StateFull,
     ]
     const currentIndex = allComponents.findIndex(
-      (item) => item.title === currentContent,
+      (item) => item.title === currentContent?.title,
     )
 
     if (direction === 'next') {
       const nextIndex = (currentIndex + 1) % allComponents.length
-      changeContent(allComponents[nextIndex].title)
+      changeContent(allComponents[nextIndex])
     } else {
       const prevIndex =
         (currentIndex - 1 + allComponents.length) % allComponents.length
-      changeContent(allComponents[prevIndex].title)
+      changeContent(allComponents[prevIndex])
     }
   }
 

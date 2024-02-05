@@ -1,6 +1,6 @@
 // components/CustomSelect.tsx
 'use client'
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { Button } from '.'
 
 interface Option {
@@ -34,26 +34,28 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
     setIsOpen(!isOpen)
   }
 
-  const closeDropdown = () => {
+  const closeDropdown = useCallback(() => {
     setIsOpen(false)
-  }
+  }, [])
 
-  const handleClickOutside = (event: MouseEvent) => {
-    if (
-      selectRef.current &&
-      !selectRef.current.contains(event.target as Node)
-    ) {
-      closeDropdown()
-    }
-  }
+  const handleClickOutside = useCallback(
+    (event: MouseEvent) => {
+      if (
+        selectRef.current &&
+        !selectRef.current.contains(event.target as Node)
+      ) {
+        closeDropdown()
+      }
+    },
+    [selectRef, closeDropdown],
+  )
 
   useEffect(() => {
     document.addEventListener('mousedown', handleClickOutside)
     return () => {
       document.removeEventListener('mousedown', handleClickOutside)
     }
-  }, [])
-
+  }, [handleClickOutside])
   return (
     <div ref={selectRef} className="relative inline-block text-left">
       <div>
