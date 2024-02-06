@@ -10,11 +10,18 @@ const RenderFolder = (folderData: ComponentsProps[], level = 0) => {
     <ul style={{ paddingLeft }} className="my-2">
       {folderData.map((item: ComponentsProps, index: number) => (
         <li key={index}>
-          <div className="my-2 cursor-pointer">
+          <div className="my-2 cursor-pointer pl-3 flex ">
+            <div
+              className={` w-2 h-5  ${
+                currentContent?.title === item.title &&
+                'border-indigo-400 border-l-2'
+              }`}
+            />
             <span
-              className={`${
-                currentContent?.title === item.title && 'text-white font-bold'
-              } hover:text-white`}
+              className={`transition ease-in-out ${
+                currentContent?.title === item.title &&
+                'text-indigo-400 font-bold  '
+              } `}
               onClick={() => changeContent(item)}
             >
               {item.title}

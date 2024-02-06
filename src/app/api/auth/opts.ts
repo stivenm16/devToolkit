@@ -7,18 +7,18 @@ export const authOptions = {
         email: { label: 'Email', type: 'text', placeholder: 'jsmith' },
         password: { label: 'Password', type: 'password', placeholder: '*****' },
       },
-      async authorize(credentials, req): Promise<any> {
+      async authorize(credentials): Promise<any> {
         // const userFound = await db.user.findUnique({
         //   where: {
         //     email: credentials.email,
         //   },
         // })
         const userFound = {
-          userName: 'test',
+          id: 1,
+          username: 'John',
           email: '',
         }
-        if (!userFound) throw new Error('No user found')
-
+        // if (!userFound) throw new Error('No user found')
         // const matchPassword = await bcrypt.compare(
         //   credentials.password,
         //   userFound.password,
@@ -26,37 +26,17 @@ export const authOptions = {
 
         // if (!matchPassword) throw new Error('Wrong password')
 
-        return {
+        const res = {
+          id: userFound.id,
+          csrfToken: (credentials as { csrfToken?: string }).csrfToken ?? '',
+          // name: userFound.username,
           email: credentials?.email,
-          password: credentials?.password,
         }
+        return res
       },
     }),
   ],
-  callbacks: {
-    jwt({ token, user }: any) {
-      if (user) token.user = user
-      return token
-    },
-    async session({ session, user }: any) {
-      //   const userFound = await db.user.findUnique({
-      //     where: {
-      //       email: session.user.email,
-      //     },
-      //   })
-
-      const userFound = {
-        id: 1,
-        userName: 'test',
-        email: '',
-        role: 'admin',
-      }
-      session.user.role = userFound.role
-      session.user.userId = userFound.id
-      return session
-    },
-  },
   pages: {
-    signIn: '/community',
+    signIn: '/auth/login',
   },
 }

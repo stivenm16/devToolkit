@@ -1,15 +1,20 @@
-'use client'
-import { Button, Layout } from '@/app/components'
-import Link from 'next/link'
+import React from 'react'
 
-const page = () => {
+import { Header, Layout } from '../../components'
+import LoginForm from './components/LoginForm'
+
+const Login: React.FC = () => {
   return (
-    <Layout>
-      <Link href={'/community/components'}>
-        <Button label="Go to components" />
-      </Link>
+    <Layout hideHeader={true}>
+      <div className="fixed inset-0 flex items-center flex-col justify-center backdrop-blur-xl">
+        <div className="absolute top-0 w-full">
+          <Header />
+        </div>
+
+        <LoginForm />
+      </div>
     </Layout>
   )
 }
 
-export default page
+export default Login
