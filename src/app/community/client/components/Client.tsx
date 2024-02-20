@@ -1,8 +1,8 @@
 'use client'
-import { Button, CodeSnippet, CustomSelect } from '@/app/components/ui'
+import { Button, CodeSnippet, CustomSelect } from '@/app/components/'
 import React from 'react'
 import useApiClient from '../hooks/useApiClient'
-import { tabOptions } from '../utils/utils'
+import { tabOptions } from '../utils'
 import Method from './Method'
 import Tabs from './Tabs'
 
@@ -16,7 +16,7 @@ const Client: React.FC = () => {
       <Tabs />
 
       <Button onClick={handleSendRequest}>Send Request</Button>
-      <div className="mt-4 bg-indigo-800 p-5 min-h-96 rounded-md flex gap-5">
+      <div className="mt-4 bg-indigo-800 p-5 min-h-64 rounded-md flex gap-5">
         <CustomSelect
           options={tabOptions}
           onChange={setSelectTab}

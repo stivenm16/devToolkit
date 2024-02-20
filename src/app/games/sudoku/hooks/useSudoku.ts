@@ -1,6 +1,7 @@
 import { isValidBoard, playableBoard } from '@/app/logic/sudoku'
-import { Difficulty } from '@/app/types/global'
+
 import { useEffect, useState } from 'react'
+import { Difficulty } from '../../types'
 
 const useSudoku = (difficulty: Difficulty) => {
   const emptyBoard = Array.from(Array(9), () => Array(9).fill(0))

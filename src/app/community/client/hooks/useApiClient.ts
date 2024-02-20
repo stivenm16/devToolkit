@@ -1,10 +1,11 @@
 import { json2ts } from 'json-ts'
-import { useContext, useState } from 'react'
-import { ClientContext } from '../context/RequestContext'
+import { useState } from 'react'
+
+import { useClient } from '../context/RequestContext'
 import apiClient from '../services/apiClient'
 
 const useApiClient = () => {
-  const { configApiCall } = useContext(ClientContext)
+  const { configApiCall } = useClient()
   const [response, setResponse] = useState<any>(null)
   const [interfaceParsed, setInterfaceParsed] = useState('')
 

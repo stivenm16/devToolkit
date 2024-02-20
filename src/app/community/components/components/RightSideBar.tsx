@@ -1,22 +1,33 @@
-import { ContentContext } from '@/app/community/components/context/ContentContext'
-import { ComponentsProps } from '@/app/types/global'
-import { useContext } from 'react'
-import { dataStructure } from '../../utils/componentsData'
+import { useContent } from '../context/ContentContext'
+import { ComponentsProps } from '../types'
+import { dataStructure } from '../utils/componentsData'
 
 const RenderFolder = (folderData: ComponentsProps[], level = 0) => {
-  const { changeContent, currentContent } = useContext(ContentContext)
+  const { changeContent, currentContent } = useContent()
   const paddingLeft = `${0.5 + level * 0.5}rem`
 
   return (
     <ul style={{ paddingLeft }} className="my-2">
       {folderData.map((item: ComponentsProps, index: number) => (
         <li key={index}>
-          <div className="my-2 cursor-pointer">
+          <div
+            className={`my-2 cursor-pointer border-l-2 box-border transition ease-in-out border-indigo-950 flex  ${
+              currentContent?.title !== item.title &&
+              'hover:border-indigo-300 hover:text-indigo-300'
+            }`}
+          >
+            <div
+              className={` w-2 h-5  ${
+                currentContent?.title === item.title &&
+                'border-indigo-400 border-l-2'
+              } `}
+            />
             <span
-              className={`${
-                currentContent === item.title && 'text-white font-bold'
-              } hover:text-white`}
-              onClick={() => changeContent(item.title)}
+              className={`transition ease-in-out ${
+                currentContent?.title === item.title &&
+                'text-indigo-400 font-bold'
+              } `}
+              onClick={() => changeContent(item)}
             >
               {item.title}
             </span>

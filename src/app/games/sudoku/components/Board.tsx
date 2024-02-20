@@ -1,15 +1,10 @@
 'use client'
 
-import useSudoku from '@/app/hooks/useSudoku'
-import { Difficulty } from '@/app/types/global'
-import { FC } from 'react'
 import { Cell } from '.'
+import { Difficulty } from '../../types'
+import useSudoku from '../hooks/useSudoku'
 
-interface Props {
-  difficulty: Difficulty
-}
-
-const Board: FC<Props> = ({ difficulty }) => {
+const Board = ({ difficulty }: { difficulty: Difficulty }) => {
   const { getBorderStyle, board, initalBoard, handleCellValue } =
     useSudoku(difficulty)
 

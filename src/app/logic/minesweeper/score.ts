@@ -1,4 +1,5 @@
-import { CellEnum } from '@/app/types/games/minesweeper'
+import { CellEnum } from "@/app/games/types"
+
 
 // Conteo de celdas descubiertas sin error, retorna el score
 export function score(grid: CellEnum[][]) {

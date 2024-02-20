@@ -1,4 +1,5 @@
-import { METHOD, Option } from '../types/ClientTypes'
+import { Option } from '@/app/types/global'
+import { METHOD } from '../types/ClientTypes'
 
 export const tabOptions: Option[] = [
   { value: 'Response', label: 'Response' },

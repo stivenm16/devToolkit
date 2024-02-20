@@ -1,6 +1,5 @@
 import Link from 'next/link'
-import { Layout } from './components'
-import { Button } from './components/ui'
+import { Button, Layout } from './components'
 
 export default function Home() {
   return (

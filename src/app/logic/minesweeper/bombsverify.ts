@@ -1,7 +1,9 @@
 /* Esta funcion se encarga de verificar las 8 posiciones adjacentes de
 la celda en la que se está clickeando y devuelve el número de minas cercanas*/
 
-import { CellEnum } from '@/app/types/games/minesweeper'
+import { CellEnum } from "@/app/games/types"
+
+
 
 export function bombsVerify(
   boardWithMines: CellEnum[][],

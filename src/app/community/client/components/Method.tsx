@@ -1,10 +1,11 @@
-import { CustomSelect } from '@/app/components/ui'
-import React, { ChangeEvent, useContext, useEffect, useState } from 'react'
-import { apiMethods } from '../utils/utils'
-import { ClientContext } from '../context/RequestContext'
+import { CustomSelect } from '@/app/components/'
+import { Option } from '@/app/types/global'
+import { ChangeEvent, useState } from 'react'
+import { useClient } from '../context/RequestContext'
+import { apiMethods } from '../utils'
 
 const Method = () => {
-  const { configApiCall, changeContent } = useContext(ClientContext)
+  const { configApiCall, changeContent } = useClient()
   const [selectedMethod, setSelectedMethod] = useState(apiMethods[0])
   const handleInputChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -12,9 +13,12 @@ const Method = () => {
     const { value } = e.target
     changeContent({ ...configApiCall, url: value })
   }
-  useEffect(() => {
-    changeContent({ ...configApiCall, method: selectedMethod.value })
-  }, [selectedMethod])
+
+  const handleSelect = (option: Option) => {
+    setSelectedMethod(option)
+    changeContent({ ...configApiCall, method: option.value })
+  }
+
   return (
     <>
       <h2 className="text-xl font-bold mb-4">Client</h2>
@@ -24,7 +28,7 @@ const Method = () => {
           <CustomSelect
             options={apiMethods}
             selectedOption={selectedMethod}
-            onChange={setSelectedMethod}
+            onChange={handleSelect}
           />
         </div>
         <div className="w-full">

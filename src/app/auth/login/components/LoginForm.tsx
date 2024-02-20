@@ -45,7 +45,7 @@ const LoginForm = () => {
         if (res?.error) {
           setError(res?.error)
         } else {
-          router.push('/auth/components')
+          router.push('/auth/private/profile')
           router.refresh()
         }
       } else {

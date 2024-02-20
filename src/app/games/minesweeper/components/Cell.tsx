@@ -1,5 +1,5 @@
 import { Events } from '@/app/logic/minesweeper'
-import { CellEnum } from '@/app/types/games/minesweeper'
+import { CellEnum } from '../../types'
 
 export type CellComponentType = {
   position: [number, number]

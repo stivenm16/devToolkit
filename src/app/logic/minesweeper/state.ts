@@ -1,5 +1,6 @@
 'use client'
-import { CellEnum, FaceType } from '@/app/types/games/minesweeper'
+
+import { CellEnum, FaceType } from '@/app/games/types'
 import { useEffect, useState } from 'react'
 
 type Sub = {

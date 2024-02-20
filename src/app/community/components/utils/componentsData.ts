@@ -1,4 +1,4 @@
-import { ComponentsProps, DataProps } from '../types/global'
+import { ComponentsProps, DataProps } from '../types'
 
 export const findElementByTitle = (
   data: ComponentsProps[],
@@ -314,7 +314,7 @@ const CustomButton: React.FC<ButtonProps> = ({
     </button>
   )
 }
-render(<CustomButton onCLick={() => console.log("click")} label={"Press me"}}/>);
+render(<CustomButton onClick={() => console.log("click")} label={"Press me"}}/>);
     `,
     },
     {

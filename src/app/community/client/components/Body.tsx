@@ -1,12 +1,12 @@
-import { Button } from '@/app/components/ui'
-import { useContext, useEffect, useRef } from 'react'
+import { Button } from '@/app/components'
+import { useEffect, useRef } from 'react'
 import { JSONEditor, JSONEditorPropsOptional, Mode } from 'vanilla-jsoneditor'
-import { ClientContext } from '../context/RequestContext'
+import { useClient } from '../context/RequestContext'
 
 const JSONEditorReact: React.FC<JSONEditorPropsOptional> = (props) => {
   const refContainer = useRef<HTMLDivElement>(null)
   const refEditor = useRef<JSONEditor | null>(null)
-  const { configApiCall, changeContent } = useContext(ClientContext)
+  const { configApiCall, changeContent } = useClient()
 
   useEffect(() => {
     refEditor.current = new JSONEditor({

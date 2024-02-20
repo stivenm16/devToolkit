@@ -1,3 +1,5 @@
+export type Difficulty = 'easy' | 'medium' | 'hard'
+
 export enum CellEnum {
   Hidden = -1,
   Cero = 0,

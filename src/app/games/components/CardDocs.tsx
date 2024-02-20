@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { Button } from '../ui'
+import { Button } from '../../components/'
 
 interface Props {
   path: string

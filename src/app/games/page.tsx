@@ -1,5 +1,5 @@
 import { Layout } from '../components'
-import { CardDocs } from '../components/games'
+import { CardDocs } from './components'
 
 function GamesPage() {
   return (

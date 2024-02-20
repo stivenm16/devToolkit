@@ -1,20 +1,22 @@
 'use client'
 import { Layout } from '@/app/components'
-import { CodeSnippet, Explanation } from '@/app/components/ui'
+
+import { CodeSnippet } from '@/app/components/'
 import { Game, getCodeSnippets } from '@/app/services/sudoku.service'
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
+import Explanation from './components/Explanation'
 
 const Guide = ({ params }: { params: { game: string } }) => {
   const [data, setData] = useState<any[][]>([[]])
 
-  const getData = async () => {
+  const getData = useCallback(async () => {
     const data = await getCodeSnippets(params.game[0] as Game)
     setData(data)
-  }
+  }, [setData, params.game])
 
   useEffect(() => {
     getData()
-  }, [])
+  }, [getData])
 
   return (
     <Layout>

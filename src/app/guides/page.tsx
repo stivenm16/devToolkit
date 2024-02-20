@@ -1,5 +1,5 @@
 import { Layout } from '@/app/components'
-import { CardDocs } from '../components/games'
+import { CardDocs } from '../games/components'
 
 const Guides = () => {
   return (

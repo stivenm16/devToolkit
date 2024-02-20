@@ -1,4 +1,5 @@
-import { CellEnum } from '@/app/types/games/minesweeper'
+import { CellEnum } from "@/app/games/types"
+
 
 // Función recursiva para poder limpiar los espacios en blanco
 export function reveal(

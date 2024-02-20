@@ -1,5 +1,6 @@
 import { Layout } from '@/app/components'
-import { ContentBox } from '@/app/components/ui'
+
+import ContentBox from './components/ContentBox'
 import { ContentProvider } from './context/ContentContext'
 
 const page = () => {
