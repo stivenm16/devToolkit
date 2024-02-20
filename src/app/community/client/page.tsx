@@ -5,9 +5,9 @@ import { ClientProvider } from './context/RequestContext'
 
 const ClientPage = () => {
   return (
-    <div className="flex flex-col min-h-screen bg-indigo-950 ">
+    <div className="flex flex-col min-h-screen bg-indigo-950  ">
       <Header />
-      <div className="flex-grow flex">
+      <div className="flex-grow flex pt-24">
         <LeftSideBar />
         <ClientProvider>
           <Client />

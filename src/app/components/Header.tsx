@@ -3,7 +3,7 @@ import { Avatar } from '.'
 
 const Header: React.FC = () => {
   return (
-    <div className="flex relative z-10">
+    <div className="fixed top-0 left-0 right-0 z-10 backdrop-blur-sm">
       <div className=" md:block bg-indigo-700 rounded-full text-center py-1 mx-auto my-3 w-3/4 md:w-fit px-5 shadow-xl">
         <div className="container mx-auto py-2">
           <div className="flex md:items-center md:justify-center">

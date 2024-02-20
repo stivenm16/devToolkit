@@ -9,6 +9,18 @@ body {
   --jse-background-color: rgb(196, 210, 255);
   --jse-error-color: #df4352;
 }
+.main-content::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  background: inherit;
+  filter: blur(10px); /* Adjust the blur intensity as needed */
+  pointer-events: none; /* Allow user interactions through the pseudo-element */
+}
 
 input:hover,
 input:focus {

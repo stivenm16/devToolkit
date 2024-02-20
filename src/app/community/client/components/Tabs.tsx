@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import BodyJson from './Body'
+import JSONEditorReact from './Body'
 import Headers from './Headers'
 
 const Tabs = () => {
@@ -38,7 +38,7 @@ const Tabs = () => {
             <Headers />
           </>
         ) : (
-          <BodyJson />
+          <JSONEditorReact />
         )}
       </div>
     </>

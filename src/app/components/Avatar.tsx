@@ -11,7 +11,7 @@ const Avatar = () => {
     setShowDropdown(!showDropdown)
   }
   return (
-    <div className="absolute top-4 right-4 transition-all ease-in-out grid gap-3 justify-items-end">
+    <div className="absolute top-4 right-8 transition-all ease-in-out grid gap-3 justify-items-end">
       {!!session.data?.user?.email ? (
         <div
           onClick={toggleDropDown}
