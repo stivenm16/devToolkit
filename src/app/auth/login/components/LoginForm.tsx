@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import * as yup from 'yup'
+import GithubBtn from './GithubBtn'
 
 interface IFormInput {
   email: string
@@ -134,6 +135,13 @@ const LoginForm = () => {
         >
           Login
         </button>
+        <section>
+          <hr />
+          <p className="text-white text-center pt-4">
+            {isRegister ? 'Or login with' : 'Or register with'}
+          </p>
+          <GithubBtn />
+        </section>
         <p className="text-white text-center pt-auto">
           {!isRegister ? 'Already have an account?' : "Don't have an account?"}
           <span
