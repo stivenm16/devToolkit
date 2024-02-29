@@ -14,7 +14,7 @@ const Avatar = () => {
   let loggedUser = JSON.parse(localStorage.getItem("user")!);
   
   // console.log(avatar, "AVATAR");
-  console.log(loggedUser, "LOGGEDUSER");
+  // console.log(loggedUser, "LOGGEDUSER");
 
   const toggleDropDown = () => {
     setShowDropdown(!showDropdown);

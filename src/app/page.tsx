@@ -3,9 +3,9 @@ import Link from "next/link";
 import { Button, Layout } from "./components";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import { log } from "console";
+// import withAuth from "./auth/private/profile/_middleware";
 
-export default function Home() {
+function Home() {
   const [loggedUser, setLoggedUser] = useState<string | null>(null);
 
   const tryToParseJson = (data: string): string | null => {
@@ -83,3 +83,4 @@ export default function Home() {
     </Layout>
   );
 }
+export default Home;

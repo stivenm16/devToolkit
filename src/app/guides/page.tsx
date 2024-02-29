@@ -1,5 +1,7 @@
+'use client';
 import { Layout } from '@/app/components'
 import { CardDocs } from '../games/components'
+import withAuth from '../_middleware'
 
 const Guides = () => {
   return (
@@ -45,4 +47,4 @@ const Guides = () => {
   )
 }
 
-export default Guides
+export default withAuth(Guides)
