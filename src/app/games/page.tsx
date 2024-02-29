@@ -1,5 +1,7 @@
+'use client';
 import { Layout } from '../components'
 import { CardDocs } from './components'
+import withAuth from "../_middleware";
 
 function GamesPage() {
   return (
@@ -44,5 +46,5 @@ function GamesPage() {
     </Layout>
   )
 }
-
-export default GamesPage
+// debugger;
+export default withAuth(GamesPage)

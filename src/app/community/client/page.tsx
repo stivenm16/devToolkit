@@ -2,6 +2,7 @@ import { Header } from '@/app/components'
 import LeftSideBar from '../LeftSideBar'
 import Client from './components/Client'
 import { ClientProvider } from './context/RequestContext'
+import withAuth from '../../_middleware'
 
 const ClientPage = () => {
   return (
@@ -17,4 +18,4 @@ const ClientPage = () => {
   )
 }
 
-export default ClientPage
+export default withAuth(ClientPage)

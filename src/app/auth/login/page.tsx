@@ -1,5 +1,3 @@
-"use client";
-import React, { use, useEffect } from "react";
 import { Header, Layout } from "../../components";
 import LoginForm from "./components/LoginForm";
 

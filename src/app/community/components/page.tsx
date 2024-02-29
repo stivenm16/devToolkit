@@ -1,7 +1,9 @@
+'use client'
 import { Layout } from '@/app/components'
 
 import ContentBox from './components/ContentBox'
 import { ContentProvider } from './context/ContentContext'
+import withAuth from '../../_middleware'
 
 const page = () => {
   return (
@@ -13,4 +15,4 @@ const page = () => {
   )
 }
 
-export default page
+export default withAuth(page)
