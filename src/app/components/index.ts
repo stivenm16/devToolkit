@@ -11,6 +11,7 @@ import Layout from './Layout'
 import Modal from './Modal'
 import Spinner from './Spinner'
 import CustomSVG from './SvgComponent'
+import DynamicTable from './Table'
 
 export {
   Alert,
@@ -21,6 +22,7 @@ export {
   CustomSVG,
   CustomSelect,
   DotsCodeEditor,
+  DynamicTable,
   Footer,
   Header,
   Layout,
